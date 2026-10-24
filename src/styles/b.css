@@ -1,0 +1,705 @@
+/* goi / B 注の網
+   本文は静かに、注は本文の外へ。構造は線ではなく余白と書体で作る。 */
+
+:root {
+  color-scheme: light dark;
+  --ground: light-dark(#f3f5f4, #141817);
+  --raised: light-dark(#ffffff, #1d2322);
+  --field: light-dark(#e3e8e6, #222a28);
+  --ink: light-dark(#1a1c1e, #e2e7e5);
+  --ink-2: light-dark(#474d51, #aab3b0);
+  --ink-3: light-dark(#5b6266, #95a09c);
+  --note: #5dac81;
+  --wash: light-dark(color-mix(in oklab, #5dac81 24%, #f3f5f4), color-mix(in oklab, #5dac81 26%, #141817));
+  --wash-strong: light-dark(
+    color-mix(in oklab, #5dac81 42%, #f3f5f4),
+    color-mix(in oklab, #5dac81 44%, #141817)
+  );
+  --visited: light-dark(#0d5661, #7fc4cc);
+  --focus: light-dark(#0d5661, #8fd3b0);
+
+  --body: "BIZ UDPGothic", "Hiragino Sans", "Noto Sans JP", system-ui, sans-serif;
+  --head: "Shippori Antique", "BIZ UDPGothic", "Hiragino Sans", sans-serif;
+  --measure: 34em;
+  --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+.finder[hidden],
+.words li[hidden] {
+  display: none;
+}
+
+html {
+  background: var(--ground);
+  color: var(--ink);
+  font-family: var(--body);
+  font-size: 106.25%; /* 17px */
+  line-height: 1.85;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+}
+
+:lang(ja) {
+  text-autospace: normal;
+  line-break: strict;
+  text-spacing-trim: normal;
+}
+
+h1,
+h2,
+p,
+ul,
+ol,
+fieldset {
+  margin: 0;
+}
+
+::selection {
+  background: var(--wash-strong);
+  color: var(--ink);
+}
+
+:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+a {
+  color: inherit;
+  text-decoration-line: underline;
+  text-decoration-color: var(--note);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 0.3em;
+}
+
+a:visited {
+  color: var(--visited);
+}
+
+a:hover {
+  text-decoration-thickness: 4px;
+}
+
+ruby rt {
+  font-family: var(--body);
+  font-weight: 400;
+  font-feature-settings: normal;
+  letter-spacing: 0.08em;
+}
+
+/* 文節で折り返す（Chromium のみ）。短い文は行を揃え、長い文は最終行だけ整える */
+@supports (word-break: auto-phrase) {
+  .lede,
+  .meaning,
+  .empty,
+  .words-gloss,
+  .preview-meaning,
+  .note p {
+    word-break: auto-phrase;
+  }
+
+  .lede,
+  .meaning,
+  .empty {
+    text-wrap: balance;
+  }
+}
+
+.words-gloss,
+.preview-meaning,
+.note p,
+.example-text {
+  text-wrap: pretty;
+}
+
+.page {
+  container: page / inline-size;
+  max-inline-size: 64rem;
+  margin-inline: auto;
+  padding: clamp(1.5rem, 5vw, 3.5rem) clamp(1rem, 5vw, 3.5rem) 5rem;
+}
+
+/* ───── 一覧 ───── */
+
+.masthead {
+  margin-block-end: clamp(2.5rem, 7vw, 4.5rem);
+}
+
+.site-title {
+  font-family: var(--head);
+  font-weight: 400;
+  font-size: clamp(3.5rem, 3rem + 6vw, 7rem);
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+.lede {
+  margin-block-start: 1.75rem;
+  color: var(--ink-2);
+  max-inline-size: var(--measure);
+}
+
+.tools {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: end;
+  gap: 1.25rem 3rem;
+  margin-block-end: 1rem;
+}
+
+.finder {
+  display: grid;
+  gap: 0.35rem;
+  flex: 1 1 18rem;
+  max-inline-size: 26rem;
+}
+
+.finder label,
+.zoom legend {
+  font-size: 0.8125rem;
+  color: var(--ink-3);
+}
+
+.finder input {
+  font: inherit;
+  color: var(--ink);
+  background: var(--field);
+  border: 0;
+  border-block-end: 2px solid var(--ink-3);
+  border-radius: 4px 4px 0 0;
+  padding: 0.55rem 0.75rem;
+  min-block-size: 2.75rem;
+  inline-size: 100%;
+}
+
+.finder input::placeholder {
+  color: var(--ink-3);
+}
+
+.finder input:focus-visible {
+  outline-offset: 0;
+  border-block-end-color: var(--note);
+}
+
+.zoom {
+  border: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+}
+
+.zoom legend {
+  padding: 0;
+  margin-block-end: 0.35rem;
+  float: left;
+  inline-size: 100%;
+}
+
+.zoom label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  min-block-size: 2.75rem;
+  padding-inline: 0.75rem 0.9rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9375rem;
+}
+
+.zoom label:has(:checked) {
+  background: var(--wash);
+}
+
+.zoom input {
+  accent-color: var(--visited);
+  margin: 0;
+}
+
+.status {
+  min-block-size: 1.85em;
+  margin-block-end: 1.5rem;
+  color: var(--ink-2);
+  font-size: 0.9375rem;
+}
+
+.words {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2.25rem;
+}
+
+.words li {
+  display: grid;
+  gap: 0.35rem;
+}
+
+.words-link {
+  text-decoration: none;
+  inline-size: fit-content;
+}
+
+.words-link:hover .words-head ruby {
+  text-decoration: underline 3px var(--note);
+  text-underline-offset: 0.2em;
+}
+
+.words-head {
+  display: inline-block;
+  font-family: var(--head);
+  font-feature-settings: "palt";
+  font-size: clamp(1.75rem, 1.4rem + 1.6vw, 2.25rem);
+  line-height: 1.25;
+  letter-spacing: 0.01em;
+}
+
+.words-head rt {
+  font-size: 0.36em;
+  color: var(--ink-3);
+}
+
+.words-gloss {
+  color: var(--ink-2);
+  max-inline-size: var(--measure);
+}
+
+@container page (width >= 46rem) {
+  .words li {
+    grid-template-columns: 13rem minmax(0, var(--measure));
+    column-gap: 2.5rem;
+    align-items: last baseline;
+  }
+}
+
+/* 意味を畳むと見出しだけが流れる */
+main:has(input[name="zoom"][value="word"]:checked) .words {
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 1.25rem 2.75rem;
+}
+
+main:has(input[name="zoom"][value="word"]:checked) .words li {
+  grid-template-columns: auto;
+}
+
+main:has(input[name="zoom"][value="word"]:checked) .words-gloss {
+  display: none;
+}
+
+main:has(input[name="zoom"][value="word"]:checked) .words-head {
+  font-size: clamp(2rem, 1.5rem + 2.4vw, 3rem);
+}
+
+/* ───── 語のページ ───── */
+
+.site {
+  margin-block-end: clamp(2.5rem, 8vw, 5rem);
+}
+
+.site-name {
+  display: inline-flex;
+  align-items: center;
+  min-block-size: 2.75rem;
+  font-family: var(--head);
+  font-size: 1.5rem;
+  text-decoration: none;
+}
+
+.site-name:visited {
+  color: inherit;
+}
+
+.entry-head {
+  margin-block-end: clamp(2rem, 5vw, 3rem);
+}
+
+.headword {
+  inline-size: fit-content;
+  font-family: var(--head);
+  font-weight: 400;
+  font-feature-settings: "palt";
+  font-size: clamp(3.25rem, 2.25rem + 7cqi, 6.5rem);
+  line-height: 1.15;
+  letter-spacing: 0.01em;
+}
+
+.headword rt {
+  font-size: max(0.2em, 0.8125rem);
+  color: var(--ink-2);
+  letter-spacing: 0.18em;
+}
+
+.kind {
+  margin-block-start: 0.75rem;
+  color: var(--ink-3);
+  font-size: 0.9375rem;
+}
+
+.body {
+  max-inline-size: var(--measure);
+}
+
+.meaning {
+  font-size: clamp(1.125rem, 1rem + 0.6vw, 1.3125rem);
+  line-height: 1.9;
+}
+
+.self {
+  font-weight: 700;
+}
+
+.example {
+  margin-block-start: 2.25rem;
+  display: grid;
+  gap: 0.25rem;
+}
+
+.example-label {
+  font-family: var(--head);
+  color: var(--ink-3);
+  font-size: 0.9375rem;
+}
+
+.example-text {
+  font-size: 1.0625rem;
+}
+
+/* 注への参照。本文中の小さな印 */
+.ref,
+.ref-mark {
+  font-family: var(--body);
+  font-weight: 700;
+  font-size: 0.6875rem;
+  line-height: 1;
+  letter-spacing: 0.06em;
+  vertical-align: 0.45em;
+  margin-inline-start: 0.3em;
+  padding: 0 0.5em;
+  min-block-size: 24px;
+  border-radius: 3px;
+  background: var(--wash);
+  color: var(--ink);
+  display: inline-flex;
+  align-items: center;
+}
+
+.ref {
+  border: 0;
+  cursor: pointer;
+  position: relative;
+}
+
+.ref:hover,
+.row:has(#n-origin:popover-open) .ref-origin,
+.row:has(#n-src:popover-open) .ref-src {
+  background: var(--wash-strong);
+}
+
+.ref-mark {
+  display: none;
+}
+
+.note {
+  font-size: 0.875rem;
+  line-height: 1.85;
+  color: var(--ink-2);
+}
+
+/* 注の見出しは本文中の印と同じ形にして、どの印の注かを示す */
+.note-h {
+  display: inline-block;
+  font-family: var(--head);
+  font-weight: 400;
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: var(--ink);
+  background: var(--wash);
+  border-radius: 3px;
+  padding-inline: 0.45em;
+  margin-block-end: 0.4rem;
+}
+
+.sources {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  gap: 0.5rem;
+}
+
+.sources a {
+  color: var(--ink);
+}
+
+.sources a:visited {
+  color: var(--visited);
+}
+
+.host {
+  display: block;
+  color: var(--ink-3);
+  font-size: 0.8125rem;
+  line-height: 1.5;
+}
+
+/* 狭い画面: 注は参照の直下に浮かぶ */
+.note:popover-open {
+  inset: auto;
+  margin: 0.5rem 0 0;
+  inline-size: min(24rem, calc(100vw - 2rem));
+  max-block-size: min(60vh, 28rem);
+  overflow: auto;
+  padding: 1rem 1.15rem 1.1rem;
+  border: 0;
+  border-radius: 6px;
+  background: var(--raised);
+  color: var(--ink-2);
+  box-shadow:
+    0 0 0 1px color-mix(in oklab, var(--ink) 14%, transparent),
+    0 18px 40px -18px color-mix(in oklab, #000 45%, transparent);
+}
+
+@supports (position-area: block-end) {
+  .note:popover-open {
+    position-area: block-end span-all;
+    justify-self: center;
+    position-try-fallbacks: flip-block;
+  }
+}
+
+/* popover 非対応なら注は本文の後にそのまま並ぶ */
+@supports not selector(:popover-open) {
+  .ref {
+    display: none;
+  }
+
+  .notes {
+    margin-block-start: 2.5rem;
+    display: grid;
+    gap: 1.5rem;
+    max-inline-size: var(--measure);
+  }
+}
+
+/* 広い画面: 注は右の欄に常に出ている（gwern 式の傍注） */
+@container page (width >= 50rem) {
+  .row {
+    display: grid;
+    grid-template-columns: minmax(0, 30em) minmax(14rem, 19rem);
+    column-gap: clamp(2.5rem, 5cqi, 4.5rem);
+    align-items: start;
+  }
+
+  .ref {
+    display: none;
+  }
+
+  .ref-mark {
+    display: inline-flex;
+    cursor: default;
+  }
+
+  .notes {
+    display: grid;
+    gap: 1.75rem;
+    padding-block-start: 0.4rem;
+  }
+
+  .note,
+  .note:popover-open {
+    display: block;
+    position: static;
+    inset: auto;
+    margin: 0;
+    inline-size: auto;
+    max-block-size: none;
+    overflow: visible;
+    border: 0;
+    box-shadow: none;
+    background: transparent;
+    color: var(--ink-2);
+    padding: 0.6rem 0.85rem 0.75rem;
+    margin-inline: -0.85rem;
+    border-radius: 6px;
+    transition: background-color 0.2s var(--ease);
+  }
+
+  /* 印にかざすと対応する注が、注にかざすと対応する印が光る */
+  .row:has(.ref-mark.ref-origin:hover) .note-origin,
+  .row:has(.ref-mark.ref-src:hover) .note-src,
+  .row:has(.note-origin:hover) .ref-mark.ref-origin,
+  .row:has(.note-src:hover) .ref-mark.ref-src {
+    background: var(--wash);
+  }
+
+  .row:has(.note-origin:hover) .ref-mark.ref-origin,
+  .row:has(.note-src:hover) .ref-mark.ref-src {
+    background: var(--wash-strong);
+  }
+}
+
+/* 被参照と前後 */
+.backlinks {
+  margin-block-start: clamp(3.5rem, 9vw, 6rem);
+  max-inline-size: var(--measure);
+}
+
+.backlinks h2 {
+  font-family: var(--head);
+  font-weight: 400;
+  font-size: 1.125rem;
+  margin-block-end: 0.5rem;
+}
+
+.backlinks ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 1.5rem;
+}
+
+.backlinks a {
+  font-family: var(--head);
+  font-size: 1.25rem;
+}
+
+.empty {
+  color: var(--ink-3);
+  font-size: 0.9375rem;
+}
+
+.pager {
+  margin-block-start: 3rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 1.5rem 3rem;
+  max-inline-size: calc(var(--measure) + 21rem);
+}
+
+.pager a {
+  display: grid;
+  gap: 0.1rem;
+  text-decoration: none;
+  padding-block: 0.25rem;
+}
+
+.pager-next {
+  margin-inline-start: auto;
+  text-align: end;
+}
+
+.pager-label {
+  font-size: 0.8125rem;
+  color: var(--ink-3);
+}
+
+.pager-word {
+  font-family: var(--head);
+  font-feature-settings: "palt";
+  font-size: 1.625rem;
+  line-height: 1.3;
+  text-decoration: underline 2px var(--note);
+  text-underline-offset: 0.25em;
+}
+
+.pager a:hover .pager-word {
+  text-decoration-thickness: 4px;
+}
+
+/* ───── 語のプレビュー（アンカー配置のヒント） ───── */
+.preview {
+  inset: auto;
+  margin: 0.4rem 0;
+  inline-size: min(20rem, calc(100vw - 2rem));
+  padding: 0.85rem 1rem 0.95rem;
+  border: 0;
+  border-radius: 6px;
+  background: var(--raised);
+  color: var(--ink);
+  font-size: 0.875rem;
+  line-height: 1.75;
+  text-align: start;
+  box-shadow:
+    0 0 0 1px color-mix(in oklab, var(--ink) 14%, transparent),
+    0 18px 40px -18px color-mix(in oklab, #000 45%, transparent);
+  pointer-events: none;
+}
+
+@supports (position-area: block-end) {
+  .preview {
+    position-anchor: --b-preview;
+    position-area: block-end span-inline-end;
+    position-try-fallbacks:
+      block-end span-inline-start,
+      flip-block,
+      block-start span-inline-start;
+  }
+}
+
+.preview-head {
+  display: flex;
+  align-items: last baseline;
+  gap: 0.75rem;
+  font-family: var(--head);
+  font-feature-settings: "palt";
+  font-size: 1.375rem;
+  line-height: 1.4;
+  margin-block-end: 0.25rem;
+}
+
+.preview-head rt {
+  font-size: 0.42em;
+  color: var(--ink-3);
+}
+
+.preview-kind {
+  font-family: var(--body);
+  font-size: 0.75rem;
+  color: var(--ink-3);
+}
+
+.preview-meaning {
+  color: var(--ink-2);
+}
+
+/* ───── 動き: 利用者の操作に応えるときだけ ───── */
+@media (prefers-reduced-motion: no-preference) {
+  @view-transition {
+    navigation: auto;
+  }
+
+  ::view-transition-group(*) {
+    animation-duration: 0.38s;
+    animation-timing-function: var(--ease);
+  }
+
+  .note:popover-open,
+  .preview:popover-open {
+    transition:
+      opacity 0.16s var(--ease),
+      translate 0.16s var(--ease),
+      display 0.16s allow-discrete,
+      overlay 0.16s allow-discrete;
+  }
+
+  @starting-style {
+    .note:popover-open,
+    .preview:popover-open {
+      opacity: 0;
+      translate: 0 -4px;
+    }
+  }
+}
