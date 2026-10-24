@@ -1,0 +1,50 @@
+---
+import "../styles/a.css";
+import type { Swatch } from "../components/a/color";
+import { swatchVars } from "../components/a/color";
+
+interface Props {
+  title: string;
+  description: string;
+  /** Google Fonts の text= に渡す、ディスプレイ書体で描く字 */
+  glyphs: string;
+  /** 語のページでは画面全体をその語の色にする */
+  swatch?: Swatch;
+}
+const { title, description, glyphs, swatch } = Astro.props;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+const display = `https://fonts.googleapis.com/css2?family=Dela+Gothic+One&display=swap&text=${encodeURIComponent(glyphs)}`;
+const body = "https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;700&display=swap";
+---
+
+<!doctype html>
+<html lang="ja" class="a" style={swatch ? swatchVars(swatch) : undefined} data-surface={swatch ? "" : undefined}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light dark" />
+    {
+      swatch && (
+        <>
+          <meta name="theme-color" media="(prefers-color-scheme: light)" content={swatch.bg} />
+          <meta name="theme-color" media="(prefers-color-scheme: dark)" content={swatch.bgDark} />
+        </>
+      )
+    }
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href={display} />
+    <link rel="stylesheet" href={body} />
+    <slot name="head" />
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>

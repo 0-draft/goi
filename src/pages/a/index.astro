@@ -1,0 +1,105 @@
+---
+import { swatchVars } from "../../components/a/color";
+import Headword from "../../components/a/Headword.astro";
+import { displayGlyphs, loadEntries, vtName } from "../../components/a/words";
+import A from "../../layouts/A.astro";
+import type { SearchDoc } from "../../lib/search";
+
+const entries = await loadEntries();
+const base = import.meta.env.BASE_URL;
+const docs: SearchDoc[] = entries.map(({ id, data }) => ({
+  id,
+  word: data.word,
+  reading: data.reading,
+  meaning: data.meaning,
+}));
+
+// 一覧で語に触れている間、その語の色を画面全体（:root）に渡す
+const surfaceCss = entries
+  .map((e) => `:root.a:has([data-id="${e.id}"]:is(:hover,:focus-within)){${swatchVars(e.swatch)}}`)
+  .join("");
+---
+
+<A title="goi" description="使いたくなる日本語を集めた語彙帳" glyphs={displayGlyphs(entries)}>
+  <Fragment slot="head" set:html={`<style>${surfaceCss}</style>`} />
+  <main class="a-index">
+    <header class="a-top">
+      <h1 class="a-mark">goi</h1>
+      <p class="a-lede">使いたくなる日本語を集めた語彙帳</p>
+    </header>
+
+    <search data-search hidden>
+      <form class="a-search">
+      <label for="a-q">さがす</label>
+      <input
+        id="a-q"
+        type="search"
+        name="q"
+        placeholder="ことば・読み・意味"
+        autocomplete="off"
+        enterkeyhint="search"
+      />
+      <p class="a-count" data-count aria-live="polite">{entries.length}語</p>
+      <script type="application/json" data-docs set:html={JSON.stringify(docs)} />
+      </form>
+    </search>
+
+    <ul class="a-rows" data-rows>
+      {
+        entries.map((e) => (
+          <li class="a-row" data-id={e.id} style={swatchVars(e.swatch)}>
+            <div class="a-row-in">
+              <h2 class="a-row-word" style={`view-transition-name:${vtName(e.id)}`}>
+                <a class="a-row-link" href={`${base}a/w/${e.id}/`}>
+                  <Headword entry={e} />
+                </a>
+              </h2>
+              <p class="a-row-meta">
+                <span class="a-chip" aria-hidden="true" />
+                <span class="a-row-kind">{e.data.kind}</span>
+                {e.data.meaning}
+              </p>
+            </div>
+          </li>
+        ))
+      }
+    </ul>
+    <p class="a-empty" data-empty hidden></p>
+  </main>
+</A>
+
+<script>
+  import { buildIndex, type SearchDoc, search } from "../../lib/search";
+
+  const box = document.querySelector<HTMLElement>("[data-search]");
+  const form = box?.querySelector("form");
+  const list = document.querySelector<HTMLUListElement>("[data-rows]");
+  const empty = document.querySelector<HTMLElement>("[data-empty]");
+  const count = document.querySelector<HTMLElement>("[data-count]");
+  const raw = form?.querySelector("[data-docs]")?.textContent;
+
+  if (box && form && list && empty && count && raw) {
+    const index = buildIndex(JSON.parse(raw) as SearchDoc[]);
+    const order = [...list.querySelectorAll<HTMLLIElement>("[data-id]")];
+    const rows = new Map(order.map((li) => [li.dataset.id ?? "", li]));
+    const input = form.querySelector<HTMLInputElement>("input");
+
+    const render = (q: string) => {
+      const hits = q.trim() ? search(index, q) : null;
+      const shown = hits ? hits.flatMap((h) => rows.get(h.id) ?? []) : order;
+      for (const li of order) li.hidden = !shown.includes(li);
+      // 当たりの強い順に並べ替える
+      list.append(...shown, ...order.filter((li) => !shown.includes(li)));
+      count.textContent = `${shown.length}語`;
+      empty.hidden = shown.length > 0;
+      empty.textContent = shown.length
+        ? ""
+        : `「${q.trim()}」に当たる語はありません。読みのひらがなや、意味の一部でも探せます。`;
+    };
+
+    form.addEventListener("submit", (ev) => ev.preventDefault());
+    input?.addEventListener("input", () => render(input.value));
+    box.hidden = false;
+    if (input?.value) render(input.value);
+  }
+</script>
