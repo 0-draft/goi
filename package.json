@@ -1,0 +1,33 @@
+{
+  "name": "goi",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@12.15.0",
+  "engines": {
+    "node": ">=26"
+  },
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "check": "astro check",
+    "lint": "biome ci . && markdownlint-cli2",
+    "format": "biome check --write .",
+    "test": "vitest run",
+    "test:e2e": "playwright test",
+    "lhci": "lhci autorun"
+  },
+  "dependencies": {
+    "astro": "7.4.2"
+  },
+  "devDependencies": {
+    "@astrojs/check": "0.9.12",
+    "@axe-core/playwright": "4.14.0",
+    "@biomejs/biome": "2.6.3",
+    "@lhci/cli": "0.15.1",
+    "@playwright/test": "1.64.1",
+    "markdownlint-cli2": "0.24.0",
+    "typescript": "6.0.3",
+    "vitest": "5.0.5"
+  }
+}

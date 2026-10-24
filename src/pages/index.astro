@@ -1,0 +1,22 @@
+---
+import { getCollection } from "astro:content";
+import Base from "../layouts/Base.astro";
+
+const words = (await getCollection("words")).filter((w) => !w.data.pending);
+const base = import.meta.env.BASE_URL;
+---
+
+<Base title="goi" description="使いたくなる日本語を集めた語彙帳">
+  <main>
+    <h1>goi</h1>
+    <ul>
+      {
+        words.map((w) => (
+          <li>
+            <a href={`${base}w/${w.id}/`}>{w.data.word}</a>
+          </li>
+        ))
+      }
+    </ul>
+  </main>
+</Base>

@@ -1,0 +1,21 @@
+{
+  "ci": {
+    "collect": {
+      "startServerCommand": "pnpm exec astro preview --ignore-lock --port 4392",
+      "startServerReadyPattern": "localhost:4392",
+      "url": ["http://localhost:4392/goi/", "http://localhost:4392/goi/w/seki-no-yama/"],
+      "numberOfRuns": 1
+    },
+    "assert": {
+      "assertions": {
+        "categories:performance": ["error", { "minScore": 0.9 }],
+        "categories:accessibility": ["error", { "minScore": 1 }],
+        "categories:best-practices": ["error", { "minScore": 0.95 }],
+        "categories:seo": ["error", { "minScore": 1 }]
+      }
+    },
+    "upload": {
+      "target": "temporary-public-storage"
+    }
+  }
+}
