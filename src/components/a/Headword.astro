@@ -1,0 +1,22 @@
+---
+import type { Entry } from "./words";
+
+interface Props {
+  entry: Entry;
+}
+const { entry } = Astro.props;
+const { word, reading } = entry.data;
+---
+
+{
+  entry.kanaOnly ? (
+    word
+  ) : (
+    <ruby>
+      {word}
+      <rp>（</rp>
+      <rt>{reading}</rt>
+      <rp>）</rp>
+    </ruby>
+  )
+}
