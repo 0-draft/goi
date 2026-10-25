@@ -1,5 +1,6 @@
 import AxeBuilder from "@axe-core/playwright";
 import { expect, test } from "@playwright/test";
+import { READY } from "./data";
 
 test.describe("C 駅名標", () => {
   test("路線図から語の駅名標に移動できる", async ({ page }) => {
@@ -29,10 +30,10 @@ test.describe("C 駅名標", () => {
   test("検索で路線図の駅が絞り込まれる", async ({ page }) => {
     await page.goto("c/");
     const stations = page.locator(".c-station:visible");
-    await expect(stations).toHaveCount(5);
+    await expect(stations).toHaveCount(READY);
 
     const box = page.getByRole("searchbox", { name: "語を探す" });
-    await box.fill("セキ");
+    await box.fill("セキノヤマ");
     await expect(stations).toHaveCount(1);
     await expect(stations.first()).toContainText("関の山");
     await expect(page.getByRole("status")).toHaveText("1駅が見つかりました");
@@ -42,7 +43,7 @@ test.describe("C 駅名標", () => {
     await expect(page.getByText("この言葉に合う駅はありません", { exact: false })).toBeVisible();
 
     await box.fill("");
-    await expect(stations).toHaveCount(5);
+    await expect(stations).toHaveCount(READY);
   });
 
   test("確認中の語は駅にならない", async ({ page }) => {

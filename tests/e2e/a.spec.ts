@@ -1,5 +1,6 @@
 import AxeBuilder from "@axe-core/playwright";
 import { expect, test } from "@playwright/test";
+import { READY } from "./data";
 
 test.describe("A 一語一色", () => {
   test("一覧から語のページに移動できる", async ({ page }) => {
@@ -20,10 +21,10 @@ test.describe("A 一語一色", () => {
   test("検索で一覧が絞り込まれる", async ({ page }) => {
     await page.goto("a/");
     const rows = page.locator("[data-rows] > li:visible");
-    await expect(rows).toHaveCount(5);
+    await expect(rows).toHaveCount(READY);
 
     const box = page.getByRole("searchbox", { name: "さがす" });
-    await box.fill("セキ");
+    await box.fill("セキノヤマ");
     await expect(rows).toHaveCount(1);
     await expect(rows.first()).toContainText("関の山");
     await expect(page.locator("[data-count]")).toHaveText("1語");
@@ -37,14 +38,14 @@ test.describe("A 一語一色", () => {
     await expect(page.getByText("「ぬぬぬ」に当たる語はありません")).toBeVisible();
 
     await box.fill("");
-    await expect(rows).toHaveCount(5);
+    await expect(rows).toHaveCount(READY);
   });
 
   test("JavaScript がなくても一覧は使える", async ({ browser }) => {
     const ctx = await browser.newContext({ javaScriptEnabled: false });
     const page = await ctx.newPage();
     await page.goto("a/");
-    await expect(page.locator("[data-rows] > li")).toHaveCount(5);
+    await expect(page.locator("[data-rows] > li")).toHaveCount(READY);
     await expect(page.getByRole("search")).toBeHidden();
     await ctx.close();
   });

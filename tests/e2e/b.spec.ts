@@ -1,5 +1,6 @@
 import AxeBuilder from "@axe-core/playwright";
 import { expect, test } from "@playwright/test";
+import { READY } from "./data";
 
 test.describe("B 注の網", () => {
   test("一覧から語のページに移動できる", async ({ page }) => {
@@ -12,15 +13,15 @@ test.describe("B 注の網", () => {
   test("検索で一覧が絞り込まれる", async ({ page }) => {
     await page.goto("b/");
     const items = page.locator("#b-words > li:visible");
-    await expect(items).toHaveCount(5);
-    await page.getByLabel("語を探す").fill("セキ");
+    await expect(items).toHaveCount(READY);
+    await page.getByLabel("語を探す").fill("セキノヤマ");
     await expect(items).toHaveCount(1);
     await expect(items.first()).toContainText("関の山");
-    await expect(page.locator("#b-status")).toHaveText("「セキ」に合う語は1語。");
+    await expect(page.locator("#b-status")).toHaveText("「セキノヤマ」に合う語は1語。");
     await page.getByLabel("語を探す").fill("ぜんぜんない");
     await expect(items).toHaveCount(0);
     await page.getByLabel("語を探す").fill("");
-    await expect(items).toHaveCount(5);
+    await expect(items).toHaveCount(READY);
   });
 
   test("見出しだけに畳むと意味が隠れる", async ({ page }) => {
