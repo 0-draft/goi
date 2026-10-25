@@ -44,21 +44,21 @@ pnpm lhci         # Lighthouse CI (先に pnpm build)
 
 ## 構成
 
-| 領域 | 使っているもの |
-| --- | --- |
-| フレームワーク | Astro 7 (静的出力) |
-| ランタイム | Node 26, pnpm 12 |
-| 型・スキーマ | TypeScript 6, Zod 4 (Astro content collections) |
-| Lint / format | Biome 2, markdownlint-cli2 |
-| テスト | Vitest 5, Playwright, axe-core, Lighthouse CI |
-| ホスティング | GitHub Pages |
+| 領域           | 使っているもの                                  |
+| -------------- | ----------------------------------------------- |
+| フレームワーク | Astro 7 (静的出力)                              |
+| ランタイム     | Node 26, pnpm 12                                |
+| 型・スキーマ   | TypeScript 6, Zod 4 (Astro content collections) |
+| Lint / format  | Biome 2, markdownlint-cli2                      |
+| テスト         | Vitest 5, Playwright, axe-core, Lighthouse CI   |
+| ホスティング   | GitHub Pages                                    |
 
 ## CI
 
-| ワークフロー | 内容 |
-| --- | --- |
-| `ci.yml` | lint、astro check、unit test、build、e2e (デスクトップとモバイル)、Lighthouse |
-| `deploy.yml` | `main` への push で GitHub Pages にデプロイ (OIDC) |
-| `security.yml` | ワークフローを actionlint と zizmor で検査 |
+| ワークフロー   | 内容                                                                          |
+| -------------- | ----------------------------------------------------------------------------- |
+| `ci.yml`       | lint、astro check、unit test、build、e2e (デスクトップとモバイル)、Lighthouse |
+| `deploy.yml`   | `main` への push で GitHub Pages にデプロイ (OIDC)                            |
+| `security.yml` | ワークフローを actionlint と zizmor で検査                                    |
 
 アクションはすべてコミット SHA で固定している。依存の更新は Dependabot (npm と GitHub Actions、週1回、グループ化、7日の cooldown)。
