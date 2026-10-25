@@ -31,6 +31,24 @@ const variants = [
 </Base>
 
 <style>
+  /* Base.astro には color-scheme の meta がないので、ここで宣言してフォームやスクロールバーも追従させる */
+  :global(:root) {
+    color-scheme: light dark;
+    --fg: #000;
+    --muted: #555;
+    --bg: #fff;
+  }
+  @media (prefers-color-scheme: dark) {
+    :global(:root) {
+      --fg: #ececec;
+      --muted: #b0b0b0;
+      --bg: #151515;
+    }
+  }
+  :global(body) {
+    background: var(--bg);
+    color: var(--fg);
+  }
   main {
     max-width: 40rem;
     margin: 0 auto;
@@ -58,6 +76,6 @@ const variants = [
   }
   li p {
     margin: 0.25rem 0 0;
-    color: #555;
+    color: var(--muted);
   }
 </style>

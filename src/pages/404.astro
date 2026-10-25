@@ -1,0 +1,137 @@
+---
+import { getCollection } from "astro:content";
+import { VARIANTS } from "../lib/sitemap";
+
+// GitHub Pages は /goi/ 以下の存在しないパスにこのページを 404 で返す
+const base = import.meta.env.BASE_URL;
+// 語の id と見出し。旧 URL の案内に使う
+const words = Object.fromEntries(
+  (await getCollection("words")).filter((w) => !w.data.pending).map((w) => [w.id, w.data.word]),
+);
+const names: Record<(typeof VARIANTS)[number], string> = { a: "一語一色", b: "注の網", c: "駅名標" };
+const variants = VARIANTS.map((v) => ({ path: `${base}${v}/`, name: names[v] }));
+---
+
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="robots" content="noindex" />
+    <title>ページが見つかりません | goi</title>
+    <meta name="description" content="お探しのページは見つかりませんでした。" />
+  </head>
+  <body>
+    <main>
+      <p class="code">404</p>
+      <h1>ページが見つかりません</h1>
+      <p>URL が間違っているか、ページが移動・削除されたようです。</p>
+
+      <section data-moved hidden aria-labelledby="moved-title">
+        <h2 id="moved-title">語のページは移動しました</h2>
+        <p>「<span data-moved-word></span>」は、3つのデザイン案それぞれのページで読めます。</p>
+        <ul>
+          {
+            variants.map((v) => (
+              <li>
+                <a data-moved-link data-base={v.path} href={v.path}>
+                  {v.name}で見る
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </section>
+
+      <h2>ここから探せます</h2>
+      <ul>
+        <li><a href={base}>トップ</a></li>
+        {
+          variants.map((v) => (
+            <li>
+              <a href={v.path}>{v.name}</a>
+            </li>
+          ))
+        }
+      </ul>
+    </main>
+    <script is:inline type="application/json" id="goi-words" set:html={JSON.stringify(words).replace(/</g, "\\u003c")} />
+    <script is:inline define:vars={{ base }}>
+      // 以前あった /goi/w/<id>/ を、各案の語のページへ案内する
+      const words = JSON.parse(document.getElementById("goi-words").textContent);
+      const m = location.pathname.match(new RegExp(`^${base}w/([a-z0-9-]+)/?$`));
+      const id = m && Object.hasOwn(words, m[1]) ? m[1] : null;
+      if (id) {
+        const box = document.querySelector("[data-moved]");
+        box.querySelector("[data-moved-word]").textContent = words[id];
+        for (const a of box.querySelectorAll("[data-moved-link]")) {
+          a.href = `${a.dataset.base}w/${id}/`;
+        }
+        box.hidden = false;
+      }
+    </script>
+  </body>
+</html>
+
+<style>
+  :root {
+    color-scheme: light dark;
+    --fg: #1a1a1a;
+    --muted: #555;
+    --bg: #fff;
+    --rule: #ddd;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --fg: #ececec;
+      --muted: #b0b0b0;
+      --bg: #151515;
+      --rule: #3a3a3a;
+    }
+  }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--fg);
+  }
+  main {
+    max-width: 40rem;
+    margin: 0 auto;
+    padding: 10vh 1rem 4rem;
+    font-family: system-ui, "Hiragino Sans", sans-serif;
+    line-height: 1.8;
+  }
+  .code {
+    margin: 0;
+    color: var(--muted);
+    font-variant-numeric: tabular-nums;
+    letter-spacing: 0.1em;
+  }
+  h1 {
+    font-size: 2rem;
+    margin: 0 0 1rem;
+  }
+  h2 {
+    font-size: 1.125rem;
+    margin: 2.5rem 0 0.5rem;
+  }
+  p {
+    color: var(--muted);
+  }
+  section {
+    border-block: 1px solid var(--rule);
+    padding-block: 0.5rem 1rem;
+    margin-block: 2rem;
+  }
+  ul {
+    padding-left: 1.25rem;
+  }
+  li {
+    margin-block: 0.5rem;
+  }
+  a {
+    color: inherit;
+    text-underline-offset: 0.25em;
+  }
+</style>
