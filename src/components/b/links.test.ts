@@ -4,7 +4,7 @@ import { type Entry, linkGraph, segment, termsOf } from "./links";
 
 const word = (id: string, w: string, reading: string, example = ""): Entry => ({
   id,
-  data: { id, word: w, reading, kind: "名詞", meaning: "", origin: "", example, sources: [] } as Word,
+  data: { id, word: w, reading, kind: "ことば", meaning: "", origin: "", example, sources: [] } as Word,
 });
 
 const hare = word("hare-to-ke", "ハレとケ", "はれとけ", "今日はハレの日だ。");
@@ -36,7 +36,7 @@ describe("links", () => {
 describe("ひらがなを含む「〜と〜」の見出し", () => {
   it("ぞっとしない・まんじりともせずを分割しない", () => {
     const w = (word: string, reading: string) =>
-      ({ id: "x", word, reading, kind: "連語", meaning: "", origin: "", example: "", sources: [] }) as Word;
+      ({ id: "x", word, reading, kind: "ことば", meaning: "", origin: "", example: "", sources: [] }) as Word;
     expect(termsOf(w("ぞっとしない", "ぞっとしない"))).not.toContain("しない");
     expect(termsOf(w("まんじりともせず", "まんじりともせず"))).not.toContain("もせず");
     expect(termsOf(w("ハレとケ", "はれとけ"))).toContain("ハレ");

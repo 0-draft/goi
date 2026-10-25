@@ -14,13 +14,13 @@ export interface Line {
   color: string;
 }
 
-const KNOWN: Record<string, Omit<Line, "kind">> = {
+// 種別ごとの路線。並び順がそのまま路線図の上からの順になる
+const LINES: Record<Word["kind"], Omit<Line, "kind">> = {
   ことわざ: { code: "KW", color: "#2F7D6D" },
   四字熟語: { code: "YJ", color: "#3B5BA9" },
   慣用句: { code: "KY", color: "#8A8F3A" },
+  ことば: { code: "KT", color: "#6B5B95" },
 };
-
-const OTHER_COLOR = "#6B5B95";
 
 export interface Station {
   id: string;
@@ -35,21 +35,14 @@ export interface Route {
   stations: Station[];
 }
 
-function lineFor(kind: string, otherIndex: number): Line {
-  const known = KNOWN[kind];
-  if (known) return { kind, ...known };
-  // その他の種別は同じ色を共有し、記号で区別する
-  return { kind, code: `X${String.fromCharCode(65 + otherIndex)}`, color: OTHER_COLOR };
-}
-
-// 既知の種別を先に、残りは出てきた順に並べ、各路線内は読みの五十音順にする
+// 語のある路線だけを LINES の順に並べ、各路線内は読みの五十音順にする
 export function buildRoute(entries: { id: string; data: Word }[]): Route {
   const confirmed = entries.filter((e) => !e.data.pending);
-  const kinds = [...new Set(confirmed.map((e) => e.data.kind))];
-  const known = Object.keys(KNOWN).filter((k) => kinds.includes(k));
-  const others = kinds.filter((k) => !KNOWN[k]);
-  const lines = [...known, ...others].map((kind) => {
-    const line = lineFor(kind, others.indexOf(kind));
+  const kinds = (Object.keys(LINES) as Word["kind"][]).filter((k) =>
+    confirmed.some((e) => e.data.kind === k),
+  );
+  const lines = kinds.map((kind) => {
+    const line: Line = { kind, ...LINES[kind] };
     const stations = confirmed
       .filter((e) => e.data.kind === kind)
       .sort((a, b) => a.data.reading.localeCompare(b.data.reading, "ja"))

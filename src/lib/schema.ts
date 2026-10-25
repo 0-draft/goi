@@ -10,7 +10,8 @@ export const wordSchema = z
     id: z.string().regex(/^[a-z0-9]+(-[a-z0-9]+)*$/, "id は小文字ローマ字とハイフンのみ"),
     word: z.string().min(1),
     reading: z.string().regex(/^[\p{Script=Hiragana}ー]*$/u, "読みはひらがなで書く"),
-    kind: z.string().min(1),
+    // 表現の型。由来（仏教語・相撲など）は origin に書く
+    kind: z.enum(["ことわざ", "慣用句", "四字熟語", "ことば"]),
     meaning: z.string(),
     origin: z.string(),
     example: z.string(),
