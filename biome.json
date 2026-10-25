@@ -6,7 +6,7 @@
     "useIgnoreFile": true
   },
   "files": {
-    "includes": ["**", "!**/dist", "!**/.astro", "!**/playwright-report", "!**/test-results"]
+    "includes": ["**", "!**/dist", "!**/.astro", "!**/playwright-report", "!**/test-results", "!**/*.md"]
   },
   "formatter": {
     "indentStyle": "space",
