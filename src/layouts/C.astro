@@ -1,4 +1,5 @@
 ---
+import WebFonts from "../components/WebFonts.astro";
 import "../styles/c.css";
 
 interface Props {
@@ -24,12 +25,7 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&display=swap"
-    />
+    <WebFonts hrefs={["https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&display=swap"]} />
     <script is:inline>
       // 隣の駅から来たときだけ、進んだ向きをビュー遷移の種類として渡す
       document.documentElement.classList.add("js");

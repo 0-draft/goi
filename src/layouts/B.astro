@@ -1,5 +1,6 @@
 ---
 import { getCollection } from "astro:content";
+import WebFonts from "../components/WebFonts.astro";
 import "../styles/b.css";
 
 interface Props {
@@ -31,13 +32,7 @@ const antique = `https://fonts.googleapis.com/css2?family=Shippori+Antique&displ
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&display=swap"
-    />
-    <link rel="stylesheet" href={antique} />
+    <WebFonts hrefs={["https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&display=swap", antique]} />
   </head>
   <body>
     <slot />

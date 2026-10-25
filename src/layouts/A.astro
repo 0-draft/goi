@@ -1,4 +1,5 @@
 ---
+import WebFonts from "../components/WebFonts.astro";
 import "../styles/a.css";
 import type { Swatch } from "../components/a/color";
 import { swatchVars } from "../components/a/color";
@@ -38,10 +39,7 @@ const body = "https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="stylesheet" href={display} />
-    <link rel="stylesheet" href={body} />
+    <WebFonts hrefs={[display, body]} />
     <slot name="head" />
   </head>
   <body>

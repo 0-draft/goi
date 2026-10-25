@@ -1,0 +1,15 @@
+---
+// Google Fonts の CSS は描画をブロックし、和文フォントは重い。
+// media="print" で読み込んで onload で切り替え、先にフォールバック書体で描画させる
+interface Props {
+  hrefs: string[];
+}
+const { hrefs } = Astro.props;
+---
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+{hrefs.map((href) => <link rel="stylesheet" href={href} media="print" onload="this.media='all'" />)}
+<noscript>
+  {hrefs.map((href) => <link rel="stylesheet" href={href} />)}
+</noscript>
