@@ -14,16 +14,17 @@ export interface Entry {
 }
 
 const HIRAGANA = /^[\p{Script=Hiragana}ー]+$/u;
-const KANA = /^[\p{Script=Katakana}\p{Script=Hiragana}ー]+$/u;
+const KATAKANA = /^[\p{Script=Katakana}ー]+$/u;
 
 // 語を指す表記の候補。見出しそのもの、4 字以上のひらがな読み、
-// 「ハレとケ」のような対語なら 2 字以上の片割れ（ハレ）も拾う。
+// 「ハレとケ」のような片仮名の対語なら 2 字以上の片割れ（ハレ）も拾う。
+// ひらがなまで許すと「ぞっとしない」が「しない」を拾ってしまう。
 export function termsOf(w: Word): string[] {
   const terms = new Set<string>([w.word]);
   if (w.reading.length >= 4 && HIRAGANA.test(w.reading)) terms.add(w.reading);
   const pair = w.word.match(/^(.+)と(.+)$/);
   if (pair) {
-    for (const part of pair.slice(1)) if (part.length >= 2 && KANA.test(part)) terms.add(part);
+    for (const part of pair.slice(1)) if (part.length >= 2 && KATAKANA.test(part)) terms.add(part);
   }
   return [...terms];
 }

@@ -32,3 +32,13 @@ describe("links", () => {
     expect([...(outgoing.get("hare-to-ke") ?? [])]).toEqual([]);
   });
 });
+
+describe("ひらがなを含む「〜と〜」の見出し", () => {
+  it("ぞっとしない・まんじりともせずを分割しない", () => {
+    const w = (word: string, reading: string) =>
+      ({ id: "x", word, reading, kind: "連語", meaning: "", origin: "", example: "", sources: [] }) as Word;
+    expect(termsOf(w("ぞっとしない", "ぞっとしない"))).not.toContain("しない");
+    expect(termsOf(w("まんじりともせず", "まんじりともせず"))).not.toContain("もせず");
+    expect(termsOf(w("ハレとケ", "はれとけ"))).toContain("ハレ");
+  });
+});
