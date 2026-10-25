@@ -21,7 +21,7 @@ const needle = [word.word, word.reading].find((n) => n && word.example.includes(
 const example = needle ? word.example.split(needle) : [word.example];
 ---
 
-<C title={`${word.word}（${word.reading}）｜goi`} description={word.meaning}>
+<C title={`${word.word}（${word.reading}）｜goi`} description={word.meaning} ogImage={`${base}og/${station.id}.png`}>
   <Fragment slot="head">
     {prev && <link rel="prev" href={`${base}c/w/${prev.id}/`} />}
     {next && <link rel="next" href={`${base}c/w/${next.id}/`} />}

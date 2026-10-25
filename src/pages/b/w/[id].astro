@@ -42,7 +42,7 @@ const previewIds = new Set([...linked, ...backlinks, prev, next].flatMap((e) => 
 const others = entries.filter((e) => previewIds.has(e.id));
 ---
 
-<B title={`${w.word}（${w.reading}）｜goi`} description={w.meaning}>
+<B title={`${w.word}（${w.reading}）｜goi`} description={w.meaning} ogImage={`${base}og/${entry.id}.png`}>
   <div class="page">
     <header class="site">
       <a href={home} class="site-name">goi</a>

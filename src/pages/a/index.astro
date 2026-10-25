@@ -21,7 +21,9 @@ const surfaceCss = entries
   .join("");
 ---
 
-<A title="goi" description="使いたくなる日本語を集めた語彙帳" glyphs={displayGlyphs(entries)}>
+<A title="goi" description="使いたくなる日本語を集めた語彙帳" glyphs={displayGlyphs(entries)}
+  ogImage={`${base}og/index.png`}
+>
   <Fragment slot="head" set:html={`<style>${surfaceCss}</style>`} />
   <main class="a-index">
     <header class="a-top">

@@ -41,7 +41,9 @@ const neighbors = [
 ].filter((x) => !!x);
 ---
 
-<A title={`${word}（${reading}）｜goi`} description={meaning} glyphs={glyphs} swatch={entry.swatch}>
+<A title={`${word}（${reading}）｜goi`} description={meaning} glyphs={glyphs} swatch={entry.swatch}
+  ogImage={`${base}og/${entry.id}.png`}
+>
   <main class="a-word">
     <header class="a-top">
       <p class="a-mark"><a href={`${base}a/`}>goi</a></p>
