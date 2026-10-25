@@ -1,0 +1,112 @@
+---
+import { getCollection } from "astro:content";
+import { byReading, type Entry } from "../../components/b/links";
+import B from "../../layouts/B.astro";
+import type { SearchDoc } from "../../lib/search";
+
+const entries: Entry[] = (await getCollection("words"))
+  .filter((w) => !w.data.pending)
+  .map((w) => ({ id: w.id, data: w.data }))
+  .sort(byReading);
+const base = import.meta.env.BASE_URL;
+const docs: SearchDoc[] = entries.map((e) => ({
+  id: e.id,
+  word: e.data.word,
+  reading: e.data.reading,
+  meaning: e.data.meaning,
+}));
+---
+
+<B title="goi" description="使いたくなる日本語を集めた語彙帳">
+  <div class="page">
+    <header class="masthead">
+      <h1 class="site-title">goi</h1>
+      <p class="lede">使いたくなる日本語を集めた語彙帳。いまは{entries.length}語。</p>
+    </header>
+
+    <main>
+      <div class="tools">
+        <search class="finder" id="b-finder" hidden>
+          <label for="b-q">語を探す</label>
+          <input
+            id="b-q"
+            type="search"
+            autocomplete="off"
+            enterkeyhint="search"
+            placeholder="見出し・読み・意味のどれでも"
+          />
+        </search>
+        <fieldset class="zoom">
+          <legend>一覧の詳しさ</legend>
+          <label><input type="radio" name="zoom" value="word" /> 見出しだけ</label>
+          <label><input type="radio" name="zoom" value="gloss" checked /> 意味まで</label>
+        </fieldset>
+      </div>
+
+      <p class="status" id="b-status" aria-live="polite"></p>
+
+      <ol class="words" id="b-words">
+        {
+          entries.map((e) => (
+            <li data-id={e.id}>
+              <a href={`${base}b/w/${e.id}/`} class="words-link">
+                <span class="words-head" style={`view-transition-name: w-${e.id}`}>
+                  <ruby>
+                    {e.data.word}
+                    <rt>{e.data.reading}</rt>
+                  </ruby>
+                </span>
+              </a>
+              <p class="words-gloss">{e.data.meaning}</p>
+            </li>
+          ))
+        }
+      </ol>
+    </main>
+  </div>
+
+  <script is:inline type="application/json" id="b-docs" set:html={JSON.stringify(docs)} />
+</B>
+
+<script>
+  import { buildIndex, type SearchDoc, search } from "../../lib/search";
+
+  const finder = document.getElementById("b-finder");
+  const input = document.getElementById("b-q") as HTMLInputElement | null;
+  const list = document.getElementById("b-words");
+  const status = document.getElementById("b-status");
+  const raw = document.getElementById("b-docs")?.textContent;
+
+  if (finder && input && list && status && raw) {
+    const index = buildIndex(JSON.parse(raw) as SearchDoc[]);
+    const items = new Map<string, HTMLElement>();
+    for (const li of list.querySelectorAll<HTMLElement>("li[data-id]")) items.set(li.dataset.id ?? "", li);
+
+    const apply = () => {
+      const q = input.value.trim();
+      if (!q) {
+        for (const li of items.values()) {
+          li.hidden = false;
+          li.style.removeProperty("order");
+        }
+        status.textContent = "";
+        return;
+      }
+      const hits = search(index, q);
+      const rank = new Map(hits.map((d, i) => [d.id, i]));
+      for (const [id, li] of items) {
+        const r = rank.get(id);
+        li.hidden = r === undefined;
+        if (r !== undefined) li.style.order = String(r);
+      }
+      status.textContent = hits.length
+        ? `「${q}」に合う語は${hits.length}語。`
+        : `「${q}」に合う語は見つからない。読みをひらがなで入れるか、意味の一部で探せる。`;
+    };
+
+    input.addEventListener("input", apply);
+    finder.hidden = false;
+    // 戻るで来たときに入力が残っていれば反映する
+    apply();
+  }
+</script>

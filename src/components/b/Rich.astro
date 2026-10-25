@@ -1,0 +1,27 @@
+---
+// 本文を語ごとに切り分け、他の語はリンク（プレビュー付き）、自分の見出しは太字にする
+import { type Entry, segment } from "./links";
+
+interface Props {
+  text: string;
+  selfId: string;
+  entries: Entry[];
+}
+const { text, selfId, entries } = Astro.props;
+const base = import.meta.env.BASE_URL;
+const segments = segment(text, selfId, entries);
+---
+
+{
+  segments.map((s) =>
+    s.type === "link" ? (
+      <a class="xref" href={`${base}b/w/${s.id}/`} data-preview={`pv-${s.id}`}>
+        {s.text}
+      </a>
+    ) : s.type === "self" ? (
+      <b class="self">{s.text}</b>
+    ) : (
+      s.text
+    ),
+  )
+}

@@ -1,0 +1,96 @@
+---
+// 語へのリンクにかざすと出るプレビュー。ページ内の data-preview から参照される。
+import type { Entry } from "./links";
+
+interface Props {
+  entries: Entry[];
+}
+const { entries } = Astro.props;
+---
+
+<div class="previews">
+  {
+    entries.map((e) => (
+      <div class="preview" id={`pv-${e.id}`} popover="hint" role="tooltip">
+        <p class="preview-head">
+          <ruby>
+            {e.data.word}
+            <rt>{e.data.reading}</rt>
+          </ruby>
+          <span class="preview-kind">{e.data.kind}</span>
+        </p>
+        <p class="preview-meaning">{e.data.meaning}</p>
+      </div>
+    ))
+  }
+</div>
+
+<script>
+  // かざす・フォーカスするとリンクの直下にプレビューを出す。
+  // 位置は CSS アンカー配置。非対応ブラウザでは popover の既定位置に出る。
+  const OPEN_DELAY = 250;
+  const CLOSE_DELAY = 150;
+  let timer: number | undefined;
+  let current: { link: HTMLElement; pop: HTMLElement } | null = null;
+
+  const canPop = typeof HTMLElement.prototype.showPopover === "function";
+
+  function hide() {
+    if (!current) return;
+    try {
+      current.pop.hidePopover();
+    } catch {
+      // すでに閉じている
+    }
+    current.link.removeAttribute("aria-describedby");
+    current = null;
+  }
+
+  function show(link: HTMLElement) {
+    const pop = document.getElementById(link.dataset.preview ?? "");
+    if (!pop || !canPop) return;
+    if (current?.link === link) return;
+    hide();
+    link.style.setProperty("anchor-name", "--b-preview");
+    for (const other of document.querySelectorAll<HTMLElement>("[data-preview]")) {
+      if (other !== link) other.style.removeProperty("anchor-name");
+    }
+    link.setAttribute("aria-describedby", pop.id);
+    try {
+      pop.showPopover();
+    } catch {
+      return;
+    }
+    current = { link, pop };
+  }
+
+  function schedule(fn: () => void, ms: number) {
+    window.clearTimeout(timer);
+    timer = window.setTimeout(fn, ms);
+  }
+
+  function linkFrom(target: EventTarget | null): HTMLElement | null {
+    return target instanceof Element ? target.closest<HTMLElement>("[data-preview]") : null;
+  }
+
+  document.addEventListener("pointerover", (e) => {
+    if (e.pointerType === "touch") return;
+    const link = linkFrom(e.target);
+    if (link) schedule(() => show(link), OPEN_DELAY);
+    else if (current && !(e.target instanceof Element && current.pop.contains(e.target)))
+      schedule(hide, CLOSE_DELAY);
+  });
+  document.addEventListener("focusin", (e) => {
+    const link = linkFrom(e.target);
+    if (link) show(link);
+    else hide();
+  });
+  document.addEventListener("focusout", (e) => {
+    if (linkFrom(e.target)) schedule(hide, CLOSE_DELAY);
+  });
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") hide();
+  });
+  // 遷移前に閉じておく（ビュー遷移のスナップショットに残さない）
+  window.addEventListener("pagehide", hide);
+</script>

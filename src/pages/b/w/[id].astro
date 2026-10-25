@@ -1,0 +1,179 @@
+---
+import { getCollection } from "astro:content";
+import { byReading, type Entry, linkGraph } from "../../../components/b/links";
+import Previews from "../../../components/b/Previews.astro";
+import Rich from "../../../components/b/Rich.astro";
+import B from "../../../layouts/B.astro";
+
+export async function getStaticPaths() {
+  const entries: Entry[] = (await getCollection("words"))
+    .filter((w) => !w.data.pending)
+    .map((w) => ({ id: w.id, data: w.data }))
+    .sort(byReading);
+  const { incoming } = linkGraph(entries);
+  return entries.map((entry, i) => ({
+    params: { id: entry.id },
+    props: {
+      entry,
+      entries,
+      prev: entries[i - 1],
+      next: entries[i + 1],
+      backlinks: entries.filter((e) => incoming.get(entry.id)?.has(e.id)),
+    },
+  }));
+}
+
+interface Props {
+  entry: Entry;
+  entries: Entry[];
+  prev?: Entry;
+  next?: Entry;
+  backlinks: Entry[];
+}
+
+const { entry, entries, prev, next, backlinks } = Astro.props;
+const w = entry.data;
+const base = import.meta.env.BASE_URL;
+const home = `${base}b/`;
+const others = entries.filter((e) => e.id !== entry.id);
+---
+
+<B title={`${w.word}（${w.reading}）｜goi`} description={w.meaning}>
+  <div class="page">
+    <header class="site">
+      <a href={home} class="site-name">goi</a>
+    </header>
+
+    <main class="entry">
+      <header class="entry-head">
+        <h1 class="headword" style={`view-transition-name: w-${entry.id}`}>
+          <ruby>{w.word}<rt>{w.reading}</rt></ruby>
+        </h1>
+        <p class="kind">{w.kind}</p>
+      </header>
+
+      <div class="row">
+        <div class="body">
+          <p class="meaning">
+            <Rich text={w.meaning} selfId={entry.id} entries={entries} />
+            {
+              w.origin && (
+                <>
+                  <button
+                    type="button"
+                    class="ref ref-origin"
+                    popovertarget="n-origin"
+                    style="anchor-name: --n-origin"
+                  >
+                    由来
+                  </button>
+                  <span class="ref-mark ref-origin" aria-hidden="true">
+                    由来
+                  </span>
+                </>
+              )
+            }
+            <button type="button" class="ref ref-src" popovertarget="n-src" style="anchor-name: --n-src">
+              出典
+            </button>
+            <span class="ref-mark ref-src" aria-hidden="true">出典</span>
+          </p>
+          {
+            w.example && (
+              <p class="example">
+                <span class="example-label">用例</span>
+                <span class="example-text">
+                  <Rich text={w.example} selfId={entry.id} entries={entries} />
+                </span>
+              </p>
+            )
+          }
+        </div>
+
+        <div class="notes">
+          {
+            w.origin && (
+              <div
+                class="note note-origin"
+                id="n-origin"
+                popover
+                role="note"
+                aria-labelledby="n-origin-h"
+                style="position-anchor: --n-origin"
+              >
+                <h2 class="note-h" id="n-origin-h">
+                  由来
+                </h2>
+                <p>
+                  <Rich text={w.origin} selfId={entry.id} entries={entries} />
+                </p>
+              </div>
+            )
+          }
+          <div
+            class="note note-src"
+            id="n-src"
+            popover
+            role="note"
+            aria-labelledby="n-src-h"
+            style="position-anchor: --n-src"
+          >
+            <h2 class="note-h" id="n-src-h">出典</h2>
+            <ul class="sources">
+              {
+                w.sources.map((s) => (
+                  <li>
+                    <a href={s.url} rel="external">
+                      {s.label}
+                    </a>
+                    <span class="host">{new URL(s.url).hostname.replace(/^www\./, "")}</span>
+                  </li>
+                ))
+              }
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <section class="backlinks" aria-labelledby="bl-h">
+        <h2 id="bl-h">この語に触れている語</h2>
+        {
+          backlinks.length > 0 ? (
+            <ul>
+              {backlinks.map((b) => (
+                <li>
+                  <a href={`${base}b/w/${b.id}/`} data-preview={`pv-${b.id}`}>
+                    {b.data.word}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          ) : (
+            <p class="empty">まだどの語の説明にも出てこない。</p>
+          )
+        }
+      </section>
+    </main>
+
+    <nav class="pager" aria-label="前後の語">
+      {
+        prev && (
+          <a href={`${base}b/w/${prev.id}/`} rel="prev" class="pager-prev" data-preview={`pv-${prev.id}`}>
+            <span class="pager-label">前の語</span>
+            <span class="pager-word">{prev.data.word}</span>
+          </a>
+        )
+      }
+      {
+        next && (
+          <a href={`${base}b/w/${next.id}/`} rel="next" class="pager-next" data-preview={`pv-${next.id}`}>
+            <span class="pager-label">次の語</span>
+            <span class="pager-word">{next.data.word}</span>
+          </a>
+        )
+      }
+    </nav>
+
+    <Previews entries={others} />
+  </div>
+</B>
