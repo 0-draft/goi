@@ -2,21 +2,62 @@
 import { getCollection } from "astro:content";
 import Base from "../layouts/Base.astro";
 
-const words = (await getCollection("words")).filter((w) => !w.data.pending);
+const count = (await getCollection("words")).filter((w) => !w.data.pending).length;
 const base = import.meta.env.BASE_URL;
+
+// デザイン案を見比べるための入口。どれか1つに決めたらその案をここに置く
+const variants = [
+  { path: "a/", name: "一語一色", note: "語ごとに1色。選んだ語の色が画面全体の地になる。" },
+  { path: "b/", name: "注の網", note: "本文はモノクロ。由来と出典は傍注、語どうしは相互リンクでつながる。" },
+  { path: "c/", name: "駅名標", note: "1語を駅名標の文法で見せる。種別が路線、前後の語が隣の駅。" },
+];
 ---
 
 <Base title="goi" description="使いたくなる日本語を集めた語彙帳">
   <main>
     <h1>goi</h1>
+    <p>使いたくなる日本語を集めた語彙帳。いま{count}語。見せ方を3案つくったので、好きなものから開いてほしい。</p>
     <ul>
       {
-        words.map((w) => (
+        variants.map((v) => (
           <li>
-            <a href={`${base}w/${w.id}/`}>{w.data.word}</a>
+            <a href={`${base}${v.path}`}>{v.name}</a>
+            <p>{v.note}</p>
           </li>
         ))
       }
     </ul>
   </main>
 </Base>
+
+<style>
+  main {
+    max-width: 40rem;
+    margin: 0 auto;
+    padding: 10vh 1rem 4rem;
+    font-family: system-ui, "Hiragino Sans", sans-serif;
+    line-height: 1.8;
+  }
+  h1 {
+    font-size: 3rem;
+    margin: 0 0 1rem;
+  }
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 3rem 0 0;
+  }
+  li {
+    margin-block: 2rem;
+  }
+  li a {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: inherit;
+    text-underline-offset: 0.3em;
+  }
+  li p {
+    margin: 0.25rem 0 0;
+    color: #555;
+  }
+</style>

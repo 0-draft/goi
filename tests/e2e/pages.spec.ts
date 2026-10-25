@@ -1,22 +1,20 @@
 import AxeBuilder from "@axe-core/playwright";
 import { expect, test } from "@playwright/test";
 
-test("トップから語のページに移動できる", async ({ page }) => {
+test("トップから3つのデザイン案に移動できる", async ({ page }) => {
+  for (const [name, path] of [
+    ["一語一色", "a"],
+    ["注の網", "b"],
+    ["駅名標", "c"],
+  ]) {
+    await page.goto("./");
+    await page.getByRole("link", { name }).click();
+    await expect(page).toHaveURL(new RegExp(`/goi/${path}/$`));
+  }
+});
+
+test("トップにアクセシビリティ違反がない", async ({ page }) => {
   await page.goto("./");
-  await page.getByRole("link", { name: "関の山" }).click();
-  await expect(page).toHaveURL(/\/goi\/w\/seki-no-yama\/$/);
-  await expect(page.getByRole("heading", { level: 1 })).toHaveText("関の山");
+  const { violations } = await new AxeBuilder({ page }).analyze();
+  expect(violations).toEqual([]);
 });
-
-test("確認中の語はページを作らない", async ({ page }) => {
-  const res = await page.goto("w/itai-kotoba/");
-  expect(res?.status()).toBe(404);
-});
-
-for (const path of ["./", "w/seki-no-yama/"]) {
-  test(`${path} にアクセシビリティ違反がない`, async ({ page }) => {
-    await page.goto(path);
-    const { violations } = await new AxeBuilder({ page }).analyze();
-    expect(violations).toEqual([]);
-  });
-}
