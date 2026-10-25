@@ -10,7 +10,7 @@ export async function getStaticPaths() {
     .filter((w) => !w.data.pending)
     .map((w) => ({ id: w.id, data: w.data }))
     .sort(byReading);
-  const { incoming } = linkGraph(entries);
+  const { incoming, outgoing } = linkGraph(entries);
   return entries.map((entry, i) => ({
     params: { id: entry.id },
     props: {
@@ -19,6 +19,7 @@ export async function getStaticPaths() {
       prev: entries[i - 1],
       next: entries[i + 1],
       backlinks: entries.filter((e) => incoming.get(entry.id)?.has(e.id)),
+      linked: entries.filter((e) => outgoing.get(entry.id)?.has(e.id)),
     },
   }));
 }
@@ -29,13 +30,16 @@ interface Props {
   prev?: Entry;
   next?: Entry;
   backlinks: Entry[];
+  linked: Entry[];
 }
 
-const { entry, entries, prev, next, backlinks } = Astro.props;
+const { entry, entries, prev, next, backlinks, linked } = Astro.props;
 const w = entry.data;
 const base = import.meta.env.BASE_URL;
 const home = `${base}b/`;
-const others = entries.filter((e) => e.id !== entry.id);
+// プレビューはこのページから実際にリンクする語の分だけ埋め込む
+const previewIds = new Set([...linked, ...backlinks, prev, next].flatMap((e) => (e ? [e.id] : [])));
+const others = entries.filter((e) => previewIds.has(e.id));
 ---
 
 <B title={`${w.word}（${w.reading}）｜goi`} description={w.meaning}>
