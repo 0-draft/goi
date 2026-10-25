@@ -27,7 +27,7 @@ const docs: SearchDoc[] = entries.map((e) => ({
 
     <main>
       <div class="tools">
-        <search class="finder" id="b-finder" hidden>
+        <search class="finder" id="b-finder" data-needs-js>
           <label for="b-q">語を探す</label>
           <input
             id="b-q"
@@ -115,7 +115,6 @@ const docs: SearchDoc[] = entries.map((e) => ({
     };
 
     input.addEventListener("input", apply);
-    finder.hidden = false;
     // 戻るで来たときに入力が残っていれば反映する
     apply();
   }

@@ -497,3 +497,8 @@
     animation: none;
   }
 }
+
+/* JS がないときは検索欄を出さない（JS ありなら最初から場所を取る） */
+html:not(.js) [data-needs-js] {
+  display: none;
+}

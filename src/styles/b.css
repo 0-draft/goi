@@ -703,3 +703,8 @@ main:has(input[name="zoom"][value="word"]:checked) .words-head {
     }
   }
 }
+
+/* JS がないときは検索欄を出さない（JS ありなら最初から場所を取る） */
+html:not(.js) [data-needs-js] {
+  display: none;
+}

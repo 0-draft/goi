@@ -39,6 +39,10 @@ const body = "https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
+    <script is:inline>
+      // 検索欄など JS が要る部品を、最初の描画から場所を取って出すため
+      document.documentElement.classList.add("js");
+    </script>
     <WebFonts hrefs={[display, body]} />
     <slot name="head" />
   </head>

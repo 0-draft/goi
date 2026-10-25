@@ -32,6 +32,10 @@ const antique = `https://fonts.googleapis.com/css2?family=Shippori+Antique&displ
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
+    <script is:inline>
+      // 検索欄など JS が要る部品を、最初の描画から場所を取って出すため
+      document.documentElement.classList.add("js");
+    </script>
     <WebFonts hrefs={["https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&display=swap", antique]} />
   </head>
   <body>
