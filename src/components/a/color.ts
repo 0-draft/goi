@@ -72,19 +72,22 @@ function hash(id: string): number {
 }
 
 /**
- * id ごとの色を返す。ハッシュで起点を決め、色がなるべく均等に散るよう
- * 使用回数が上限に達した色は飛ばして次の色へ進む。
+ * 並び順どおりの id に色を返す。色はハッシュで決め、直前の語（末尾は先頭とも）と
+ * 同じ色になるときだけ次の色へずらす。前後の語のカードが地に溶けないようにするため。
+ * 語を足しても色が変わるのは、その前後の語に限られる。
  */
 export function assignColors(ids: string[]): Map<string, Swatch> {
-  const cap = Math.ceil(ids.length / SURFACES.length);
-  const used = new Array<number>(SURFACES.length).fill(0);
   const out = new Map<string, Swatch>();
-  for (const id of [...ids].sort()) {
+  const picked: number[] = [];
+  ids.forEach((id, n) => {
+    const avoid = new Set<number>();
+    if (n > 0) avoid.add(picked[n - 1]);
+    if (n === ids.length - 1 && n > 1) avoid.add(picked[0]);
     let i = hash(id) % SURFACES.length;
-    while (used[i] >= cap) i = (i + 1) % SURFACES.length;
-    used[i] += 1;
+    while (avoid.has(i)) i = (i + 1) % SURFACES.length;
+    picked.push(i);
     out.set(id, swatch(SURFACES[i]));
-  }
+  });
   return out;
 }
 
