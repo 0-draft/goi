@@ -1,6 +1,12 @@
 import type { Word } from "../../lib/schema";
 import { toRomaji } from "./romaji";
 
+// かなだけでは語の切れ目が分からず、語をまたいで長音にしてしまうもの
+const ROMAJI_OVERRIDES: Record<string, string> = {
+  "nengu-no-osamedoki": "Nengunoosamedoki",
+  "yome-toome-kasa-no-uchi": "Yometōmekasanouchi",
+};
+
 // 種別ごとに一本の路線として扱う。記号は駅ナンバリングの路線記号にあたる
 export interface Line {
   kind: string;
@@ -50,7 +56,7 @@ export function buildRoute(entries: { id: string; data: Word }[]): Route {
       .map((e, i) => ({
         id: e.id,
         word: e.data,
-        romaji: toRomaji(e.data.reading),
+        romaji: ROMAJI_OVERRIDES[e.id] ?? toRomaji(e.data.reading),
         line,
         number: String(i + 1).padStart(2, "0"),
       }));
