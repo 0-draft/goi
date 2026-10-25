@@ -3,6 +3,7 @@ import { swatchVars } from "../../components/a/color";
 import Headword from "../../components/a/Headword.astro";
 import { displayGlyphs, loadEntries, vtName } from "../../components/a/words";
 import A from "../../layouts/A.astro";
+import { jsonForScript } from "../../lib/json";
 import type { SearchDoc } from "../../lib/search";
 
 const entries = await loadEntries();
@@ -40,7 +41,7 @@ const surfaceCss = entries
         enterkeyhint="search"
       />
       <p class="a-count" data-count aria-live="polite">{entries.length}語</p>
-      <script type="application/json" data-docs set:html={JSON.stringify(docs)} />
+      <script type="application/json" data-docs set:html={jsonForScript(docs)} />
       </form>
     </search>
 
@@ -84,13 +85,18 @@ const surfaceCss = entries
     const rows = new Map(order.map((li) => [li.dataset.id ?? "", li]));
     const input = form.querySelector<HTMLInputElement>("input");
 
+    // aria-live の件数は打鍵ごとに読み上げが積み重ならないよう少し待って更新する
+    let timer: ReturnType<typeof setTimeout> | undefined;
     const render = (q: string) => {
       const hits = q.trim() ? search(index, q) : null;
       const shown = hits ? hits.flatMap((h) => rows.get(h.id) ?? []) : order;
       for (const li of order) li.hidden = !shown.includes(li);
       // 当たりの強い順に並べ替える
       list.append(...shown, ...order.filter((li) => !shown.includes(li)));
-      count.textContent = `${shown.length}語`;
+      clearTimeout(timer);
+      timer = setTimeout(() => {
+        count.textContent = `${shown.length}語`;
+      }, 300);
       empty.hidden = shown.length > 0;
       empty.textContent = shown.length
         ? ""

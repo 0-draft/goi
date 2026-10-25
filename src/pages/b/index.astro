@@ -2,6 +2,7 @@
 import { getCollection } from "astro:content";
 import { byReading, type Entry } from "../../components/b/links";
 import B from "../../layouts/B.astro";
+import { jsonForScript } from "../../lib/json";
 import type { SearchDoc } from "../../lib/search";
 
 const entries: Entry[] = (await getCollection("words"))
@@ -65,7 +66,7 @@ const docs: SearchDoc[] = entries.map((e) => ({
     </main>
   </div>
 
-  <script is:inline type="application/json" id="b-docs" set:html={JSON.stringify(docs)} />
+  <script is:inline type="application/json" id="b-docs" set:html={jsonForScript(docs)} />
 </B>
 
 <script>
@@ -82,26 +83,35 @@ const docs: SearchDoc[] = entries.map((e) => ({
     const items = new Map<string, HTMLElement>();
     for (const li of list.querySelectorAll<HTMLElement>("li[data-id]")) items.set(li.dataset.id ?? "", li);
 
+    // 打鍵ごとに読み上げが積み重ならないよう、件数の更新は少し待つ
+    let timer: ReturnType<typeof setTimeout> | undefined;
+    const announce = (text: string) => {
+      clearTimeout(timer);
+      timer = setTimeout(() => {
+        status.textContent = text;
+      }, 300);
+    };
+
     const apply = () => {
       const q = input.value.trim();
       if (!q) {
-        for (const li of items.values()) {
-          li.hidden = false;
-          li.style.removeProperty("order");
-        }
-        status.textContent = "";
+        // 元の読み順に戻す
+        list.append(...items.values());
+        for (const li of items.values()) li.hidden = false;
+        announce("");
         return;
       }
       const hits = search(index, q);
-      const rank = new Map(hits.map((d, i) => [d.id, i]));
-      for (const [id, li] of items) {
-        const r = rank.get(id);
-        li.hidden = r === undefined;
-        if (r !== undefined) li.style.order = String(r);
-      }
-      status.textContent = hits.length
-        ? `「${q}」に合う語は${hits.length}語。`
-        : `「${q}」に合う語は見つからない。読みをひらがなで入れるか、意味の一部で探せる。`;
+      const hitIds = new Set(hits.map((d) => d.id));
+      // 見た目の順とタブ順を揃えるため、CSS の order ではなく DOM を並べ替える
+      const ranked = hits.flatMap((d) => items.get(d.id) ?? []);
+      list.append(...ranked, ...[...items.values()].filter((li) => !hitIds.has(li.dataset.id ?? "")));
+      for (const [id, li] of items) li.hidden = !hitIds.has(id);
+      announce(
+        hits.length
+          ? `「${q}」に合う語は${hits.length}語。`
+          : `「${q}」に合う語は見つからない。読みをひらがなで入れるか、意味の一部で探せる。`,
+      );
     };
 
     input.addEventListener("input", apply);
