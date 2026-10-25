@@ -1,0 +1,78 @@
+---
+import { getCollection } from "astro:content";
+import { buildRoute } from "../../../components/c/route";
+import Sign from "../../../components/c/Sign.astro";
+import C from "../../../layouts/C.astro";
+
+export async function getStaticPaths() {
+  const { stations } = buildRoute(await getCollection("words"));
+  return stations.map((station, i) => ({
+    params: { id: station.id },
+    props: { station, prev: stations[i - 1], next: stations[i + 1] },
+  }));
+}
+
+const { station, prev, next } = Astro.props;
+const { word } = station;
+const base = import.meta.env.BASE_URL;
+
+// 用例の中の見出し語（または読み）を太字にする
+const needle = [word.word, word.reading].find((n) => n && word.example.includes(n));
+const example = needle ? word.example.split(needle) : [word.example];
+---
+
+<C title={`${word.word}（${word.reading}）｜goi`} description={word.meaning}>
+  <Fragment slot="head">
+    {prev && <link rel="prev" href={`${base}c/w/${prev.id}/`} />}
+    {next && <link rel="next" href={`${base}c/w/${next.id}/`} />}
+  </Fragment>
+  <header class="c-top">
+    <a class="c-top__home" href={`${base}c/`}><span class="c-top__mark">goi</span> 路線図に戻る</a>
+  </header>
+  <main class="c-word" style={`--line: ${station.line.color}`}>
+    <Sign station={station} prev={prev} next={next} />
+    <p class="c-hint">左右の矢印キーか、駅名標を横にスワイプしても隣の語に移れます。</p>
+    <div class="c-notes">
+      <section class="c-note c-note--meaning" aria-labelledby="c-meaning">
+        <h2 id="c-meaning">意味</h2>
+        <p>{word.meaning}</p>
+      </section>
+      {
+        word.example && (
+          <section class="c-note c-note--example" aria-labelledby="c-example">
+            <h2 id="c-example">用例</h2>
+            <p class="c-example">
+              {example.map((part, i) => (
+                <>
+                  {i > 0 && <b>{needle}</b>}
+                  {part}
+                </>
+              ))}
+            </p>
+          </section>
+        )
+      }
+      {
+        word.origin && (
+          <section class="c-note c-note--origin" aria-labelledby="c-origin">
+            <h2 id="c-origin">由来</h2>
+            <p>{word.origin}</p>
+          </section>
+        )
+      }
+      <section class="c-note c-note--sources" aria-labelledby="c-sources">
+        <h2 id="c-sources">出典</h2>
+        <ul class="c-sources">
+          {
+            word.sources.map((s) => (
+              <li>
+                <a href={s.url}>{s.label}</a>
+                <span class="c-sources__host">{new URL(s.url).hostname}</span>
+              </li>
+            ))
+          }
+        </ul>
+      </section>
+    </div>
+  </main>
+</C>

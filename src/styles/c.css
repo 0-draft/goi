@@ -1,0 +1,815 @@
+/* goi / C 駅名標
+   駅の構内（周囲）は明暗で切り替え、駅名標と路線図は電照板として常に白地のまま置く。 */
+
+:root {
+  --sign: #ffffff;
+  --sign-ink: #111418;
+  --sign-muted: #4a4f55;
+  --sign-edge: #b9bbb6;
+  --surround: #d6d7d3;
+  --ink: #111418;
+  --muted: #3f444a;
+  --rule: #b3b5b0;
+  --focus: #111418;
+  --font: "BIZ UDPGothic", "Hiragino Sans", "Noto Sans JP", "Yu Gothic", sans-serif;
+  color-scheme: light dark;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --surround: #222423;
+    --ink: #e8e9e5;
+    --muted: #afb2ac;
+    --rule: #4a4d4b;
+    --focus: #e8e9e5;
+    --sign-edge: #000000;
+  }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  background: var(--surround);
+  color: var(--ink);
+  font-family: var(--font);
+  font-size: 100%;
+  line-height: 1.8;
+  -webkit-text-size-adjust: 100%;
+}
+
+:lang(ja) {
+  text-autospace: normal;
+  line-break: strict;
+  text-spacing-trim: normal;
+}
+
+@supports (word-break: auto-phrase) {
+  :lang(ja) :is(h1, h2, h3, p, li) {
+    word-break: auto-phrase;
+  }
+  .c-masthead__lead,
+  .c-hint,
+  .c-board__empty {
+    text-wrap: balance;
+  }
+}
+
+body {
+  margin: 0;
+  min-height: 100dvh;
+  padding-inline: max(1rem, env(safe-area-inset-left)) max(1rem, env(safe-area-inset-right));
+  padding-block-end: 4rem;
+}
+
+h1,
+h2,
+h3,
+p,
+ol,
+ul {
+  margin: 0;
+}
+
+a {
+  color: inherit;
+  text-underline-offset: 0.22em;
+  text-decoration-thickness: 1px;
+}
+
+a:hover {
+  text-decoration-thickness: 2px;
+}
+
+:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* 白い板の上では、構内の明暗に関係なく濃い色でフォーカスを示す */
+.c-sign :focus-visible,
+.c-board :focus-visible {
+  outline-color: var(--sign-ink);
+}
+
+.c-visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* ---------- 駅ナンバリングの記号 ---------- */
+
+.c-badge {
+  display: inline-grid;
+  justify-items: center;
+  align-content: center;
+  inline-size: 2.6em;
+  block-size: 2.6em;
+  border: 0.24em solid var(--line);
+  border-radius: 0.38em;
+  background: #ffffff;
+  color: var(--sign-ink);
+  font-weight: 700;
+  line-height: 1;
+  font-feature-settings: "palt";
+  vertical-align: middle;
+  flex: none;
+}
+
+.c-badge__code {
+  font-size: 0.62em;
+  letter-spacing: 0.02em;
+}
+
+.c-badge__num {
+  font-size: 1.02em;
+  margin-block-start: 0.08em;
+}
+
+.c-badge--s {
+  font-size: 0.875rem;
+}
+
+/* ---------- 語のページ ---------- */
+
+.c-top {
+  max-inline-size: 64rem;
+  margin-inline: auto;
+  padding-block: 1rem 1.25rem;
+}
+
+.c-top__home {
+  display: inline-flex;
+  gap: 0.6em;
+  min-block-size: 2.75rem;
+  align-items: center;
+  font-size: 0.9375rem;
+  text-decoration: none;
+}
+
+.c-top__home:hover {
+  text-decoration: underline;
+}
+
+.c-top__mark {
+  font-size: 1.375rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.c-word {
+  container: word / inline-size;
+  max-inline-size: 64rem;
+  margin-inline: auto;
+}
+
+/* 横スクロールで隣の駅名標へ。端の板は JS があるときだけ置く */
+.c-track {
+  position: relative;
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 100%;
+  gap: 2rem;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  /* 板の縁とフォーカス枠が切れないように */
+  padding-block: 6px;
+  margin-block: -6px;
+}
+
+.c-track::-webkit-scrollbar {
+  display: none;
+}
+
+.c-track > * {
+  scroll-snap-align: center;
+  scroll-snap-stop: always;
+}
+
+.c-sign--main {
+  /* biome-ignore lint/correctness/noUnknownProperty: Chrome 133+ の初期スクロール位置。JS でも中央に寄せる */
+  scroll-initial-target: nearest;
+}
+
+.c-sign--ghost {
+  display: none;
+}
+
+.js .c-sign--ghost {
+  display: block;
+}
+
+.c-sign {
+  container: sign / inline-size;
+  background: var(--sign);
+  color: var(--sign-ink);
+  border-radius: 6px;
+  box-shadow: 0 0 0 1px var(--sign-edge);
+  overflow: clip;
+  view-transition-class: sign;
+}
+
+.c-sign--main {
+  view-transition-name: sign;
+}
+
+.c-face {
+  display: grid;
+  justify-items: center;
+  padding: max(1.25rem, 3.5cqi) max(1rem, 4cqi) max(1rem, 2.6cqi);
+  position: relative;
+  text-align: center;
+}
+
+.c-face__line {
+  position: absolute;
+  inset-block-start: max(0.875rem, 2.4cqi);
+  inset-inline-start: max(0.875rem, 2.6cqi);
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  font-size: max(0.8125rem, 1.7cqi);
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.c-face__line .c-badge {
+  font-size: max(0.75rem, 1.55cqi);
+}
+
+.c-face__kana {
+  margin-block-start: max(2.25rem, 3cqi);
+  font-size: max(1.0625rem, 4.6cqi);
+  font-weight: 700;
+  line-height: 1.3;
+  letter-spacing: 0.12em;
+}
+
+.c-face__word {
+  font-size: min(18cqi, 9.5rem, calc(86cqi / (var(--len) + 0.4)));
+  font-weight: 700;
+  line-height: 1.12;
+  letter-spacing: 0.06em;
+  font-feature-settings: "palt";
+  /* 字送りを詰めたぶん、両端の余白を揃える */
+  margin-inline-start: 0.06em;
+  word-break: keep-all;
+}
+
+.c-face__romaji {
+  margin-block-start: 0.3em;
+  font-size: max(1rem, 4.2cqi);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: 0.02em;
+}
+
+/* 路線の帯。隣の駅への向きを帯の端の三角で示す */
+.c-band {
+  position: relative;
+  block-size: max(0.875rem, 2.8cqi);
+  background: var(--line);
+}
+
+.c-band__arrow {
+  position: absolute;
+  inset-block: 0;
+  inline-size: calc(max(0.875rem, 2.8cqi) * 0.8);
+  background: #ffffff;
+}
+
+.c-band__arrow--prev {
+  inset-inline-start: max(0.875rem, 2.6cqi);
+  clip-path: polygon(100% 18%, 100% 82%, 0 50%);
+}
+
+.c-band__arrow--next {
+  inset-inline-end: max(0.875rem, 2.6cqi);
+  clip-path: polygon(0 18%, 0 82%, 100% 50%);
+}
+
+.c-adjacent {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  padding: max(0.5rem, 1.4cqi) max(0.375rem, 1.6cqi) max(0.625rem, 1.8cqi);
+}
+
+.c-adjacent__link {
+  position: relative;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-template-areas:
+    "badge word"
+    "badge romaji";
+  column-gap: 0.625rem;
+  align-items: center;
+  justify-self: start;
+  padding: 0.375rem 0.5rem;
+  border-radius: 4px;
+  text-decoration: none;
+}
+
+.c-adjacent__link--next {
+  grid-template-columns: 1fr auto;
+  grid-template-areas:
+    "word badge"
+    "romaji badge";
+  justify-self: end;
+  text-align: end;
+}
+
+.c-adjacent__link .c-badge {
+  grid-area: badge;
+  font-size: max(0.75rem, 1.5cqi);
+}
+
+.c-adjacent__word {
+  grid-area: word;
+  font-size: max(1.125rem, 3.2cqi);
+  font-weight: 700;
+  line-height: 1.3;
+  font-feature-settings: "palt";
+  letter-spacing: 0.04em;
+}
+
+.c-adjacent__link:hover .c-adjacent__word {
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+}
+
+.c-adjacent__romaji {
+  grid-area: romaji;
+  font-size: max(0.8125rem, 1.75cqi);
+  line-height: 1.3;
+  color: var(--sign-muted);
+}
+
+.c-adjacent__end {
+  align-self: center;
+  padding: 0.375rem 0.5rem;
+  font-size: max(0.875rem, 1.75cqi);
+  color: var(--sign-muted);
+}
+
+.c-adjacent__end:last-child {
+  justify-self: end;
+}
+
+.c-hint {
+  margin-block: 0.875rem 0;
+  font-size: 0.8125rem;
+  color: var(--muted);
+  text-align: center;
+}
+
+@media (hover: none) {
+  .c-hint {
+    display: none;
+  }
+}
+
+/* 駅名標の下の説明。板と同じ幅の中で、意味を先頭に大きく置く */
+.c-notes {
+  display: grid;
+  gap: 2rem 3rem;
+  margin-block-start: 2.5rem;
+}
+
+@container word (inline-size > 46rem) {
+  .c-notes {
+    grid-template-columns: 1.2fr 1fr;
+    grid-template-areas:
+      "meaning meaning"
+      "origin example"
+      "origin sources";
+    align-content: start;
+  }
+  .c-note--meaning {
+    grid-area: meaning;
+  }
+  .c-note--origin {
+    grid-area: origin;
+  }
+  .c-note--example {
+    grid-area: example;
+  }
+  .c-note--sources {
+    grid-area: sources;
+  }
+}
+
+.c-note {
+  display: grid;
+  align-content: start;
+  gap: 0.375rem;
+  max-inline-size: 40em;
+}
+
+.c-note h2 {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: var(--muted);
+}
+
+.c-note h2::before {
+  content: "";
+  inline-size: 0.875rem;
+  block-size: 0.3125rem;
+  background: var(--line);
+}
+
+.c-note p {
+  font-size: 1.0625rem;
+  line-height: 1.85;
+}
+
+.c-note--meaning {
+  max-inline-size: 34em;
+}
+
+.c-note--meaning p {
+  font-size: clamp(1.25rem, 1rem + 1vw, 1.625rem);
+  font-weight: 700;
+  line-height: 1.6;
+  font-feature-settings: "palt";
+  letter-spacing: 0.02em;
+}
+
+.c-example b {
+  font-weight: 700;
+  text-decoration: underline;
+  text-decoration-color: var(--line);
+  text-decoration-thickness: 0.18em;
+  text-underline-offset: 0.3em;
+}
+
+.c-sources {
+  display: grid;
+  gap: 0.75rem;
+  padding: 0;
+  list-style: none;
+}
+
+.c-sources li {
+  display: grid;
+  justify-items: start;
+}
+
+.c-sources a {
+  font-weight: 700;
+}
+
+.c-sources__host {
+  font-size: 0.8125rem;
+  line-height: 1.4;
+  color: var(--muted);
+}
+
+/* ---------- 路線図のページ ---------- */
+
+.c-masthead {
+  max-inline-size: 72rem;
+  margin-inline: auto;
+  padding-block: clamp(2rem, 6vw, 4rem) 1.75rem;
+  display: grid;
+  gap: 0.75rem;
+}
+
+.c-masthead__title {
+  font-size: clamp(3rem, 2rem + 5vw, 5.5rem);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+.c-masthead__lead {
+  max-inline-size: 30em;
+  font-size: clamp(1rem, 0.9rem + 0.4vw, 1.1875rem);
+  line-height: 1.75;
+}
+
+.c-map-page {
+  max-inline-size: 72rem;
+  margin-inline: auto;
+  display: grid;
+  gap: 1.25rem;
+}
+
+.c-search {
+  display: grid;
+  grid-template-columns: auto minmax(0, 24rem);
+  justify-content: start;
+  align-items: center;
+  gap: 0.5rem 1rem;
+}
+
+.c-search label {
+  font-weight: 700;
+}
+
+.c-search input {
+  font: inherit;
+  font-size: 1.0625rem;
+  inline-size: 100%;
+  min-block-size: 2.75rem;
+  padding: 0.375rem 0.75rem;
+  border: 2px solid var(--ink);
+  border-radius: 4px;
+  background: var(--sign);
+  color: var(--sign-ink);
+}
+
+.c-search input::placeholder {
+  color: var(--sign-muted);
+}
+
+.c-search input:focus-visible {
+  outline-offset: 2px;
+}
+
+.c-search__status {
+  grid-column: 1 / -1;
+  min-block-size: 1.5em;
+  font-size: 0.875rem;
+  color: var(--muted);
+}
+
+.c-search__status:empty {
+  display: none;
+}
+
+@media (max-width: 30rem) {
+  .c-search {
+    grid-template-columns: 1fr;
+  }
+}
+
+.c-board {
+  container: board / inline-size;
+  background: var(--sign);
+  color: var(--sign-ink);
+  border-radius: 6px;
+  box-shadow: 0 0 0 1px var(--sign-edge);
+  padding: clamp(1rem, 3vw, 2rem);
+  display: grid;
+  gap: clamp(1.25rem, 3vw, 2rem);
+}
+
+.c-board__title {
+  font-size: 1.125rem;
+  font-weight: 700;
+}
+
+.c-board__empty {
+  color: var(--sign-muted);
+}
+
+/* 一致する駅がひとつもない路線は、路線ごと隠す */
+.c-line:not(:has(.c-station:not([hidden]))) {
+  display: none;
+}
+
+.c-line__name {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  font-size: 1.0625rem;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.c-line__chip {
+  display: inline-grid;
+  place-items: center;
+  min-inline-size: 2.75rem;
+  padding: 0.125rem 0.5rem;
+  border: 0.1875rem solid var(--line);
+  border-inline-start-width: 0.75rem;
+  border-radius: 4px;
+  background: #ffffff;
+  color: var(--sign-ink);
+  font-size: 0.8125rem;
+  letter-spacing: 0.04em;
+}
+
+.c-line__stations {
+  --rail: 0.5rem;
+  --dot: 1.375rem;
+  display: grid;
+  padding: 0;
+  list-style: none;
+}
+
+.c-station {
+  position: relative;
+}
+
+.c-station[hidden] {
+  display: none;
+}
+
+.c-station__link {
+  position: relative;
+  display: grid;
+  text-decoration: none;
+  border-radius: 4px;
+}
+
+.c-station__dot {
+  position: relative;
+  z-index: 1;
+  inline-size: var(--dot);
+  block-size: var(--dot);
+  border-radius: 50%;
+  background: #ffffff;
+  border: 0.3125rem solid var(--line);
+}
+
+.c-station__word {
+  font-size: 1.375rem;
+  font-weight: 700;
+  font-feature-settings: "palt";
+  letter-spacing: 0.04em;
+  line-height: 1.2;
+}
+
+.c-station__word rt {
+  font-size: 0.5em;
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  font-feature-settings: normal;
+}
+
+.c-station__romaji {
+  display: block;
+  font-size: 0.8125rem;
+  color: var(--sign-muted);
+  line-height: 1.4;
+}
+
+.c-station__link:hover .c-station__word {
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 0.2em;
+}
+
+.c-station__link:hover .c-station__dot {
+  background: var(--line);
+}
+
+/* 狭いとき：縦の路線。線路は ol の背景として通し、駅名は線の右に置く */
+.c-line__stations {
+  padding-inline-start: 0.25rem;
+  background:
+    linear-gradient(var(--line), var(--line)) calc(0.25rem + (var(--dot) - var(--rail)) / 2) 0 / var(--rail)
+    100% no-repeat;
+}
+
+.c-station__link {
+  grid-template-columns: var(--dot) 1fr auto;
+  align-items: center;
+  column-gap: 1rem;
+  padding-block: 0.625rem;
+}
+
+.c-line {
+  display: grid;
+  gap: 0.5rem;
+}
+
+/* 広いとき：路線名を左に、線路を横に通す。駅が多ければ横にスクロールして止まる */
+@container board (inline-size > 40rem) {
+  .c-line {
+    grid-template-columns: 11rem 1fr;
+    align-items: start;
+    gap: 1.5rem;
+  }
+
+  .c-line__name {
+    padding-block-start: 2.25rem;
+  }
+
+  .c-line__stations {
+    grid-auto-flow: column;
+    grid-auto-columns: 11rem;
+    justify-content: start;
+    overflow-x: auto;
+    scroll-snap-type: x proximity;
+    padding: 0.25rem 0.25rem 0.5rem;
+  }
+
+  .c-station {
+    scroll-snap-align: start;
+  }
+
+  /* 横向きでは線路を路線全体に通す。local にして横スクロールでも線が途切れないように */
+  .c-line__stations {
+    background:
+      linear-gradient(var(--line), var(--line)) 0
+      calc(0.25rem + 2.25rem + 0.625rem + (var(--dot) - var(--rail)) / 2) / 100% var(--rail) no-repeat;
+    background-attachment: local;
+  }
+
+  .c-station__link {
+    grid-template-columns: 1fr;
+    grid-template-rows: 2.25rem auto auto;
+    justify-items: center;
+    text-align: center;
+    row-gap: 0.625rem;
+    padding: 0 0.5rem 0.5rem;
+  }
+
+  .c-station__link .c-badge {
+    grid-row: 1;
+    align-self: end;
+  }
+
+  .c-station__dot {
+    grid-row: 2;
+  }
+
+  .c-station__label {
+    grid-row: 3;
+  }
+}
+
+/* ---------- 駅から駅へのビュー遷移 ---------- */
+
+@media (prefers-reduced-motion: no-preference) {
+  @view-transition {
+    navigation: auto;
+  }
+
+  ::view-transition-group(root) {
+    animation-duration: 260ms;
+  }
+
+  html:active-view-transition-type(forward, backward) {
+    &::view-transition-group(sign) {
+      animation: none;
+    }
+    &::view-transition-old(sign),
+    &::view-transition-new(sign) {
+      animation-duration: 520ms;
+      animation-timing-function: cubic-bezier(0.62, 0, 0.24, 1);
+      animation-fill-mode: both;
+      mix-blend-mode: normal;
+    }
+  }
+
+  html:active-view-transition-type(forward) {
+    &::view-transition-old(sign) {
+      animation-name: c-out-left;
+    }
+    &::view-transition-new(sign) {
+      animation-name: c-in-right;
+    }
+  }
+
+  html:active-view-transition-type(backward) {
+    &::view-transition-old(sign) {
+      animation-name: c-out-right;
+    }
+    &::view-transition-new(sign) {
+      animation-name: c-in-left;
+    }
+  }
+}
+
+@keyframes c-out-left {
+  to {
+    transform: translateX(calc(-100vw));
+  }
+}
+
+@keyframes c-in-right {
+  from {
+    transform: translateX(100vw);
+  }
+}
+
+@keyframes c-out-right {
+  to {
+    transform: translateX(100vw);
+  }
+}
+
+@keyframes c-in-left {
+  from {
+    transform: translateX(-100vw);
+  }
+}

@@ -1,0 +1,131 @@
+---
+import Badge from "./Badge.astro";
+import type { Station } from "./route";
+import SignFace from "./SignFace.astro";
+
+interface Props {
+  station: Station;
+  prev?: Station;
+  next?: Station;
+}
+const { station, prev, next } = Astro.props;
+const base = import.meta.env.BASE_URL;
+const href = (s: Station) => `${base}c/w/${s.id}/`;
+---
+
+<div class="c-track" data-track>
+  {
+    prev && (
+      <div class="c-sign c-sign--ghost" style={`--line: ${prev.line.color}`} aria-hidden="true" inert data-ghost={href(prev)}>
+        <SignFace station={prev} />
+        <div class="c-band" />
+      </div>
+    )
+  }
+  <article class="c-sign c-sign--main" style={`--line: ${station.line.color}`} aria-labelledby="c-word">
+    <SignFace station={station} heading />
+    <div class="c-band">
+      {prev && <span class="c-band__arrow c-band__arrow--prev" />}
+      {next && <span class="c-band__arrow c-band__arrow--next" />}
+    </div>
+    <nav class="c-adjacent" aria-label="となりの語">
+      {
+        prev ? (
+          <a class="c-adjacent__link c-adjacent__link--prev" href={href(prev)} rel="prev" data-dir="prev">
+            <span class="c-visually-hidden">前の語 </span>
+            <span class="c-adjacent__word">{prev.word.word}</span>
+            <span class="c-adjacent__romaji" lang="ja-Latn">
+              {prev.romaji}
+            </span>
+            <Badge station={prev} size="s" />
+          </a>
+        ) : (
+          <span class="c-adjacent__end">始発</span>
+        )
+      }
+      {
+        next ? (
+          <a class="c-adjacent__link c-adjacent__link--next" href={href(next)} rel="next" data-dir="next">
+            <span class="c-visually-hidden">次の語 </span>
+            <span class="c-adjacent__word">{next.word.word}</span>
+            <span class="c-adjacent__romaji" lang="ja-Latn">
+              {next.romaji}
+            </span>
+            <Badge station={next} size="s" />
+          </a>
+        ) : (
+          <span class="c-adjacent__end">終点</span>
+        )
+      }
+    </nav>
+  </article>
+  {
+    next && (
+      <div class="c-sign c-sign--ghost" style={`--line: ${next.line.color}`} aria-hidden="true" inert data-ghost={href(next)}>
+        <SignFace station={next} />
+        <div class="c-band" />
+      </div>
+    )
+  }
+</div>
+
+<script>
+  const track = document.querySelector<HTMLElement>("[data-track]");
+  const main = track?.querySelector<HTMLElement>(".c-sign--main");
+
+  if (track && main) {
+    const offset = (el: HTMLElement) => el.getBoundingClientRect().left - track.getBoundingClientRect().left;
+    const center = () => {
+      track.scrollLeft += offset(main);
+    };
+    center();
+    new ResizeObserver(center).observe(track);
+
+    // 指やホイールで動かしたときだけ、隣の駅名標に止まったらその語へ移動する
+    let touched = false;
+    let leaving = false;
+    for (const type of ["pointerdown", "touchstart", "wheel"]) {
+      track.addEventListener(type, () => {
+        touched = true;
+      }, { passive: true });
+    }
+    addEventListener("pageshow", () => {
+      leaving = false;
+      touched = false;
+      main.style.viewTransitionName = "";
+      center();
+    });
+    track.addEventListener("scrollend", () => {
+      if (leaving || !touched) return;
+      const half = track.clientWidth / 2;
+      const panels = [...track.children] as HTMLElement[];
+      const hit = panels.find((p) => {
+        const left = offset(p);
+        return left <= half && half < left + p.offsetWidth;
+      });
+      const url = hit?.dataset.ghost;
+      if (!url) {
+        touched = false;
+        return;
+      }
+      leaving = true;
+      // すでに指で動かしたので、遷移では駅名標を滑らせない
+      main.style.viewTransitionName = "none";
+      try {
+        sessionStorage.setItem("c-swiped", "1");
+      } catch {}
+      location.href = url;
+    });
+
+    addEventListener("keydown", (e) => {
+      if (e.altKey || e.ctrlKey || e.metaKey || e.shiftKey || e.defaultPrevented) return;
+      const t = e.target as HTMLElement;
+      if (t.closest("input, textarea, select, [contenteditable]")) return;
+      const dir = e.key === "ArrowLeft" ? "prev" : e.key === "ArrowRight" ? "next" : null;
+      const link = dir && document.querySelector<HTMLAnchorElement>(`.c-adjacent a[data-dir="${dir}"]`);
+      if (!link) return;
+      e.preventDefault();
+      link.click();
+    });
+  }
+</script>
