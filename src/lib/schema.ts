@@ -16,6 +16,15 @@ export const wordSchema = z
     origin: z.string(),
     example: z.string(),
     sources: z.array(sourceSchema),
+    // 英語版の表示用。例文は日本語のまま出し、en.example はその英訳
+    en: z
+      .object({
+        gloss: z.string().min(1),
+        meaning: z.string().min(1),
+        origin: z.string().min(1),
+        example: z.string().min(1),
+      })
+      .optional(),
     // 調べきれていない語は pending に理由を書いて置いておく
     pending: z.string().min(1).optional(),
   })

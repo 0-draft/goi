@@ -1,0 +1,9 @@
+---
+// <head> に置く hreflang の相互リンク。英語を x-default にする
+import { LANGS, localePath, stripLocale } from "../i18n/ui";
+
+const path = stripLocale(Astro.url.pathname);
+---
+
+{LANGS.map((l) => <link rel="alternate" hreflang={l} href={new URL(localePath(l, path), Astro.site)} />)}
+<link rel="alternate" hreflang="x-default" href={new URL(localePath("en", path), Astro.site)} />

@@ -1,0 +1,14 @@
+---
+// もう一方の言語の同じページへのリンク。class でデザイン案ごとに見た目を変える
+import { type Lang, localePath, otherLang, stripLocale, t } from "../i18n/ui";
+
+interface Props {
+  lang: Lang;
+  class?: string;
+}
+const { lang, class: cls } = Astro.props;
+const to = otherLang(lang);
+const href = localePath(to, stripLocale(Astro.url.pathname));
+---
+
+<a href={href} hreflang={to} lang={to} aria-label={t(lang, "lang.switchLabel")} class={cls}>{t(lang, "lang.switch")}</a>
