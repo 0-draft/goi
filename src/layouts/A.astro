@@ -7,13 +7,16 @@ import { swatchVars } from "../components/a/color";
 interface Props {
   title: string;
   description: string;
+  /** OGP 画像のパス（base を含む）。語ページは /og/<id>.png、一覧は /og/index.png */
+  ogImage?: string;
   /** Google Fonts の text= に渡す、ディスプレイ書体で描く字 */
   glyphs: string;
   /** 語のページでは画面全体をその語の色にする */
   swatch?: Swatch;
 }
-const { title, description, glyphs, swatch } = Astro.props;
+const { title, description, glyphs, swatch, ogImage } = Astro.props;
 const canonical = new URL(Astro.url.pathname, Astro.site);
+const ogImageUrl = ogImage && new URL(ogImage, Astro.site);
 const display = `https://fonts.googleapis.com/css2?family=Dela+Gothic+One&display=swap&text=${encodeURIComponent(glyphs)}`;
 const body = "https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;700&display=swap";
 ---
@@ -39,6 +42,19 @@ const body = "https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
+    <meta property="og:site_name" content="goi" />
+    <meta property="og:locale" content="ja_JP" />
+    {
+      ogImageUrl && (
+        <>
+          <meta property="og:image" content={ogImageUrl} />
+          <meta property="og:image:width" content="1200" />
+          <meta property="og:image:height" content="630" />
+          <meta property="og:image:alt" content={title} />
+          <meta name="twitter:card" content="summary_large_image" />
+        </>
+      )
+    }
     <script is:inline>
       // 検索欄など JS が要る部品を、最初の描画から場所を取って出すため
       document.documentElement.classList.add("js");
