@@ -12,18 +12,24 @@ test.describe("C 駅名標", () => {
   });
 
   test("次の駅をたどって隣の語に移れる", async ({ page }) => {
-    await page.goto("c/w/hinoshita-kaisan/");
-    const nav = page.getByRole("navigation", { name: "となりの語" });
-    await nav.getByRole("link", { name: /次の語/ }).click();
-    await expect(page).toHaveURL(/\/c\/w\/seki-no-yama\/$/);
-    await expect(page.getByRole("heading", { level: 1 })).toHaveText("関の山");
+    await page.goto("c/w/seki-no-yama/");
+    const next = page.getByRole("navigation", { name: "となりの語" }).getByRole("link", { name: /次の語/ });
+    const href = await next.getAttribute("href");
+    expect(href).toMatch(/\/goi\/c\/w\/[a-z0-9-]+\/$/);
+    await next.click();
+    await expect(page).toHaveURL(new RegExp(`${href}$`));
+    await expect(page.getByRole("heading", { level: 1 })).not.toHaveText("関の山");
   });
 
   test("左右の矢印キーで隣の語に移れる", async ({ page }) => {
     await page.goto("c/w/seki-no-yama/");
-    await page.keyboard.press("ArrowLeft");
-    await expect(page).toHaveURL(/\/c\/w\/hinoshita-kaisan\/$/);
+    const next = await page
+      .getByRole("navigation", { name: "となりの語" })
+      .getByRole("link", { name: /次の語/ })
+      .getAttribute("href");
     await page.keyboard.press("ArrowRight");
+    await expect(page).toHaveURL(new RegExp(`${next}$`));
+    await page.keyboard.press("ArrowLeft");
     await expect(page).toHaveURL(/\/c\/w\/seki-no-yama\/$/);
   });
 
