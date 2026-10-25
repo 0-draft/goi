@@ -15,7 +15,8 @@
     "format": "biome check --write .",
     "test": "vitest run",
     "test:e2e": "playwright test",
-    "lhci": "lhci autorun"
+    "lhci": "lhci autorun",
+    "test:visual": "GOI_VISUAL=1 playwright test"
   },
   "dependencies": {
     "astro": "7.4.2"
