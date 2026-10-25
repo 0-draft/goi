@@ -1,0 +1,14 @@
+---
+import type { Station } from "./route";
+
+interface Props {
+  station: Station;
+  size?: "s" | "m";
+}
+const { station, size = "m" } = Astro.props;
+---
+
+<span class={`c-badge c-badge--${size}`} style={`--line: ${station.line.color}`}>
+  <span class="c-badge__code">{station.line.code}</span>
+  <span class="c-badge__num">{station.number}</span>
+</span>

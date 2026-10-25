@@ -1,0 +1,98 @@
+---
+import { getCollection } from "astro:content";
+import Badge from "../../components/c/Badge.astro";
+import { buildRoute } from "../../components/c/route";
+import C from "../../layouts/C.astro";
+
+const route = buildRoute(await getCollection("words"));
+const base = import.meta.env.BASE_URL;
+const docs = route.stations.map((s) => ({
+  id: s.id,
+  word: s.word.word,
+  reading: s.word.reading,
+  meaning: s.word.meaning,
+}));
+---
+
+<C title="goi｜語の路線図" description="使いたくなる日本語を集めた語彙帳。種類ごとの路線図から語をたどれます。">
+  <header class="c-masthead">
+    <h1 class="c-masthead__title">goi</h1>
+    <p class="c-masthead__lead">使いたくなる日本語を、種類ごとの路線にまとめました。駅を選ぶと、その語の駅名標が開きます。</p>
+  </header>
+  <main class="c-map-page">
+    <search class="c-search" data-search hidden>
+      <label for="c-q">語を探す</label>
+      <input id="c-q" type="search" placeholder="見出し・読み・意味の一部" autocomplete="off" />
+      <p class="c-search__status" role="status" data-status></p>
+    </search>
+    <section class="c-board" aria-labelledby="c-board-title">
+      <h2 id="c-board-title" class="c-board__title">路線図</h2>
+      {
+        route.lines.map(({ line, stations }) => (
+          <section class="c-line" style={`--line: ${line.color}`} aria-labelledby={`c-line-${line.code}`}>
+            <h3 class="c-line__name" id={`c-line-${line.code}`}>
+              <span class="c-line__chip" aria-hidden="true">
+                {line.code}
+              </span>
+              {line.kind}線
+            </h3>
+            <ol class="c-line__stations">
+              {stations.map((s) => (
+                <li class="c-station" data-id={s.id}>
+                  <a class="c-station__link" href={`${base}c/w/${s.id}/`}>
+                    <span class="c-station__dot" aria-hidden="true" />
+                    <span class="c-station__label">
+                      <span class="c-station__word">
+                        <ruby>
+                          {s.word.word}
+                          <rp>（</rp>
+                          <rt>{s.word.reading}</rt>
+                          <rp>）</rp>
+                        </ruby>
+                      </span>
+                      <span class="c-station__romaji" lang="ja-Latn">
+                        {s.romaji}
+                      </span>
+                    </span>
+                    <Badge station={s} size="s" />
+                  </a>
+                </li>
+              ))}
+            </ol>
+          </section>
+        ))
+      }
+      <p class="c-board__empty" data-empty hidden>
+        この言葉に合う駅はありません。読みをひらがなで入れるか、意味の一部で探してみてください。
+      </p>
+    </section>
+  </main>
+  <script type="application/json" id="c-docs" set:html={JSON.stringify(docs)} />
+</C>
+
+<script>
+  import { buildIndex, type SearchDoc, search } from "../../lib/search";
+
+  const form = document.querySelector<HTMLElement>("[data-search]");
+  const input = document.querySelector<HTMLInputElement>("#c-q");
+  const status = document.querySelector<HTMLElement>("[data-status]");
+  const empty = document.querySelector<HTMLElement>("[data-empty]");
+  const data = document.querySelector("#c-docs")?.textContent;
+
+  if (form && input && status && empty && data) {
+    const index = buildIndex(JSON.parse(data) as SearchDoc[]);
+    const stations = [...document.querySelectorAll<HTMLElement>(".c-station")];
+    form.hidden = false;
+
+    const apply = () => {
+      const q = input.value;
+      const hits = q.trim() ? new Set(search(index, q).map((d) => d.id)) : null;
+      for (const s of stations) s.hidden = hits ? !hits.has(s.dataset.id ?? "") : false;
+      const count = hits ? hits.size : stations.length;
+      empty.hidden = count > 0;
+      status.textContent = hits ? `${count}駅が見つかりました` : "";
+    };
+    input.addEventListener("input", apply);
+    apply();
+  }
+</script>
