@@ -68,7 +68,7 @@ pnpm lhci         # Lighthouse CI (先に pnpm build)
 
 | ワークフロー | 内容 |
 | --- | --- |
-| `ci.yml` | lint、astro check、unit test、build、e2e (デスクトップとモバイル)、Lighthouse |
+| `ci.yml` | lint、astro check、unit test、build、e2e (デスクトップとモバイル)、見た目の回帰テスト、Lighthouse |
 | `deploy.yml` | `main` への push で GitHub Pages にデプロイ (OIDC) |
 | `security.yml` | ワークフローを actionlint と zizmor で検査 |
 | `visual-baseline.yml` | 見た目の回帰テストの基準画像を作り直す (手動実行) |

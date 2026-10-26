@@ -89,7 +89,7 @@ To regenerate the baseline screenshots after adding words or changing the design
 
 | Workflow | What it does |
 | --- | --- |
-| `ci.yml` | Lint, astro check, unit tests, build, e2e on desktop and mobile, Lighthouse |
+| `ci.yml` | Lint, astro check, unit tests, build, e2e on desktop and mobile, visual regression, Lighthouse |
 | `deploy.yml` | Deploys to GitHub Pages on push to `main` (OIDC) |
 | `security.yml` | Checks the workflows with actionlint and zizmor |
 | `visual-baseline.yml` | Regenerates the visual regression baselines (run by hand) |
