@@ -96,6 +96,8 @@ for (const L of LANGS) {
       await page.getByRole("link", { name: L.switchTo }).click();
       const other = L.prefix ? "" : "ja/";
       await expect(page).toHaveURL(new RegExp(`/goi/${other}w/seki-no-yama/$`));
+      // ビュー遷移が終わる前に head を読むと待ち続けることがあるので、読み込みの完了を待つ
+      await page.waitForLoadState("load");
       const alternates = await page
         .locator('link[rel="alternate"][hreflang]')
         .evaluateAll((els) => els.map((e) => `${e.getAttribute("hreflang")} ${e.getAttribute("href")}`));
