@@ -16,7 +16,7 @@ const TRAILING = /[、。，．・：；「『（〈《【\s]+$/u;
  */
 export function oneLine(text: string, max: number): string {
   const flat = text.replace(/\s+/g, " ").trim();
-  const first = flat.match(/^.*?。/u)?.[0] ?? flat;
+  const first = flat.match(/^.*?(?:。|\.(?=\s|$))/u)?.[0] ?? flat;
   if (visualWidth(first) <= max) return first;
   let out = "";
   for (const ch of first) {

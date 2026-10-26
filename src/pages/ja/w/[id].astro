@@ -1,0 +1,9 @@
+---
+import { wordPaths } from "../../../views/paths";
+import Word from "../../../views/Word.astro";
+
+export const getStaticPaths = wordPaths;
+const { station, prev, next } = Astro.props;
+---
+
+<Word lang="ja" station={station} prev={prev} next={next} />

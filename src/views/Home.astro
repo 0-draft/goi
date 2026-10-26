@@ -1,0 +1,122 @@
+---
+import { getCollection } from "astro:content";
+import Badge from "../components/c/Badge.astro";
+import { buildRoute } from "../components/c/route";
+import LangSwitch from "../components/LangSwitch.astro";
+import { type Lang, localePath, t, wordText } from "../i18n/ui";
+import C from "../layouts/C.astro";
+import { jsonForScript } from "../lib/json";
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const route = buildRoute(await getCollection("words"));
+// 英語版では英語の意味と短い訳語でも引けるようにする
+const docs = route.stations.map((s) => {
+  const text = wordText(s.word, lang);
+  return {
+    id: s.id,
+    word: s.word.word,
+    reading: s.word.reading,
+    meaning: [text.gloss, text.meaning, s.romaji].filter(Boolean).join(" "),
+  };
+});
+---
+
+<C lang={lang} title={t(lang, "site.title")} description={t(lang, "site.desc")} ogImage={localePath(lang, "og/index.png")}>
+  <header class="c-masthead">
+    <div class="c-masthead__row">
+      <h1 class="c-masthead__title">goi</h1>
+      <LangSwitch lang={lang} class="c-lang" />
+    </div>
+    <p class="c-masthead__lead">{t(lang, "map.lead")}</p>
+  </header>
+  <main class="c-map-page">
+    <search class="c-search" data-search hidden>
+      <label for="c-q">{t(lang, "search.label")}</label>
+      <input id="c-q" type="search" placeholder={t(lang, "search.placeholder")} autocomplete="off" />
+      <p class="c-search__status" role="status" data-status></p>
+    </search>
+    <section class="c-board" aria-labelledby="c-board-title">
+      <h2 id="c-board-title" class="c-board__title">{t(lang, "map.title")}</h2>
+      {
+        route.lines.map(({ line, stations }) => (
+          <section class="c-line" style={`--line: ${line.color}`} aria-labelledby={`c-line-${line.code}`}>
+            <h3 class="c-line__name" id={`c-line-${line.code}`}>
+              <span class="c-line__chip" aria-hidden="true">
+                {line.code}
+              </span>
+              {t(lang, "map.line")(line.kind)}
+            </h3>
+            <ol class="c-line__stations">
+              {stations.map((s) => (
+                <li class="c-station" data-id={s.id}>
+                  <a class="c-station__link" href={localePath(lang, `w/${s.id}/`)}>
+                    <span class="c-station__dot" aria-hidden="true" />
+                    <span class="c-station__label">
+                      <span class="c-station__word" lang="ja">
+                        <ruby>
+                          {s.word.word}
+                          <rp>（</rp>
+                          <rt>{s.word.reading}</rt>
+                          <rp>）</rp>
+                        </ruby>
+                      </span>
+                      <span class="c-station__romaji" lang="ja-Latn">
+                        {s.romaji}
+                      </span>
+                    </span>
+                    <Badge station={s} size="s" />
+                  </a>
+                </li>
+              ))}
+            </ol>
+          </section>
+        ))
+      }
+      <p class="c-board__empty" data-empty hidden>
+        {t(lang, "search.none")}
+      </p>
+    </section>
+  </main>
+  <script type="application/json" id="c-docs" set:html={jsonForScript(docs)} />
+</C>
+
+<script>
+  import { buildIndex, type SearchDoc, search } from "../lib/search";
+
+  const form = document.querySelector<HTMLElement>("[data-search]");
+  const input = document.querySelector<HTMLInputElement>("#c-q");
+  const status = document.querySelector<HTMLElement>("[data-status]");
+  const empty = document.querySelector<HTMLElement>("[data-empty]");
+  const data = document.querySelector("#c-docs")?.textContent;
+  const lang = document.documentElement.lang;
+  const found = (n: number) =>
+    lang === "ja" ? `${n}駅が見つかりました` : `${n} ${n === 1 ? "station" : "stations"} found`;
+
+  if (form && input && status && empty && data) {
+    const index = buildIndex(JSON.parse(data) as SearchDoc[]);
+    const stations = [...document.querySelectorAll<HTMLElement>(".c-station")];
+    const lines = [...document.querySelectorAll<HTMLElement>(".c-line")];
+    let timer: ReturnType<typeof setTimeout> | undefined;
+    form.hidden = false;
+
+    const apply = () => {
+      const q = input.value;
+      const hits = q.trim() ? new Set(search(index, q).map((d) => d.id)) : null;
+      for (const s of stations) s.hidden = hits ? !hits.has(s.dataset.id ?? "") : false;
+      const count = hits ? hits.size : stations.length;
+      // 駅がひとつも残らない路線は見出しごと隠す
+      for (const line of lines) line.hidden = !line.querySelector(".c-station:not([hidden])");
+      empty.hidden = count > 0;
+      // 打鍵ごとに読み上げが積み重ならないよう少し待って更新する
+      clearTimeout(timer);
+      timer = setTimeout(() => {
+        status.textContent = hits ? found(count) : "";
+      }, 300);
+    };
+    input.addEventListener("input", apply);
+    apply();
+  }
+</script>

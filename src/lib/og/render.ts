@@ -1,6 +1,5 @@
 import { Resvg } from "@resvg/resvg-js";
 import satori from "satori";
-import type { Word } from "../schema";
 import { loadFont } from "./font";
 import { collectGlyphs, headwordSize, oneLine } from "./text";
 
@@ -19,16 +18,26 @@ const MUTED = "#6a6a66";
 const PAPER = "#f4f4f1";
 
 export const SITE_NAME = "goi";
-export const SITE_TAGLINE = "使いたくなる日本語を集めた語彙帳";
+export const SITE_TAGLINE = {
+  ja: "使いたくなる日本語を集めた語彙帳",
+  en: "Japanese words worth using",
+} as const;
 
-type OgWord = Record<keyof Pick<Word, "word" | "reading" | "meaning" | "kind">, string>;
+/** 画像1枚ぶんの文字列。表示言語に合わせて呼び出し側で組む */
+export interface OgWord {
+  word: string;
+  /** 見出しの上に出す読み。日本語版はかな、英語版はローマ字。見出しと同じなら出さない */
+  reading: string;
+  kind: string;
+  meaning: string;
+}
 
 /** 画像に描く字すべて。フォントの取得をこの字だけに絞る */
 export function ogGlyphs(words: OgWord[]): string {
   return collectGlyphs(
     SITE_NAME,
-    SITE_TAGLINE,
-    "0123456789語…",
+    ...Object.values(SITE_TAGLINE),
+    "0123456789語words …",
     ...words.flatMap((w) => [w.word, w.reading, w.kind, oneLine(w.meaning, MEANING_CHARS)]),
   );
 }
@@ -81,13 +90,13 @@ function wordCard(w: OgWord): Node {
   );
 }
 
-function siteCard(count: number): Node {
+function siteCard(count: number, lang: keyof typeof SITE_TAGLINE): Node {
   return frame(
-    [mark, el({}, `${count}語`)],
+    [mark, el({}, lang === "ja" ? `${count}語` : `${count} words`)],
     [el({ fontSize: 184, fontWeight: 700, lineHeight: 1.1, letterSpacing: "0.01em" }, SITE_NAME)],
     [
       el({ width: 56, height: 4, background: INK, marginBottom: 28 }),
-      el({ fontSize: 40, lineHeight: 1.4 }, SITE_TAGLINE),
+      el({ fontSize: 40, lineHeight: 1.4 }, SITE_TAGLINE[lang]),
     ],
   );
 }
@@ -107,4 +116,5 @@ async function toPng(node: Node, glyphs: string): Promise<Uint8Array<ArrayBuffer
 }
 
 export const renderWord = (w: OgWord, glyphs: string) => toPng(wordCard(w), glyphs);
-export const renderSite = (count: number, glyphs: string) => toPng(siteCard(count), glyphs);
+export const renderSite = (count: number, lang: keyof typeof SITE_TAGLINE, glyphs: string) =>
+  toPng(siteCard(count, lang), glyphs);

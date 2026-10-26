@@ -9,7 +9,7 @@ const ROMAJI_OVERRIDES: Record<string, string> = {
 
 // 種別ごとに一本の路線として扱う。記号は駅ナンバリングの路線記号にあたる
 export interface Line {
-  kind: string;
+  kind: Word["kind"];
   code: string;
   color: string;
 }

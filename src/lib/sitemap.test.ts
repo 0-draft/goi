@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import words from "../data/words.json";
-import { robotsTxt, sitemapLocation, sitemapUrls, sitemapXml } from "./sitemap";
+import { robotsTxt, sitemapEntries, sitemapLocation, sitemapUrls, sitemapXml } from "./sitemap";
 
 const SITE = "https://0-draft.github.io";
 
@@ -8,10 +8,22 @@ describe("sitemapUrls", () => {
   const urls = sitemapUrls(SITE, "/goi/", words);
   const ready = words.filter((w) => !("pending" in w));
 
-  it("トップと確定したすべての語を含む", () => {
+  it("英語と日本語それぞれのトップと確定したすべての語を含む", () => {
     expect(urls[0]).toBe(`${SITE}/goi/`);
-    expect(urls).toHaveLength(1 + ready.length);
+    expect(urls).toHaveLength(2 * (1 + ready.length));
     expect(urls).toContain(`${SITE}/goi/w/hinoshita-kaisan/`);
+    expect(urls).toContain(`${SITE}/goi/ja/`);
+    expect(urls).toContain(`${SITE}/goi/ja/w/hinoshita-kaisan/`);
+  });
+
+  it("各ページに英語版と日本語版の相互リンクを持つ", () => {
+    const entry = sitemapEntries(SITE, "/goi/", words).find(
+      (e) => e.loc === `${SITE}/goi/ja/w/hinoshita-kaisan/`,
+    );
+    expect(entry?.alternates).toEqual({
+      en: `${SITE}/goi/w/hinoshita-kaisan/`,
+      ja: `${SITE}/goi/ja/w/hinoshita-kaisan/`,
+    });
   });
 
   it("確認中の語と 404 は載らない", () => {
@@ -34,11 +46,19 @@ describe("sitemapUrls", () => {
 });
 
 describe("sitemapXml", () => {
-  it("loc を並べ、特殊文字をエスケープする", () => {
-    const xml = sitemapXml(["https://example.com/a&b/"]);
+  it("loc と hreflang を並べ、特殊文字をエスケープする", () => {
+    const xml = sitemapXml([
+      {
+        loc: "https://example.com/a&b/",
+        alternates: { en: "https://example.com/a&b/", ja: "https://example.com/ja/a&b/" },
+      },
+    ]);
     expect(xml.startsWith('<?xml version="1.0" encoding="UTF-8"?>')).toBe(true);
-    expect(xml).toContain('<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">');
+    expect(xml).toContain('xmlns:xhtml="http://www.w3.org/1999/xhtml"');
     expect(xml).toContain("<loc>https://example.com/a&#38;b/</loc>");
+    expect(xml).toContain(
+      '<xhtml:link rel="alternate" hreflang="ja" href="https://example.com/ja/a&#38;b/"/>',
+    );
   });
 });
 

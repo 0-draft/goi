@@ -1,4 +1,5 @@
 ---
+import { type Lang, localePath, t } from "../../i18n/ui";
 import Badge from "./Badge.astro";
 import type { Station } from "./route";
 import SignFace from "./SignFace.astro";
@@ -7,54 +8,54 @@ interface Props {
   station: Station;
   prev?: Station;
   next?: Station;
+  lang: Lang;
 }
-const { station, prev, next } = Astro.props;
-const base = import.meta.env.BASE_URL;
-const href = (s: Station) => `${base}w/${s.id}/`;
+const { station, prev, next, lang } = Astro.props;
+const href = (s: Station) => localePath(lang, `w/${s.id}/`);
 ---
 
 <div class="c-track" data-track>
   {
     prev && (
       <div class="c-sign c-sign--ghost" style={`--line: ${prev.line.color}`} aria-hidden="true" inert data-ghost={href(prev)}>
-        <SignFace station={prev} />
+        <SignFace station={prev} lang={lang} />
         <div class="c-band" />
       </div>
     )
   }
   <article class="c-sign c-sign--main" style={`--line: ${station.line.color}`} aria-labelledby="c-word">
-    <SignFace station={station} heading />
+    <SignFace station={station} lang={lang} heading />
     <div class="c-band">
       {prev && <span class="c-band__arrow c-band__arrow--prev" />}
       {next && <span class="c-band__arrow c-band__arrow--next" />}
     </div>
-    <nav class="c-adjacent" aria-label="となりの語">
+    <nav class="c-adjacent" aria-label={t(lang, "word.adjacent")}>
       {
         prev ? (
           <a class="c-adjacent__link c-adjacent__link--prev" href={href(prev)} rel="prev" data-dir="prev">
-            <span class="c-visually-hidden">前の語 </span>
-            <span class="c-adjacent__word">{prev.word.word}</span>
+            <span class="c-visually-hidden">{t(lang, "word.prev")} </span>
+            <span class="c-adjacent__word" lang="ja">{prev.word.word}</span>
             <span class="c-adjacent__romaji" lang="ja-Latn">
               {prev.romaji}
             </span>
             <Badge station={prev} size="s" />
           </a>
         ) : (
-          <span class="c-adjacent__end">始発</span>
+          <span class="c-adjacent__end">{t(lang, "word.first")}</span>
         )
       }
       {
         next ? (
           <a class="c-adjacent__link c-adjacent__link--next" href={href(next)} rel="next" data-dir="next">
-            <span class="c-visually-hidden">次の語 </span>
-            <span class="c-adjacent__word">{next.word.word}</span>
+            <span class="c-visually-hidden">{t(lang, "word.next")} </span>
+            <span class="c-adjacent__word" lang="ja">{next.word.word}</span>
             <span class="c-adjacent__romaji" lang="ja-Latn">
               {next.romaji}
             </span>
             <Badge station={next} size="s" />
           </a>
         ) : (
-          <span class="c-adjacent__end">終点</span>
+          <span class="c-adjacent__end">{t(lang, "word.last")}</span>
         )
       }
     </nav>
@@ -62,7 +63,7 @@ const href = (s: Station) => `${base}w/${s.id}/`;
   {
     next && (
       <div class="c-sign c-sign--ghost" style={`--line: ${next.line.color}`} aria-hidden="true" inert data-ghost={href(next)}>
-        <SignFace station={next} />
+        <SignFace station={next} lang={lang} />
         <div class="c-band" />
       </div>
     )

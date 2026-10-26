@@ -1,19 +1,21 @@
 ---
+import { type Lang, t } from "../../i18n/ui";
 import Badge from "./Badge.astro";
 import type { Station } from "./route";
 
 interface Props {
   station: Station;
   heading?: boolean;
+  lang: Lang;
 }
-const { station, heading = false } = Astro.props;
+const { station, heading = false, lang } = Astro.props;
 const Word = heading ? "h1" : "p";
 const len = [...station.word.word].length;
 ---
 
 <div class="c-face">
-  <p class="c-face__line"><Badge station={station} size="s" /> {station.line.kind}線</p>
-  <p class="c-face__kana">{station.word.reading}</p>
-  <Word id={heading ? "c-word" : undefined} class="c-face__word" style={`--len: ${len}`}>{station.word.word}</Word>
+  <p class="c-face__line"><Badge station={station} size="s" /> {t(lang, "map.line")(station.word.kind)}</p>
+  <p class="c-face__kana" lang="ja">{station.word.reading}</p>
+  <Word id={heading ? "c-word" : undefined} class="c-face__word" lang="ja" style={`--len: ${len}`}>{station.word.word}</Word>
   <p class="c-face__romaji" lang="ja-Latn">{station.romaji}</p>
 </div>

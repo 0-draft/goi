@@ -1,0 +1,82 @@
+---
+import type { Station } from "../components/c/route";
+import Sign from "../components/c/Sign.astro";
+import LangSwitch from "../components/LangSwitch.astro";
+import { type Lang, localePath, t, wordText } from "../i18n/ui";
+import C from "../layouts/C.astro";
+
+interface Props {
+  lang: Lang;
+  station: Station;
+  prev?: Station;
+  next?: Station;
+}
+const { lang, station, prev, next } = Astro.props;
+const { word } = station;
+const text = wordText(word, lang);
+
+// 用例の中の見出し語（または読み）を太字にする
+const needle = [word.word, word.reading].find((n) => n && word.example.includes(n));
+const example = needle ? word.example.split(needle) : [word.example];
+const title =
+  lang === "ja" ? `${word.word}（${word.reading}）｜goi` : `${word.word} (${station.romaji}): ${text.gloss} | goi`;
+---
+
+<C lang={lang} title={title} description={text.meaning} ogImage={localePath(lang, `og/${station.id}.png`)}>
+  <Fragment slot="head">
+    {prev && <link rel="prev" href={localePath(lang, `w/${prev.id}/`)} />}
+    {next && <link rel="next" href={localePath(lang, `w/${next.id}/`)} />}
+  </Fragment>
+  <header class="c-top">
+    <a class="c-top__home" href={localePath(lang)}><span class="c-top__mark">goi</span> {t(lang, "map.back")}</a>
+    <LangSwitch lang={lang} class="c-lang" />
+  </header>
+  <main class="c-word" style={`--line: ${station.line.color}`}>
+    <Sign station={station} prev={prev} next={next} lang={lang} />
+    <p class="c-hint">{t(lang, "word.hint")}</p>
+    <div class="c-notes">
+      <section class="c-note c-note--meaning" aria-labelledby="c-meaning">
+        <h2 id="c-meaning">{t(lang, "word.meaning")}</h2>
+        {text.gloss && <p class="c-gloss">{text.gloss}</p>}
+        <p>{text.meaning}</p>
+      </section>
+      {
+        word.example && (
+          <section class="c-note c-note--example" aria-labelledby="c-example">
+            <h2 id="c-example">{t(lang, "word.example")}</h2>
+            <p class="c-example" lang="ja">
+              {example.map((part, i) => (
+                <>
+                  {i > 0 && <b>{needle}</b>}
+                  {part}
+                </>
+              ))}
+            </p>
+            {text.exampleNote && <p class="c-example__en">{text.exampleNote}</p>}
+          </section>
+        )
+      }
+      {
+        text.origin && (
+          <section class="c-note c-note--origin" aria-labelledby="c-origin">
+            <h2 id="c-origin">{t(lang, "word.origin")}</h2>
+            <p>{text.origin}</p>
+          </section>
+        )
+      }
+      <section class="c-note c-note--sources" aria-labelledby="c-sources">
+        <h2 id="c-sources">{t(lang, "word.sources")}</h2>
+        <ul class="c-sources">
+          {
+            word.sources.map((s) => (
+              <li>
+                <a href={s.url} lang="ja">{s.label}</a>
+                <span class="c-sources__host">{new URL(s.url).hostname}</span>
+              </li>
+            ))
+          }
+        </ul>
+      </section>
+    </div>
+  </main>
+</C>
