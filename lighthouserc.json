@@ -5,12 +5,8 @@
       "startServerReadyPattern": "localhost:4392",
       "url": [
         "http://localhost:4392/goi/",
-        "http://localhost:4392/goi/a/",
-        "http://localhost:4392/goi/b/",
-        "http://localhost:4392/goi/c/",
-        "http://localhost:4392/goi/a/w/hinoshita-kaisan/",
-        "http://localhost:4392/goi/b/w/hinoshita-kaisan/",
-        "http://localhost:4392/goi/c/w/hinoshita-kaisan/"
+        "http://localhost:4392/goi/w/hinoshita-kaisan/",
+        "http://localhost:4392/goi/w/uriie-to-karayou-de-kaku-sandaime/"
       ],
       "numberOfRuns": 1
     },

@@ -1,6 +1,3 @@
-/** デザイン案のパス。トップから辿れる3案 */
-export const VARIANTS = ["a", "b", "c"] as const;
-
 interface MinimalWord {
   id: string;
   pending?: string | undefined;
@@ -12,7 +9,7 @@ const withSlash = (base: string) => (base.endsWith("/") ? base : `${base}/`);
 export function sitemapUrls(site: string | URL, base: string, words: readonly MinimalWord[]): string[] {
   const root = new URL(withSlash(base), site);
   const ids = words.filter((w) => !w.pending).map((w) => w.id);
-  const paths = ["", ...VARIANTS.flatMap((v) => [`${v}/`, ...ids.map((id) => `${v}/w/${id}/`)])];
+  const paths = ["", ...ids.map((id) => `w/${id}/`)];
   return paths.map((p) => new URL(p, root).href);
 }
 

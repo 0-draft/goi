@@ -8,16 +8,10 @@ describe("sitemapUrls", () => {
   const urls = sitemapUrls(SITE, "/goi/", words);
   const ready = words.filter((w) => !("pending" in w));
 
-  it("トップと3案の一覧を含む", () => {
+  it("トップと確定したすべての語を含む", () => {
     expect(urls[0]).toBe(`${SITE}/goi/`);
-    for (const v of ["a", "b", "c"]) expect(urls).toContain(`${SITE}/goi/${v}/`);
-  });
-
-  it("確定した語は3案すべてに載る", () => {
-    expect(urls).toHaveLength(1 + 3 * (1 + ready.length));
-    for (const v of ["a", "b", "c"]) {
-      expect(urls).toContain(`${SITE}/goi/${v}/w/hinoshita-kaisan/`);
-    }
+    expect(urls).toHaveLength(1 + ready.length);
+    expect(urls).toContain(`${SITE}/goi/w/hinoshita-kaisan/`);
   });
 
   it("確認中の語と 404 は載らない", () => {

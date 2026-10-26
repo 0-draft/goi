@@ -7,9 +7,9 @@ async function meta(page: import("@playwright/test").Page, key: string) {
   return page.locator(`meta[property="${key}"], meta[name="${key}"]`).getAttribute("content");
 }
 
-for (const variant of ["a", "b", "c"]) {
-  test(`${variant} の語ページに共有の OGP 画像が付いている`, async ({ page, request }) => {
-    await page.goto(`${variant}/w/${ID}/`);
+{
+  test("語のページに OGP 画像が付いている", async ({ page, request }) => {
+    await page.goto(`w/${ID}/`);
     const image = await meta(page, "og:image");
     expect(image).toBe(`${SITE}/goi/og/${ID}.png`);
     expect(await meta(page, "og:image:width")).toBe("1200");

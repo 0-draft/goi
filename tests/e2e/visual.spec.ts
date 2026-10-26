@@ -5,12 +5,8 @@ import { expect, test } from "@playwright/test";
 
 const pages = [
   { name: "top", path: "./" },
-  { name: "a-index", path: "a/" },
-  { name: "b-index", path: "b/" },
-  { name: "c-index", path: "c/" },
-  { name: "a-word", path: "a/w/hinoshita-kaisan/" },
-  { name: "b-word", path: "b/w/hinoshita-kaisan/" },
-  { name: "c-word", path: "c/w/hinoshita-kaisan/" },
+  { name: "word", path: "w/hinoshita-kaisan/" },
+  { name: "word-long", path: "w/uriie-to-karayou-de-kaku-sandaime/" },
 ];
 
 test.beforeEach(async ({ page }) => {

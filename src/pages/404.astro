@@ -1,6 +1,5 @@
 ---
 import { getCollection } from "astro:content";
-import { VARIANTS } from "../lib/sitemap";
 
 // GitHub Pages は /goi/ 以下の存在しないパスにこのページを 404 で返す
 const base = import.meta.env.BASE_URL;
@@ -8,8 +7,6 @@ const base = import.meta.env.BASE_URL;
 const words = Object.fromEntries(
   (await getCollection("words")).filter((w) => !w.data.pending).map((w) => [w.id, w.data.word]),
 );
-const names: Record<(typeof VARIANTS)[number], string> = { a: "一語一色", b: "注の網", c: "駅名標" };
-const variants = VARIANTS.map((v) => ({ path: `${base}${v}/`, name: names[v] }));
 ---
 
 <!doctype html>
@@ -29,44 +26,25 @@ const variants = VARIANTS.map((v) => ({ path: `${base}${v}/`, name: names[v] }))
       <p>URL が間違っているか、ページが移動・削除されたようです。</p>
 
       <section data-moved hidden aria-labelledby="moved-title">
-        <h2 id="moved-title">語のページは移動しました</h2>
-        <p>「<span data-moved-word></span>」は、3つのデザイン案それぞれのページで読めます。</p>
-        <ul>
-          {
-            variants.map((v) => (
-              <li>
-                <a data-moved-link data-base={v.path} href={v.path}>
-                  {v.name}で見る
-                </a>
-              </li>
-            ))
-          }
-        </ul>
+        <h2 id="moved-title">ページは移動しました</h2>
+        <p><a data-moved-link href={base}>新しいページ</a>で読めます。</p>
       </section>
 
-      <h2>ここから探せます</h2>
-      <ul>
-        <li><a href={base}>トップ</a></li>
-        {
-          variants.map((v) => (
-            <li>
-              <a href={v.path}>{v.name}</a>
-            </li>
-          ))
-        }
-      </ul>
+      <p><a href={base}>トップの路線図に戻る</a></p>
     </main>
     <script is:inline type="application/json" id="goi-words" set:html={JSON.stringify(words).replace(/</g, "\\u003c")} />
     <script is:inline define:vars={{ base }}>
-      // 以前あった /goi/w/<id>/ を、各案の語のページへ案内する
+      // デザインを3案出していたころの /goi/a/ /goi/b/ /goi/c/ と、その下の語のページを今の URL へ案内する
       const words = JSON.parse(document.getElementById("goi-words").textContent);
-      const m = location.pathname.match(new RegExp(`^${base}w/([a-z0-9-]+)/?$`));
-      const id = m && Object.hasOwn(words, m[1]) ? m[1] : null;
-      if (id) {
+      const m = location.pathname.match(new RegExp(`^${base}[abc]/(?:w/([a-z0-9-]+)/?)?$`));
+      if (m && (!m[1] || Object.hasOwn(words, m[1]))) {
         const box = document.querySelector("[data-moved]");
-        box.querySelector("[data-moved-word]").textContent = words[id];
-        for (const a of box.querySelectorAll("[data-moved-link]")) {
-          a.href = `${a.dataset.base}w/${id}/`;
+        const link = box.querySelector("[data-moved-link]");
+        if (m[1]) {
+          link.href = `${base}w/${m[1]}/`;
+          link.textContent = `「${words[m[1]]}」のページ`;
+        } else {
+          link.textContent = "トップの路線図";
         }
         box.hidden = false;
       }

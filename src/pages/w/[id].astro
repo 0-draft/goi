@@ -1,8 +1,8 @@
 ---
 import { getCollection } from "astro:content";
-import { buildRoute } from "../../../components/c/route";
-import Sign from "../../../components/c/Sign.astro";
-import C from "../../../layouts/C.astro";
+import { buildRoute } from "../../components/c/route";
+import Sign from "../../components/c/Sign.astro";
+import C from "../../layouts/C.astro";
 
 export async function getStaticPaths() {
   const { stations } = buildRoute(await getCollection("words"));
@@ -23,11 +23,11 @@ const example = needle ? word.example.split(needle) : [word.example];
 
 <C title={`${word.word}（${word.reading}）｜goi`} description={word.meaning} ogImage={`${base}og/${station.id}.png`}>
   <Fragment slot="head">
-    {prev && <link rel="prev" href={`${base}c/w/${prev.id}/`} />}
-    {next && <link rel="next" href={`${base}c/w/${next.id}/`} />}
+    {prev && <link rel="prev" href={`${base}w/${prev.id}/`} />}
+    {next && <link rel="next" href={`${base}w/${next.id}/`} />}
   </Fragment>
   <header class="c-top">
-    <a class="c-top__home" href={`${base}c/`}><span class="c-top__mark">goi</span> 路線図に戻る</a>
+    <a class="c-top__home" href={base}><span class="c-top__mark">goi</span> 路線図に戻る</a>
   </header>
   <main class="c-word" style={`--line: ${station.line.color}`}>
     <Sign station={station} prev={prev} next={next} />
