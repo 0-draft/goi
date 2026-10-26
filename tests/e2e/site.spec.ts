@@ -78,6 +78,19 @@ for (const L of LANGS) {
       await expect(stations).toHaveCount(READY);
     });
 
+    test("英語の訳語やローマ字でも引ける", async ({ page }) => {
+      test.skip(L.lang !== "en", "英語版だけの検索");
+      await page.goto("./");
+      const stations = page.locator(".c-station:visible");
+      const box = page.getByRole("searchbox", { name: L.search });
+      await box.fill("love is blind");
+      await expect(stations).toHaveCount(1);
+      await expect(stations.first()).toContainText("痘痕も靨");
+      await box.fill("sekinoyama");
+      await expect(stations).toHaveCount(1);
+      await expect(stations.first()).toContainText("関の山");
+    });
+
     test("もう一方の言語の同じページへ切り替えられる", async ({ page }) => {
       await page.goto(`${L.prefix}w/seki-no-yama/`);
       await page.getByRole("link", { name: L.switchTo }).click();

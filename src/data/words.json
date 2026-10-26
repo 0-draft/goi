@@ -16,7 +16,13 @@
         "label": "地域文化資産ポータル（関の山車）",
         "url": "https://bunkashisan.ne.jp/bunkashisan/24_mie/7294.html"
       }
-    ]
+    ],
+    "en": {
+      "gloss": "the most one can manage",
+      "meaning": "The utmost one can do; the limit that no amount of effort will get past.",
+      "origin": "Seki refers to Seki-juku, a post town on the Tōkaidō in what is now Kameyama, Mie Prefecture, and yama to festival floats (dashi). There are two theories: that the floats of the Seki Shrine festival were so lavish people said no greater extravagance was possible, or that the floats filled the full width of the post town's narrow street as they paraded through.",
+      "example": "With this budget, keeping things as they are is the best we can manage."
+    }
   },
   {
     "id": "hinoshita-kaisan",
@@ -35,7 +41,13 @@
         "label": "Wikipedia「横綱」",
         "url": "https://ja.wikipedia.org/wiki/%E6%A8%AA%E7%B6%B1"
       }
-    ]
+    ],
+    "en": {
+      "gloss": "peerless champion",
+      "meaning": "So strong in martial arts or sumo that no one in the land is a match; also, such a person. Usually used as another name for a yokozuna.",
+      "origin": "Hinoshita (日下) means the whole realm, and kaisan (開山) is the founder of a temple. In 1682 calling oneself tenka-ichi (best in the realm) was banned, and martial artists and performers began using this term instead. In the late Edo period it referred to an ōzeki who had received a yokozuna license, and from around the Meiji era it became another name for yokozuna. It is also read hinoshita kaizan.",
+      "example": "The new yokozuna, who took the Emperor's Cup with a perfect record, lived up to the title of hinoshita kaisan."
+    }
   },
   {
     "id": "abata-mo-ekubo",
@@ -50,7 +62,13 @@
         "label": "コトバンク",
         "url": "https://kotobank.jp/word/%E7%97%98%E7%97%95%E3%82%82%E9%9D%A8-426343"
       }
-    ]
+    ],
+    "en": {
+      "gloss": "love is blind",
+      "meaning": "When you are in love with someone, even their faults look like good points. A figure for how partiality makes any flaw look attractive.",
+      "origin": "Abata (痘痕) are the pits left in the skin after recovering from smallpox, and ekubo (靨) are the dimples that form in the cheeks when smiling. The earliest known use is in the sharebon Igagoe Zōho Kappa no Tatsu (1779). Because the phrase carries the irony that the faults only look good, saying it to the couple themselves can give offense.",
+      "example": "When even the habit of showing up late looks charming in the one you love, love really is blind."
+    }
   },
   {
     "id": "kuwasemono",
@@ -69,7 +87,13 @@
         "label": "漢字ペディア",
         "url": "https://www.kanjipedia.jp/kotoba/0003541200"
       }
-    ]
+    ],
+    "en": {
+      "gloss": "a sham; a crafty one",
+      "meaning": "Something that looks good but has nothing behind it. Said of a person, it is written 食わせ者 and refers to someone who seems unassuming but is in fact not to be trusted.",
+      "origin": "The verb kuwasu once also meant to saddle someone with a loss, or to deceive them. From this the word came to mean something that deceives people.",
+      "example": "I got stuck with a real dud. / That man is a crafty one."
+    }
   },
   {
     "id": "hare-to-ke",
@@ -88,7 +112,13 @@
         "label": "ハレとケの意味と由来",
         "url": "https://jpnculture.net/haretoke/"
       }
-    ]
+    ],
+    "en": {
+      "gloss": "the festive and the everyday",
+      "meaning": "Hare (晴) is the out-of-the-ordinary: festivals, annual observances, and ceremonial occasions such as weddings and funerals. Ke (褻) is ordinary everyday life.",
+      "origin": "Yanagita Kunio popularized the pair as a concept in folklore studies, but the words themselves are old and appear in the 1603 Nippo Jisho. The hare in haregi (one's best clothes) and harebutai (a grand occasion, a time in the spotlight) is this hare. Since the 1970s the pair has sometimes been discussed together with kegare, understood as the state in which the energy of ke has run dry.",
+      "example": "Festivals and New Year are hare, and the rest of ordinary life is ke."
+    }
   },
   {
     "id": "inase",
@@ -107,7 +137,13 @@
         "label": "コトバンク",
         "url": "https://kotobank.jp/word/%E3%81%BC%E3%82%89-1416871"
       }
-    ]
+    ],
+    "en": {
+      "gloss": "dashing and stylish",
+      "meaning": "Spirited, straightforward, and stylish; also, a young person with that kind of temperament.",
+      "origin": "There are several theories about its origin, and the Nihon Kokugo Daijiten lists it as unknown. One theory traces it to inase-ichō, a topknot worn by the young men of the fish market that resembled the back of an ina (a young gray mullet). In Tsukuda-bushi songs from around the Bunsei era (1818 to 1830), the spirit of the young men of Kanda was sung of as inase. According to the Morisada Mankō, the word was also applied to people's character and to goods, and was not always a compliment.",
+      "example": "Wearing a happi coat, the section chief looked unusually dashing."
+    }
   },
   {
     "id": "kenmohororo",
@@ -122,7 +158,13 @@
         "label": "コトバンク",
         "url": "https://kotobank.jp/word/%E3%81%91%E3%82%93%E3%82%82%E3%81%BB%E3%82%8D%E3%82%8D-493205"
       }
-    ]
+    ],
+    "en": {
+      "gloss": "curtly, flatly",
+      "meaning": "Turning down a request or proposal so bluntly that there is nothing left to hold on to.",
+      "origin": "Both ken and hororo are said to be the cry of the pheasant, and one theory holds that hororo is the sound of its wings. The ken is said to play on the harshness of kendon (慳貪, stingy and cold) and kentsuku (剣突, a sharp rebuke). An early example appears in the Amakusa edition of Isoho Monogatari (Aesop's Fables) of 1593.",
+      "example": "I brought the proposal to the department head and was flatly turned down."
+    }
   },
   {
     "id": "otamegokashi",
@@ -141,7 +183,13 @@
         "label": "コトバンク",
         "url": "https://kotobank.jp/word/%E3%81%94%E3%81%8B%E3%81%97-498664"
       }
-    ]
+    ],
+    "en": {
+      "gloss": "self-interest dressed as kindness",
+      "meaning": "Pretending to act for someone else's sake while actually serving one's own interest.",
+      "origin": "Gokashi is the voiced form of kokashi, the continuative form of the verb kokasu (転かす, to tip over). As a suffix it adds the sense of using something as a pretext to serve oneself. Shinsetsu-gokashi (feigned kindness) has the same form. An example appears in the jōruri play Gion Nyōgo Kokonoe no Nishiki (1760).",
+      "example": "The advice offered \"for your own good\" was nothing but self-interest dressed up as concern."
+    }
   },
   {
     "id": "rachigai",
@@ -160,7 +208,13 @@
         "label": "コトバンク",
         "url": "https://kotobank.jp/word/%E5%9F%92-656203"
       }
-    ]
+    ],
+    "en": {
+      "gloss": "outside the bounds",
+      "meaning": "Outside the scope of a matter; outside what one cares about or is considering.",
+      "origin": "Rachi (埒) was originally the fence built around a riding ground. From this came the sense of a division or scope, and by around the late medieval period usages such as rachi ga aku (a matter gets settled) appear to have begun. The Jitsū dictionary says rachi ga aku came from the kurabeuma horse-race ritual at Kamigamo Shrine.",
+      "example": "Getting promoted lies outside the bounds of his interests."
+    }
   },
   {
     "id": "uron",
@@ -175,7 +229,13 @@
         "label": "コトバンク",
         "url": "https://kotobank.jp/word/%E8%83%A1%E4%B9%B1-442342"
       }
-    ]
+    ],
+    "en": {
+      "gloss": "dubious, suspicious",
+      "meaning": "Of uncertain identity and suspicious; also, of doubtful truth.",
+      "origin": "U and ron are the tōon readings of 胡 and 乱. Because the word appears in the Shōbōgenzō and in the poetry and prose of Gozan monks, it is thought to have come in through Zen Buddhism. In China it meant disorderly, but in Japan the sense of doubtful developed and later became the main one.",
+      "example": "Outside the station, someone pitched me a shady moneymaking scheme."
+    }
   },
   {
     "id": "todonotsumari",
@@ -190,7 +250,13 @@
         "label": "コトバンク",
         "url": "https://kotobank.jp/word/%E3%81%A8%E3%81%A9%E3%81%AE%E3%81%A4%E3%81%BE%E3%82%8A-584181"
       }
-    ]
+    ],
+    "en": {
+      "gloss": "in the end, when all is said and done",
+      "meaning": "Ultimately, after everything that has happened. Usually said of an unwelcome outcome.",
+      "origin": "The gray mullet (bora) is a shusse-uo, a fish whose name changes as it grows, and at its final stage it is called todo. From this the phrase came to mean where things end up. An example appears in the sharebon Kyōden Yoshi (1790).",
+      "example": "We held meeting after meeting, but in the end we settled on keeping things as they were."
+    }
   },
   {
     "id": "kabun-ni-shite",
@@ -205,7 +271,13 @@
         "label": "コトバンク",
         "url": "https://kotobank.jp/word/%E5%AF%A1%E8%81%9E-465964"
       }
-    ]
+    ],
+    "en": {
+      "gloss": "to my limited knowledge",
+      "meaning": "A humble preface used when saying one does not know something, putting it down to one's own narrow learning.",
+      "origin": "Kabun (寡聞) means having heard and seen little. The Jitsū dictionary gives as its source a passage in the Xueji chapter of the Book of Rites (Liji) saying that one who studies alone without friends will have narrow knowledge. In Japan an early example is in Kūkai's Sangō Shiiki (around 797).",
+      "example": "In my limited knowledge, I was not aware that any such rule existed."
+    }
   },
   {
     "id": "buchouhou",
@@ -220,7 +292,13 @@
         "label": "コトバンク",
         "url": "https://kotobank.jp/word/%E4%B8%8D%E8%AA%BF%E6%B3%95-618972"
       }
-    ]
+    ],
+    "en": {
+      "gloss": "having no head for drink or the arts",
+      "meaning": "A humble way of saying one has no taste or skill for drinking or the performing arts. It can also mean clumsiness, or a blunder or misconduct.",
+      "origin": "The sense of clumsiness is old enough to appear in the Kōyasan documents of 1283. The sense of a blunder is found in the kyōgen play Kuriyaki, and the humble sense of being a stranger to drink or the arts in the kyōgen play Hōchō Muko.",
+      "example": "I'm afraid I'm not much of a drinker."
+    }
   },
   {
     "id": "ouyou",
@@ -239,7 +317,13 @@
         "label": "コトバンク",
         "url": "https://kotobank.jp/word/%E5%A4%A7%E6%A7%98-451054"
       }
-    ]
+    ],
+    "en": {
+      "gloss": "easygoing, magnanimous",
+      "meaning": "Relaxed and generous, not fussing over small things.",
+      "origin": "It was originally a Chinese word from the Daya section of the Classic of Poetry (Shijing), describing a martial bearing like a hawk taking flight. In Japan it was confused with the native word ōyō (大様, read おおよう), which is close in meaning and sound, and since the early modern period it has been used almost entirely in the sense of 大様.",
+      "example": "The president is easygoing and doesn't make a fuss when someone is a little late."
+    }
   },
   {
     "id": "katahara-itai",
@@ -254,7 +338,13 @@
         "label": "コトバンク",
         "url": "https://kotobank.jp/word/%E7%89%87%E8%85%B9%E7%97%9B%E3%81%84-463633"
       }
-    ]
+    ],
+    "en": {
+      "gloss": "laughable presumption",
+      "meaning": "Ridiculous and galling to watch, said of words or actions by someone who does not know their place.",
+      "origin": "It comes from the classical katahara itashi (傍痛し, painful to watch from the side, hard to bear witnessing). This katahara was later taken to mean 片腹 (one side of the belly), giving the current spelling. The characters 片腹痛 already appear in the mid-Heian diary Shōyūki (1014). It does not mean having a pain in one's side.",
+      "example": "Being lectured on how to organize the work by a newcomer who just joined the company is laughable."
+    }
   },
   {
     "id": "yakubusoku",
@@ -273,7 +363,13 @@
         "label": "文化庁",
         "url": "https://www.bunka.go.jp/tokei_hakusho_shuppan/tokeichosa/kokugo_yoronchosa/pdf/94274201_02.pdf"
       }
-    ]
+    ],
+    "en": {
+      "gloss": "a role beneath one's ability",
+      "meaning": "Of an assigned role, too minor for the person's ability.",
+      "origin": "It originally meant being dissatisfied with the role one had been given. Using it to mean the role is too much for oneself is not the original usage. In the Agency for Cultural Affairs public opinion survey on the Japanese language, the share choosing \"a role too heavy for one's ability\" fell from 62.8% in fiscal Heisei 14 (2002) to 48.9% in fiscal Reiwa 6 (2024), while the original \"too light\" rose from 27.6% to 45.1%.",
+      "example": "Taking minutes is a role too small for her."
+    }
   },
   {
     "id": "ki-ga-okenai",
@@ -288,7 +384,13 @@
         "label": "コトバンク",
         "url": "https://kotobank.jp/word/%E6%B0%97%E3%81%8C%E7%BD%AE%E3%81%91%E3%81%AA%E3%81%84-471844"
       }
-    ]
+    ],
+    "en": {
+      "gloss": "easy to be around",
+      "meaning": "Needing no reserve or carefulness; someone you can be completely at ease with.",
+      "origin": "It is the negative of ki o oku (to feel constrained), so it is a compliment. In the Agency for Cultural Affairs public opinion survey, the original meaning, \"no need to hold back,\" was chosen by 44.6% in fiscal Heisei 14 (2002) and 42.7% in fiscal Heisei 24 (2012). The opposite, \"one has to hold back,\" rose from 40.1% to 47.6%, and has come out ahead since fiscal Heisei 18 (2006).",
+      "example": "I can talk about anything with my friends from school, whom I never have to be on guard around."
+    }
   },
   {
     "id": "kosoku",
@@ -303,7 +405,13 @@
         "label": "コトバンク",
         "url": "https://kotobank.jp/word/%E5%A7%91%E6%81%AF-501976"
       }
-    ]
+    ],
+    "en": {
+      "gloss": "a stopgap, makeshift",
+      "meaning": "Making do for the moment; an approach that puts off a real solution.",
+      "origin": "Ko (姑) means for a while and soku (息) means to rest. The source is the Tangong I chapter of the Book of Rites, where Zengzi contrasts the way a gentleman loves through virtue with the way a petty person loves, calling the latter kosoku. Using it to mean underhanded is a recent usage. In the Agency for Cultural Affairs public opinion survey, 70.9% in fiscal Heisei 22 (2010) and 73.9% in fiscal Reiwa 3 (2021) took kosoku na shudan to mean \"an underhanded method,\" while the original \"a temporary fix\" stayed at 15.0% and 17.4%.",
+      "example": "Restarting it is only a stopgap and doesn't fix the underlying problem."
+    }
   },
   {
     "id": "zotto-shinai",
@@ -322,7 +430,13 @@
         "label": "コトバンク",
         "url": "https://kotobank.jp/word/%E3%81%9E%E3%81%A4%E3%81%A8-3213436"
       }
-    ]
+    ],
+    "en": {
+      "gloss": "not much to get excited about",
+      "meaning": "Not interesting; not very impressive.",
+      "origin": "Besides fear or cold, zotto can also mean shuddering from being strongly moved. Zotto shinai is its negative and means not being moved. In the Agency for Cultural Affairs public opinion survey, the share who took amari zotto shinai eiga to mean \"a film that is not very interesting\" was 31.3% in fiscal Heisei 18 (2006) and 22.8% in fiscal Heisei 28 (2016). The share who took it as \"not frightening\" went from 54.1% to 56.1%.",
+      "example": "The remake looks beautiful, but the plot is nothing to get excited about."
+    }
   },
   {
     "id": "yabusaka-de-nai",
@@ -337,7 +451,13 @@
         "label": "コトバンク",
         "url": "https://kotobank.jp/word/%E5%90%9D%E3%81%8B-648978"
       }
-    ]
+    ],
+    "en": {
+      "gloss": "quite willing to",
+      "meaning": "Glad to do something; ready to help.",
+      "origin": "Older Japanese had yafusashi and yafusagaru, meaning to be grudging, and adding the suffix ka to their stem yafusa produced yabusaka. The original sense was stingy or hesitant, so its negative means doing something without holding back. In the Agency for Cultural Affairs survey for fiscal Heisei 25 (2013), 33.8% chose the original \"do it gladly\" and 43.7% chose \"do it reluctantly.\"",
+      "example": "Depending on the terms, I'd be willing to take on organizing the party."
+    }
   },
   {
     "id": "manjiri-tomo-sezu",
@@ -352,7 +472,13 @@
         "label": "コトバンク",
         "url": "https://kotobank.jp/word/%E3%81%BE%E3%82%93%E3%81%98%E3%82%8A-636660"
       }
-    ]
+    ],
+    "en": {
+      "gloss": "without sleeping a wink",
+      "meaning": "Without sleeping at all; staying awake through the night.",
+      "origin": "Manjiri is an adverb describing a brief doze, and with a negative it emphasizes not sleeping a wink. In the Agency for Cultural Affairs survey for fiscal Heisei 25 (2013), the meaning considered original, \"without sleeping,\" was chosen by 28.7%, and \"without moving\" by 51.5%, so the two had reversed.",
+      "example": "Anxious to hear whether I had passed, I spent the night without sleeping a wink."
+    }
   },
   {
     "id": "umisen-yamasen",
@@ -367,7 +493,13 @@
         "label": "コトバンク",
         "url": "https://kotobank.jp/word/%E6%B5%B7%E5%8D%83%E5%B1%B1%E5%8D%83-441502"
       }
-    ]
+    ],
+    "en": {
+      "gloss": "a wily old hand",
+      "meaning": "The cunning of someone who has seen a great deal of the world and knows all its ins and outs; also, such a hardened person.",
+      "origin": "From the belief that a snake that has lived a thousand years in the sea and a thousand years in the mountains becomes a dragon. From the Edo period into the Meiji era the longer form umi ni sennen yama ni sennen was usual. Examples of the shortened four-character form umisen yamasen appear from the Taishō era, making it a relatively new expression.",
+      "example": "The other side's negotiator is a wily old hand, so assume they can already read our cards."
+    }
   },
   {
     "id": "okame-hachimoku",
@@ -386,7 +518,13 @@
         "label": "コトバンク（傍目八目）",
         "url": "https://kotobank.jp/word/%E5%82%8D%E7%9B%AE%E5%85%AB%E7%9B%AE-451367"
       }
-    ]
+    ],
+    "en": {
+      "gloss": "onlookers see more of the game",
+      "meaning": "People watching from the side can see the truth of a matter, and what is to be gained or lost, better than those involved. Also written 傍目八目.",
+      "origin": "The phrase comes from go and is listed as a go term in Sewa Zukushi, an early Edo-period reference book for haikai. Oka indicates a position with no direct involvement, and okame means an onlooker. Hachimoku is widely interpreted as being able to read eight moves ahead, but another theory holds that since moku is a unit for counting territory, it means seeing moves that gain eight points.",
+      "example": "Onlookers see more of the game, so I make a point of having someone else read my proposals."
+    }
   },
   {
     "id": "uzou-muzou",
@@ -401,7 +539,13 @@
         "label": "コトバンク",
         "url": "https://kotobank.jp/word/%E6%9C%89%E8%B1%A1%E7%84%A1%E8%B1%A1-440039"
       }
-    ]
+    ],
+    "en": {
+      "gloss": "riffraff, the rabble",
+      "meaning": "People or things that are many in number but of no account. Used contemptuously of a crowd of worthless people.",
+      "origin": "It comes from the Buddhist term 有相無相, which originally referred to all that exists, things with form and things without. From there it broadened to mean a miscellaneous jumble, and then became a disparaging term for worthless people. In the latter sense an example appears in the Senryū-hyō Mankuawase of 1763.",
+      "example": "Once something blows up online, all sorts of riffraff pile on and the real issue gets lost."
+    }
   },
   {
     "id": "teren-tekuda",
@@ -416,7 +560,13 @@
         "label": "コトバンク",
         "url": "https://kotobank.jp/word/%E6%89%8B%E7%B7%B4%E6%89%8B%E7%AE%A1-577343"
       }
-    ]
+    ],
+    "en": {
+      "gloss": "wiles and tricks",
+      "meaning": "The ploys and maneuvering used to deceive people or manipulate them at will.",
+      "origin": "Both teren (手練) and tekuda (手管) mean a way of deceiving people, and the phrase pairs two words of the same meaning for emphasis. Both are native words of unclear origin, and the kanji are ateji (characters used for their sound). An example appears in the dangibon Endō Tsugan of 1715.",
+      "example": "Using every wile and trick, they wormed their way into the president's favor and landed a seat on the board."
+    }
   },
   {
     "id": "nisoku-sanmon",
@@ -431,7 +581,13 @@
         "label": "コトバンク",
         "url": "https://kotobank.jp/word/%E4%BA%8C%E6%9D%9F%E4%B8%89%E6%96%87-591958"
       }
-    ]
+    ],
+    "en": {
+      "gloss": "dirt cheap",
+      "meaning": "Extremely cheap even in quantity; a price as low as a clearance sale.",
+      "origin": "It is said to come from sturdy kongō zōri sandals selling for a mere three mon for two pairs. For this reason it was also written 二足三文 in the past. An example appears in the early Edo-period hanashibon Kinō wa Kyō no Monogatari.",
+      "example": "The old furniture from my parents' house sold for next to nothing."
+    }
   },
   {
     "id": "icchoura",
@@ -450,7 +606,13 @@
         "label": "語源由来辞典",
         "url": "https://gogen-yurai.jp/ittyoura/"
       }
-    ]
+    ],
+    "en": {
+      "gloss": "one's best outfit",
+      "meaning": "The finest piece of clothing one owns, kept for special occasions. Originally it also meant the only garment one had, with nothing to change into.",
+      "origin": "One theory holds that it is a corruption of icchōrō (一挺蝋), a single candle with no spare. This is said to have come to be written 一張羅 in the sense of a single garment of ra (thin silk). An example appears in the ukiyo-zōshi Nanshoku Ōkagami of 1687.",
+      "example": "I wore my one good suit to the wedding."
+    }
   },
   {
     "id": "bokunenjin",
@@ -469,7 +631,13 @@
         "label": "語源由来辞典",
         "url": "https://gogen-yurai.jp/bokunenjin/"
       }
-    ]
+    ],
+    "en": {
+      "gloss": "a wooden, unsociable person",
+      "meaning": "A taciturn, unfriendly person. Also used as an insult for someone tactless who does not understand how things work.",
+      "origin": "It appears to be a Chinese-style compound coined in Japan (wasei kango), and its origin is unclear. The kanji are ateji: boku (朴) is explained as the plainness of soboku and bokutotsu, nen (念) as thought, and jin (仁) as person. An example appears in the late Edo-period comic book (kokkeibon) Ukiyoburo.",
+      "example": "Whatever you say to them, all you get back is \"Yeah.\" They are such a bokunenjin that the conversation goes nowhere."
+    }
   },
   {
     "id": "touhenboku",
@@ -488,7 +656,13 @@
         "label": "語源由来辞典",
         "url": "https://gogen-yurai.jp/touhenboku/"
       }
-    ]
+    ],
+    "en": {
+      "gloss": "a blockhead",
+      "meaning": "An insult for someone tactless, or someone unreasonable who will not listen.",
+      "origin": "The origin is unclear. Tōhenboku is recorded as another name for the chinaberry (sendan) and the Chinese mahogany (chanchin), so it may originally have meant an odd tree from China. One view holds that this overlapped with tōjin, a term of abuse for someone who could not see reason, and it became an insult for people. The form tōhenboku-me appears in the sharebon 卯地臭意 (1783).",
+      "example": "No matter how many times I explain, this blockhead asks the same thing again."
+    }
   },
   {
     "id": "taikomochi",
@@ -511,7 +685,13 @@
         "label": "Wikipedia（幇間）",
         "url": "https://ja.wikipedia.org/wiki/%E5%B9%87%E9%96%93"
       }
-    ]
+    ],
+    "en": {
+      "gloss": "a flatterer, yes-man",
+      "meaning": "Someone who fawns on others to stay in their good graces. Originally a male entertainer (hōkan) who livened up guests' fun at banquets.",
+      "origin": "Taikomochi as an occupation is thought to have appeared in the Genroku period, when lavish pleasure-seeking was in fashion (some encyclopedias place it around the Hōreki era). The source of the name is unclear; one theory derives it from the taiko drum used in musical accompaniment. There is also a well-known story that Sorori Shinzaemon, a member of Toyotomi Hideyoshi's otogishū (companions), was called taikō-mochi for flattering Hideyoshi with the words \"Taikō, ikaga de\" (How is it, my lord Taikō?). But this remains a legend, including whether Sorori existed at all.",
+      "example": "In front of the section chief they turn into a flatterer, even laughing on cue."
+    }
   },
   {
     "id": "hougan-biiki",
@@ -526,7 +706,13 @@
         "label": "コトバンク",
         "url": "https://kotobank.jp/word/%E5%88%A4%E5%AE%98%E8%B4%94%E5%B1%93-606178"
       }
-    ]
+    ],
+    "en": {
+      "gloss": "rooting for the underdog",
+      "meaning": "Sympathizing with and taking the side of the weak or the unfortunate. Also read hangan-biiki.",
+      "origin": "Hōgan refers to Minamoto no Yoshitsune, known as Kurō Hōgan. The phrase arose from the sympathy people felt for Yoshitsune, who was hunted down by his elder brother Yoritomo and met a tragic end. The Kefukigusa of 1638 contains the verse \"Yo ya hana ni hōgan-biiki haru no kaze.\"",
+      "example": "Finding yourself cheering for the public school making its first appearance is just rooting for the underdog."
+    }
   },
   {
     "id": "amanojaku",
@@ -541,7 +727,13 @@
         "label": "コトバンク",
         "url": "https://kotobank.jp/word/%E5%A4%A9%E3%81%AE%E9%82%AA%E9%AC%BC-427129"
       }
-    ]
+    ],
+    "en": {
+      "gloss": "a contrarian",
+      "meaning": "A contrary person who deliberately goes against what others say. Originally a wicked demon in folktales that reads people's minds and gets in their way.",
+      "origin": "There are several theories about its origin. One traces it to Ama no Sagume (天探女), a goddess with a wicked heart in the myths of the Kojiki and Nihon Shoki, though some dictionaries regard this as a folk etymology. In Buddhism, the demon face on the belly of Bishamonten's armor was called amanojaku (海若), and the name is said to have later been applied to the small demon trampled under his feet as well. In the folktale Urikohime it appears as the villain who disguises itself as the princess.",
+      "example": "I'm a contrarian by nature: tell me not to do something and I want to do it."
+    }
   },
   {
     "id": "yabo",
@@ -556,7 +748,13 @@
         "label": "コトバンク",
         "url": "https://kotobank.jp/word/%E9%87%8E%E6%9A%AE-649025"
       }
-    ]
+    ],
+    "en": {
+      "gloss": "unrefined, tactless",
+      "meaning": "Insensitive to the finer points of human feeling, and lacking tact. Also said of words, actions, or taste that lack polish.",
+      "origin": "The origin is unknown, and 野暮 is ateji. One theory says it changed from yabu (野夫), another links it to the yabu of yabu-isha (quack doctor). In the Edo period iki (粋) and tsū (通) were held up as ideals, and yabo was their opposite. It was also held, however, that a yabo person could become tsū through practice.",
+      "example": "Asking when the last train leaves just as the mood is getting good is tactless."
+    }
   },
   {
     "id": "temae-miso",
@@ -571,7 +769,13 @@
         "label": "コトバンク",
         "url": "https://kotobank.jp/word/%E6%89%8B%E5%89%8D%E5%91%B3%E5%99%8C-576802"
       }
-    ]
+    ],
+    "en": {
+      "gloss": "blowing one's own horn",
+      "meaning": "Praising oneself; bragging.",
+      "origin": "Miso was once made in each household, so the flavor differed from home to home, and everyone tended to think their own family's miso was the best. The phrase comes from boasting about that homemade miso. An example appears in the comic book (kokkeibon) Ōyama Dōchū Hizakurige of 1832.",
+      "example": "I don't mean to blow my own horn, but I think the handouts came out well this time."
+    }
   },
   {
     "id": "oumagatoki",
@@ -586,7 +790,13 @@
         "label": "コトバンク",
         "url": "https://kotobank.jp/word/%E5%A4%A7%E7%A6%8D%E6%99%82-450859"
       }
-    ]
+    ],
+    "en": {
+      "gloss": "dusk, the hour of meeting demons",
+      "meaning": "The dim part of the evening after the sun has set; twilight. It was thought to be the hour when one was most likely to meet evil spirits.",
+      "origin": "It was originally ōmagatoki (大禍時), meaning the hour when great misfortune tends to happen. Later the \"ma\" came to be understood as 魔 (demon), the sense of \"meeting demons\" was added, and the word came to be written 逢魔時. There is also a spelling, 王莽時, that ties it, through a far-fetched association, to Wang Mang of the Han.",
+      "example": "When I was a child, my grandmother often told me to be home before ōmagatoki."
+    }
   },
   {
     "id": "hinoeuma",
@@ -601,7 +811,13 @@
         "label": "コトバンク",
         "url": "https://kotobank.jp/word/%E4%B8%99%E5%8D%88-120546"
       }
-    ]
+    ],
+    "en": {
+      "gloss": "year of the fire horse",
+      "meaning": "The 43rd year of the sexagenary cycle, which comes around once every 60 years. There is a groundless superstition that fires are frequent in this year and that women born in it are fierce-tempered and will devour their husbands.",
+      "origin": "In five-phase theory, both hinoe (丙) and uma (午) correspond to fire, so the year was considered one of many fires. The idea came from China and took hold among city dwellers in the Edo period. It is sometimes linked to the arson case of Yaoya Oshichi in the early Edo period. In 1906 and 1966, the number of births dropped sharply because of the superstition.",
+      "example": "In 1966, the previous hinoeuma year, the number of births fell sharply because of the superstition."
+    }
   },
   {
     "id": "genkatsugi",
@@ -624,7 +840,13 @@
         "label": "コトバンク（験）",
         "url": "https://kotobank.jp/word/%E9%A8%93-491271"
       }
-    ]
+    ],
+    "en": {
+      "gloss": "doing things for luck",
+      "meaning": "Judging things as good or bad by omens, choosing good signs and avoiding bad ones.",
+      "origin": "It is thought to come from engi wo katsugu (縁起を担ぐ, to be superstitious about omens). One theory holds that gen (験) is a contraction of gien, a reversal of engi, but dictionaries treat this as only one theory. Gen originally meant the efficacy of ascetic practice or incantatory prayer, and later also came to be used for signs of good or bad fortune.",
+      "example": "On the day of an important business meeting, I wear the same tie for luck."
+    }
   },
   {
     "id": "kotodama",
@@ -639,7 +861,13 @@
         "label": "コトバンク",
         "url": "https://kotobank.jp/word/%E8%A8%80%E9%9C%8A-503099"
       }
-    ]
+    ],
+    "en": {
+      "gloss": "the spirit that dwells in words",
+      "meaning": "A mysterious power believed to reside in words. What was said aloud was thought to come true exactly as spoken.",
+      "origin": "A belief of ancient Japan. The Man'yōshū contains a poem calling Japan \"the land where kotodama bring blessings,\" that is, a country where the spiritual power of words brings good fortune. From this belief came both the practice of actively using the power of words, as in norito (Shinto prayers), and the custom of imikotoba, avoiding ill-omened words.",
+      "example": "Mindful of kotodama, we avoid the word \"fall\" around students taking entrance exams."
+    }
   },
   {
     "id": "okkuu",
@@ -662,7 +890,13 @@
         "label": "くらしの仏教語豆事典",
         "url": "https://tarikihongwan.net/category2/bukkyou/1216.html/"
       }
-    ]
+    ],
+    "en": {
+      "gloss": "too much of a bother",
+      "meaning": "Finding something a hassle and not feeling like doing it. It describes reluctance to get moving on something that looks like it will take effort.",
+      "origin": "Kō (劫) is a transliteration of the Sanskrit kalpa, a unit of extremely long time. 億劫 is a hundred million times that. It was originally read okkō or okukō and was a Buddhist term for an unimaginably long period. Since something that takes a long time to accomplish cannot be done easily, the meaning shifted to \"not easily done\" and then to \"bothersome, not inclined to do,\" and the reading also changed to okkū.",
+      "example": "On rainy days, going outside feels like too much trouble."
+    }
   },
   {
     "id": "gaman",
@@ -681,7 +915,13 @@
         "label": "浄土真宗本願寺派",
         "url": "https://www.hongwanji.or.jp/mioshie/words/000253.html"
       }
-    ]
+    ],
+    "en": {
+      "gloss": "endurance, putting up with it",
+      "meaning": "Holding back pain or desires. Today it is mostly used approvingly.",
+      "origin": "In Buddhism it was one of the seven kinds of pride (shichiman) and had a negative meaning: the mind that, convinced it has a self, rates itself highly and looks down on others. Later, from the idea of clinging to oneself, it came to mean being self-willed or stubborn, and that strength of will turned into the positive sense of enduring patiently.",
+      "example": "I resisted the urge to answer back and kept quiet until the meeting ended."
+    }
   },
   {
     "id": "aisatsu",
@@ -700,7 +940,13 @@
         "label": "語源由来辞典",
         "url": "https://gogen-yurai.jp/aisatsu/"
       }
-    ]
+    ],
+    "en": {
+      "gloss": "greetings and courtesies",
+      "meaning": "Words or bows exchanged when meeting or parting. Also used for a speech at a ceremony.",
+      "origin": "Both 挨 and 拶 are characters meaning to push or press. In Zen this was called ichiai issatsu (一挨一拶), referring to monks exchanging questions and answers to test the depth of each other's enlightenment. The word, used by Zen monks in the medieval period, gradually spread into general use and came to mean everyday exchanges and words of courtesy.",
+      "example": "On my first day after the transfer, I went around greeting everyone in the department."
+    }
   },
   {
     "id": "hiniku",
@@ -719,7 +965,13 @@
         "label": "語源由来辞典",
         "url": "https://gogen-yurai.jp/hiniku/"
       }
-    ]
+    ],
+    "en": {
+      "gloss": "sarcasm, irony",
+      "meaning": "Criticizing someone indirectly and spitefully. It also refers to an outcome that is the opposite of what was expected, as in hiniku na kekka (an ironic result).",
+      "origin": "It originally meant literally \"skin and flesh,\" and from there was also used to mean \"the surface.\" Sources such as Gogen Yurai Jiten explain that it comes from hiniku kotsuzui (skin, flesh, bone and marrow), words attributed to Bodhidharma (Daruma), the founder of Zen. In this theory, bone and marrow stand for an understanding that grasps the essence, while skin and flesh stand for a surface-level understanding, and from this the word came to mean making digs at someone. Japanese dictionaries cite busso no hiniku kotsuzui (仏祖之皮肉骨髄) from Dōgen's monastic rules (shingi) as an early example but do not address the etymology.",
+      "example": "When I arrived late, he said sarcastically, \"What an early arrival.\""
+    }
   },
   {
     "id": "konrinzai",
@@ -738,7 +990,13 @@
         "label": "日蓮宗",
         "url": "https://www.nichiren.or.jp/glossary/id109/"
       }
-    ]
+    ],
+    "en": {
+      "gloss": "never, ever",
+      "meaning": "A word followed by a negative to declare strongly that something will absolutely never happen.",
+      "origin": "In Buddhist cosmology, the earth is said to rest on three layers: the wind wheel, the water wheel and the metal wheel (konrin). The boundary between the metal wheel and the water wheel is konrinzai, the very bottom of the earth. From this came the senses \"thoroughly\" and \"to the very end.\" In the Edo period it was also used without a negative, but today it almost always appears in the form konrinzai ... shinai (will never ...).",
+      "example": "I am never going to that restaurant again."
+    }
   },
   {
     "id": "uchouten",
@@ -757,7 +1015,13 @@
         "label": "天台宗",
         "url": "https://www.tendai.or.jp/houwashuu/kiji.php?nid=100"
       }
-    ]
+    ],
+    "en": {
+      "gloss": "on cloud nine",
+      "meaning": "So elated that one gets carried away and loses sight of everything around.",
+      "origin": "In Buddhism it refers to the highest heaven of the three realms of existence (u), the world of delusion. Views differ on which heaven this is: one theory says Hisō-hihisō-ten (非想非非想天), the top of the formless realm, and another says Shikikukyō-ten (色究竟天), the top of the form realm. From the idea of climbing all the way to that summit, it came to describe the height of triumph or being so absorbed that one forgets oneself.",
+      "example": "My proposal had been approved for the first time, and I was on cloud nine."
+    }
   },
   {
     "id": "katasukashi",
@@ -772,7 +1036,13 @@
         "label": "コトバンク",
         "url": "https://kotobank.jp/word/%E8%82%A9%E9%80%8F%E3%81%8B%E3%81%97-176848"
       }
-    ]
+    ],
+    "en": {
+      "gloss": "a letdown, an anticlimax",
+      "meaning": "Charging in eagerly only to be sidestepped, or being let down when something falls short of expectations. Often used in the form katasukashi wo kuu (to be let down).",
+      "origin": "One of the winning techniques (kimarite) in sumo. The wrestler lightly hooks a hand under the base of the opponent's arm, pulls while turning the body aside, and slaps the opponent's shoulder with the other hand to send them falling forward. Because it dodges a charging opponent's momentum instead of meeting it head on, it became a figure for deflecting someone's momentum.",
+      "example": "We braced ourselves for a big announcement, but it was only a seating change, which was quite a letdown."
+    }
   },
   {
     "id": "isamiashi",
@@ -787,7 +1057,13 @@
         "label": "コトバンク",
         "url": "https://kotobank.jp/word/%E5%8B%87%E3%81%BF%E8%B6%B3-176832"
       }
-    ]
+    ],
+    "en": {
+      "gloss": "jumping the gun",
+      "meaning": "Getting carried away and rushing ahead, overdoing things or making a mistake.",
+      "origin": "In sumo, losing by stepping out of the ring first through excess momentum while driving the opponent to the edge. It is one of the losses caused by a wrestler's own action, distinguished from the kimarite (winning techniques). The picture of beating oneself through sheer momentum with victory in sight became the figure of speech as is.",
+      "example": "Telling the client before the deal was final was jumping the gun."
+    }
   },
   {
     "id": "shikirinaoshi",
@@ -802,7 +1078,13 @@
         "label": "コトバンク",
         "url": "https://kotobank.jp/word/%E4%BB%95%E5%88%87%E3%82%8A%E7%9B%B4%E3%81%97-518096"
       }
-    ]
+    ],
+    "en": {
+      "gloss": "starting over",
+      "meaning": "Halting a talk or contest that is not going well and starting again from the beginning.",
+      "origin": "In sumo, redoing the shikiri (the crouching ritual before the charge) when the two wrestlers' timing at the initial charge does not match. From there it came to mean restarting a match or contest, and also starting negotiations over from the beginning.",
+      "example": "The discussion had reached a dead end, so we decided to start over next week."
+    }
   },
   {
     "id": "ohako",
@@ -825,7 +1107,13 @@
         "label": "語源由来辞典",
         "url": "https://gogen-yurai.jp/ohako/"
       }
-    ]
+    ],
+    "en": {
+      "gloss": "one's specialty, a signature piece",
+      "meaning": "The art or routine a person does best. It can also refer to a habitual phrase or a characteristic gesture.",
+      "origin": "In Tenpō 3 (1832), Ichikawa Danjūrō VII presented the Ichikawa family's signature plays as the Kabuki Jūhachiban (Eighteen Kabuki Plays), and the term spread as a word for one's specialty. Ohako is said to be short for hakoiri (kept in a box), meaning something precious put away in a box, and one theory holds that this is because the scripts of the eighteen plays were stored in boxes. However, some dictionaries regard the spelling as ateji based on the earlier practice of calling a kabuki actor's treasured hit pieces jūhachiban, and there is no settled view.",
+      "example": "At karaoke, our department head always sings their signature enka song."
+    }
   },
   {
     "id": "ninomai",
@@ -840,7 +1128,13 @@
         "label": "コトバンク",
         "url": "https://kotobank.jp/word/%E4%BA%8C%E3%81%AE%E8%88%9E-592553"
       }
-    ]
+    ],
+    "en": {
+      "gloss": "repeating someone else's mistake",
+      "meaning": "Making the same mistake as someone before. Used in the forms ninomai wo enjiru and ninomai wo fumu.",
+      "origin": "It comes from Ni no Mai, a bugaku court dance. Right after the dance Ama, an old man in a laughing mask and an old woman in a swollen-faced mask appear and dance comically in imitation of Ama. From this dance, an imitation that does not quite work, the word came to mean copying others and making the same mistake.",
+      "example": "We built slack into the schedule so as not to repeat what happened on the last project."
+    }
   },
   {
     "id": "kuromaku",
@@ -855,7 +1149,13 @@
         "label": "コトバンク",
         "url": "https://kotobank.jp/word/%E9%BB%92%E5%B9%95-487352"
       }
-    ]
+    ],
+    "en": {
+      "gloss": "the mastermind behind the scenes",
+      "meaning": "A person who stays out of sight and manipulates people or events from behind the scenes.",
+      "origin": "Originally the black curtain used in kabuki. It hides the stage during scene changes or serves as a backdrop representing night or darkness. A small black curtain is also used to screen a character who has died so the actor can leave the stage. Since in kabuki black by convention stands for what cannot be seen, the word came to mean someone pulling strings in the shadows.",
+      "example": "Word is that someone is pulling the strings behind this round of personnel changes."
+    }
   },
   {
     "id": "oomukou",
@@ -874,7 +1174,13 @@
         "label": "コトバンク（大向こうを唸らせる）",
         "url": "https://kotobank.jp/word/%E5%A4%A7%E5%90%91%E3%81%93%E3%81%86%E3%82%92%E5%94%B8%E3%82%89%E3%81%9B%E3%82%8B-450944"
       }
-    ]
+    ],
+    "en": {
+      "gloss": "the gallery, the general public",
+      "meaning": "Ordinary audiences, or people at large. Ōmukō wo unaraseru means to impress a great many people with outstanding skill.",
+      "origin": "It referred to the standing area at the back of the theater, directly opposite the stage, where the hitomakumi (single-act) seats were. Many seasoned theatergoers gathered there, and only genuine artistry could impress them, which gave rise to the present expression. Mukō wo unaraseru (without ō) is incorrect.",
+      "example": "Her presentation was good enough to win over the whole crowd."
+    }
   },
   {
     "id": "tennouzan",
@@ -889,7 +1195,13 @@
         "label": "コトバンク",
         "url": "https://kotobank.jp/word/%E5%A4%A9%E7%8E%8B%E5%B1%B1-102677"
       }
-    ]
+    ],
+    "en": {
+      "gloss": "the decisive battle",
+      "meaning": "The crucial turning point that decides victory or defeat, or one's fate. Often used of a big match in sports.",
+      "origin": "Tennōzan is a mountain in Ōyamazaki, Kyoto Prefecture. In Tenshō 10 (1582), at the Battle of Yamazaki at its foot, Hashiba Hideyoshi defeated Akechi Mitsuhide. Taking this mountain is said to have decided the outcome, so it became a figure for the turning point of a contest. There is also a view, however, that occupying the mountain did not actually matter much.",
+      "example": "This three-game series will be the decisive stretch of the pennant race."
+    }
   },
   {
     "id": "odawara-hyoujou",
@@ -904,7 +1216,13 @@
         "label": "コトバンク",
         "url": "https://kotobank.jp/word/%E5%B0%8F%E7%94%B0%E5%8E%9F%E8%A9%95%E5%AE%9A-452884"
       }
-    ]
+    ],
+    "en": {
+      "gloss": "endless, inconclusive deliberation",
+      "meaning": "A meeting where people keep talking and never reach a conclusion.",
+      "origin": "In Tenshō 18 (1590), with Odawara Castle besieged by Toyotomi Hideyoshi, the Hōjō clan held council (hyōjō) after council on whether to hold the castle or sally out, and whether to fight or make peace, but could not settle on a course and let the days go by. In the end they surrendered, and the Hōjō as a Sengoku daimyō house came to an end. One theory holds that the debate dragged on because the Hōjō had a council system that included lower-ranking samurai.",
+      "example": "So the meeting doesn't turn into endless debate, we decide in advance who makes the final call."
+    }
   },
   {
     "id": "mikka-tenka",
@@ -919,7 +1237,13 @@
         "label": "コトバンク",
         "url": "https://kotobank.jp/word/%E4%B8%89%E6%97%A5%E5%A4%A9%E4%B8%8B-638611"
       }
-    ]
+    ],
+    "en": {
+      "gloss": "a short-lived reign",
+      "meaning": "Gaining power or a position only to lose it after a very short time.",
+      "origin": "In Tenshō 10 (1582), Akechi Mitsuhide killed Oda Nobunaga at Honnōji and seized power, but was defeated by Hashiba Hideyoshi at the Battle of Yamazaki. The shortness of that period is expressed as \"three days.\" According to dictionaries, the actual period was about 13 days.",
+      "example": "We had barely taken first place when we were overtaken the following week, so our reign at the top was short-lived."
+    }
   },
   {
     "id": "hanjou-wo-ireru",
@@ -938,7 +1262,13 @@
         "label": "コトバンク",
         "url": "https://kotobank.jp/word/%E5%8D%8A%E7%95%B3-606574"
       }
-    ]
+    ],
+    "en": {
+      "gloss": "to heckle",
+      "meaning": "To call out jeers or mocking remarks from the side at what someone is saying or doing.",
+      "origin": "A hanjō (half mat) was a small one-person mat that spectators in the pit (doma) of Edo-period playhouses sat on. When they did not like an actor's performance, they threw it onto the stage to show their displeasure. From this it came to mean criticizing or making fun of what others say or do. Also hanjō wo uchikomu or hanjō wo iu.",
+      "example": "During the presentation, someone at the back kept heckling."
+    }
   },
   {
     "id": "oomie-wo-kiru",
@@ -953,7 +1283,13 @@
         "label": "コトバンク",
         "url": "https://kotobank.jp/word/%E5%A4%A7%E8%A6%8B%E5%BE%97%E3%82%92%E5%88%87%E3%82%8B-450890"
       }
-    ]
+    ],
+    "en": {
+      "gloss": "to make a grand boast",
+      "meaning": "To declare something with an exaggerated show of confidence. Also used when someone claims they can do what they cannot.",
+      "origin": "From the kabuki mie, the pose an actor strikes at an emotional climax, freezing for a moment with a glaring stare. Striking an especially bold mie is called ōmie wo kiru, and the phrase spread into everyday language.",
+      "example": "I went and boldly declared that I would finish everything by next month."
+    }
   },
   {
     "id": "ita-ni-tsuku",
@@ -968,7 +1304,13 @@
         "label": "コトバンク",
         "url": "https://kotobank.jp/word/%E6%9D%BF%E3%81%AB%E4%BB%98%E3%81%8F-432847"
       }
-    ]
+    ],
+    "en": {
+      "gloss": "to grow into the role",
+      "meaning": "With experience, one's work and manner come to fit one's position naturally. Also said when clothes or bearing start to suit someone.",
+      "origin": "Ita (boards) means the theater stage. It described an actor who, after many performances, had come to fit naturally on the stage. It then came to be used widely for people other than actors.",
+      "example": "She was awkward as store manager at first, but she has really grown into the role."
+    }
   },
   {
     "id": "moto-no-mokuami",
@@ -987,7 +1329,13 @@
         "label": "コトバンク",
         "url": "https://kotobank.jp/word/%E5%85%83%E3%81%AE%E6%9C%A8%E9%98%BF%E5%BD%8C-2087983"
       }
-    ]
+    ],
+    "en": {
+      "gloss": "back to square one",
+      "meaning": "Something that had once improved slips back into its old, unremarkable state. Used when earlier effort has gone to waste.",
+      "origin": "The origin is unclear. The best-known story is said to appear in the Tenshōki: when the warlord Tsutsui Junshō died, his son Junkei was still young, so the death was kept secret and a man named Mokuami, whose voice resembled Junshō's, was laid in his bedchamber as a stand-in. When Junkei grew up, Mokuami went back to being an ordinary townsman. Other theories trace it to a monk who neglected his training and went back to his former wife, or to moto no mokuwan, a lacquered bowl whose vermilion has worn off to reveal the bare wood. Examples appear in kyōgen scripts from the late Muromachi to the early Edo period.",
+      "example": "I lost three kilos, but a run of year-end drinking parties put me right back where I started."
+    }
   },
   {
     "id": "uriie-to-karayou-de-kaku-sandaime",
@@ -1006,7 +1354,13 @@
         "label": "コトバンク",
         "url": "https://kotobank.jp/word/%E5%94%90%E6%A7%98-47294"
       }
-    ]
+    ],
+    "en": {
+      "gloss": "the third generation sells the house",
+      "meaning": "A wry saying that a house the founder built through hard work is ruined by the third generation, who lives for pleasure. Used to mock an heir who is hopeless at business but first-rate at hobbies.",
+      "origin": "Originally a senryū. The ruined third-generation heir puts the house up for sale, but the characters on the \"house for sale\" sign are written stylishly in karayō, a Chinese-style calligraphy fashionable among Edo-period scholars. The joke is that the handwriting reveals a life spent absorbed in the leisure arts while the business was neglected.",
+      "example": "Seeing a third-generation owner who can talk about wine endlessly but puts no effort into running the company, I think of the senryū about the heir who writes \"house for sale\" in elegant Chinese script."
+    }
   },
   {
     "id": "edo-no-kataki-wo-nagasaki-de-utsu",
@@ -1021,7 +1375,13 @@
         "label": "コトバンク",
         "url": "https://kotobank.jp/word/%E6%B1%9F%E6%88%B8%E3%81%AE%E6%95%B5%E3%82%92%E9%95%B7%E5%B4%8E%E3%81%A7%E8%A8%8E%E3%81%A4-445541"
       }
-    ]
+    ],
+    "en": {
+      "gloss": "getting even in an unexpected place",
+      "meaning": "Settling an old grudge in an unexpected place, or over an unrelated matter.",
+      "origin": "According to Umegaki Minoru, the original form was Edo no kataki wo Nagasaki ga utsu (Nagasaki avenges Edo). In the Bunsei era, a showman from Osaka had a great hit in Edo and overwhelmed the Edo shows, but soon a show by Nagasaki craftsmen surpassed it in popularity, so it was as if Nagasaki had avenged Edo. Some dictionaries present it as a contest of pride between craftsmen over basketwork figures (kagozaiku). This is only one theory, however, and the origin has not been established.",
+      "example": "Getting back at people who opposed you in a meeting through your choice of restaurant for the welcome party is like avenging Edo in Nagasaki."
+    }
   },
   {
     "id": "saba-wo-yomu",
@@ -1036,7 +1396,13 @@
         "label": "コトバンク",
         "url": "https://kotobank.jp/word/%E9%AF%96%E3%82%92%E8%AA%AD%E3%82%80-511586"
       }
-    ]
+    ],
+    "en": {
+      "gloss": "to fudge the numbers",
+      "meaning": "To give a number as higher or lower than it really is, to suit oneself. Often used about age.",
+      "origin": "There are several theories. One says it is a contraction of isaba-yomi (魚市読み), the rapid counting of small fish at fish markets. Others say it comes from workers cheating when counting large numbers of mackerel, from mackerel spoiling quickly and being sold in a hurry so the counting was sloppy, or from the practice of counting two sashisaba (salted split mackerel) laid one on top of the other as a single unit. An example already appears in a dangibon (comic sermon book) from 1753.",
+      "example": "They had fudged the age on their profile by three years."
+    }
   },
   {
     "id": "rachi-ga-akanai",
@@ -1059,7 +1425,13 @@
         "label": "コトバンク",
         "url": "https://kotobank.jp/word/%E5%9F%92%E3%81%8C%E7%84%A1%E3%81%84-2092159"
       }
-    ]
+    ],
+    "en": {
+      "gloss": "to get nowhere",
+      "meaning": "A matter drags on without being settled, and the discussion makes no progress.",
+      "origin": "Rachi (埒) originally meant the fence around a riding ground. Some dictionaries say the expression comes from kurabeuma, the horse races held as a Shinto ritual at Kamigamo Shrine. The figurative use meaning \"a settled point\" or \"a conclusion\" is thought to date from around the late medieval period, and the Nippo Jisho has an example of rachi ga aku. Today it is mainly used in the negative.",
+      "example": "Email was getting us nowhere, so I called them directly to confirm."
+    }
   },
   {
     "id": "yome-toome-kasa-no-uchi",
@@ -1074,7 +1446,13 @@
         "label": "コトバンク",
         "url": "https://kotobank.jp/word/%E5%A4%9C%E7%9B%AE%E9%81%A0%E7%9B%AE%E7%AC%A0%E3%81%AE%E5%86%85-655007"
       }
-    ]
+    ],
+    "en": {
+      "gloss": "looking better by night, from afar, or under a hat",
+      "meaning": "Seen at night, from far away, or with the face partly hidden under a hat, a person looks more beautiful than they really are because the details cannot be made out. Said mainly of women.",
+      "origin": "Yome tōme (seen at night, seen from afar) on its own means only that things look blurry. Adding kasa no uchi (under a hat) makes it about people, especially women's looks. Some take kasa to mean an umbrella or parasol. An example appears in the early Edo haikai collection Enokoshū (1633).",
+      "example": "As the saying about night, distance, and hats goes, the person in real life was quite different from the impression the photos gave."
+    }
   },
   {
     "id": "bushi-wa-kuwanedo-takayouji",
@@ -1093,7 +1471,13 @@
         "label": "コトバンク",
         "url": "https://kotobank.jp/word/%E9%AB%98%E6%A5%8A%E6%9E%9D-559523"
       }
-    ]
+    ],
+    "en": {
+      "gloss": "a samurai picks his teeth unfed",
+      "meaning": "Keeping one's pride and not behaving shamefully even when poor. Today it is also often used teasingly for putting on a brave face while struggling.",
+      "origin": "From the image of a samurai who, even with nothing to eat, leisurely uses a toothpick as if he had eaten his fill. The older form began with samurai wa, and bushi wa became the main form from the mid-Edo period on. Given the hard lives of lower-ranking samurai, it can also be read as townspeople's sarcasm aimed at samurai.",
+      "example": "Paying for your juniors as well when you are broke before payday is pure samurai pride."
+    }
   },
   {
     "id": "oni-mo-juuhachi-bancha-mo-debana",
@@ -1112,7 +1496,13 @@
         "label": "コトバンク",
         "url": "https://kotobank.jp/word/%E9%AC%BC%E3%82%82%E5%8D%81%E5%85%AB-2017223"
       }
-    ]
+    ],
+    "en": {
+      "gloss": "even a demon is pretty at eighteen",
+      "meaning": "Even someone not especially good-looking gains a certain charm on reaching young adulthood.",
+      "origin": "It pairs two images: even a demon looks somewhat attractive at the right age, and even coarse bancha tea smells good when freshly brewed. Today it is used of women, but in the past it was used of both men and women. Similar sayings include oni mo jūshichi ibara mo hana (a demon at seventeen, a thorn bush in flower) and 鬼も十七山茶も煮端 (a demon at seventeen, coarse mountain tea freshly brewed). The first half, oni mo jūhachi, appears in the early Edo collection of humorous tales Seisuishō.",
+      "example": "Even a demon is pretty at eighteen, as they say, and my relative's daughter has become quite polished now that she is grown."
+    }
   },
   {
     "id": "nengu-no-osamedoki",
@@ -1127,7 +1517,13 @@
         "label": "コトバンク",
         "url": "https://kotobank.jp/word/%E5%B9%B4%E8%B2%A2%E3%81%AE%E7%B4%8D%E3%82%81%E6%99%82-595870"
       }
-    ]
+    ],
+    "en": {
+      "gloss": "time to face the music",
+      "meaning": "The moment when someone who has long been doing wrong is finally caught and pays for it. By extension, the time to give something up and resign oneself to what must be done.",
+      "origin": "The original meaning was the time to settle overdue nengu (annual land tax). From there it came to refer to a wrongdoer being caught and submitting to punishment. Today it is also used jokingly, for example when someone ends a carefree single life.",
+      "example": "Even he, after years of running around, accepted that his time was up and got engaged."
+    }
   },
   {
     "id": "hidari-uchiwa",
@@ -1146,7 +1542,13 @@
         "label": "コトバンク",
         "url": "https://kotobank.jp/word/%E5%B7%A6%E6%89%87-610568"
       }
-    ]
+    ],
+    "en": {
+      "gloss": "to live in ease",
+      "meaning": "To live comfortably without having to work hard.",
+      "origin": "From the image of someone leisurely fanning themselves with a round fan (uchiwa) held in the left, non-dominant hand. From this it came to mean living a relaxed, easy life. Hidari ōgi, with a folding fan, means the same. Hidari uchiwa appears in a sharebon from 1784.",
+      "example": "I envy people who can live in comfort on rental income alone."
+    }
   },
   {
     "id": "dotanba",
@@ -1161,7 +1563,13 @@
         "label": "コトバンク",
         "url": "https://kotobank.jp/word/%E5%9C%9F%E5%A3%87%E5%A0%B4-583749"
       }
-    ]
+    ],
+    "en": {
+      "gloss": "the last minute, the eleventh hour",
+      "meaning": "A point with no way back, where a final decision must be made. Describes a situation where one is completely cornered.",
+      "origin": "Originally an earthen platform built in the early modern period for carrying out beheadings, or the execution ground itself. From this it came to mean the final stage where one is cornered with no escape. The execution-ground sense appears in a hanashibon (book of humorous tales) from 1772, and the figurative sense in a novel from 1908.",
+      "example": "We had to cancel the reservation at the last minute and apologized profusely to the restaurant."
+    }
   },
   {
     "id": "itai-kotoba",

@@ -30,6 +30,7 @@ export const wordSchema = z
   })
   .refine((w) => w.pending || (w.reading && w.meaning && w.sources.length > 0), {
     message: "確定した語には読み・意味・出典が必要",
-  });
+  })
+  .refine((w) => w.pending || w.en, { message: "確定した語には英語版の文言 (en) が必要" });
 
 export type Word = z.infer<typeof wordSchema>;
