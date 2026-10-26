@@ -6,6 +6,8 @@ import { expect, test } from "@playwright/test";
 const pages = [
   { name: "top", path: "./" },
   { name: "word", path: "w/hinoshita-kaisan/" },
+  { name: "ja-top", path: "ja/" },
+  { name: "ja-word", path: "ja/w/hinoshita-kaisan/" },
   { name: "word-long", path: "w/uriie-to-karayou-de-kaku-sandaime/" },
 ];
 
