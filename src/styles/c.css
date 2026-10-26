@@ -705,7 +705,8 @@ a:hover {
 
   .c-line__stations {
     grid-auto-flow: column;
-    grid-auto-columns: 11rem;
+    /* 長いことわざは駅名が重ならないよう、その幅まで広げる。最小幅は駅の側で持つ */
+    grid-auto-columns: max-content;
     justify-content: start;
     overflow-x: auto;
     scroll-snap-type: x proximity;
@@ -714,6 +715,7 @@ a:hover {
 
   .c-station {
     scroll-snap-align: start;
+    min-inline-size: 11rem;
   }
 
   /* 横向きでは線路を路線全体に通す。local にして横スクロールでも線が途切れないように */

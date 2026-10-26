@@ -51,6 +51,14 @@ export const KIND_LABEL: Record<Lang, Record<Word["kind"], string>> = {
   ja: { ことわざ: "ことわざ", 慣用句: "慣用句", 四字熟語: "四字熟語", ことば: "ことば" },
 };
 
+// 路線名は左の欄に収まるよう短くする
+const LINE_LABEL_EN: Record<Word["kind"], string> = {
+  ことわざ: "Proverb",
+  慣用句: "Idiom",
+  四字熟語: "Four-Character",
+  ことば: "Word",
+};
+
 export const dict = {
   en: {
     "site.name": "goi",
@@ -62,7 +70,7 @@ export const dict = {
     "map.lead":
       "Japanese words worth using, laid out as lines by type. Pick a station to open its sign: meaning, origin, an example and sources.",
     "map.title": "Route map",
-    "map.line": (kind: Word["kind"]) => `${KIND_LABEL.en[kind]} Line`,
+    "map.line": (kind: Word["kind"]) => `${LINE_LABEL_EN[kind]} Line`,
     "map.back": "Back to the route map",
     "search.label": "Search",
     "search.placeholder": "Word, reading or English meaning",
