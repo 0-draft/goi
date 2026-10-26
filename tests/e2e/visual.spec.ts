@@ -25,8 +25,12 @@ for (const colorScheme of ["light", "dark"] as const) {
       test(name, async ({ page }) => {
         await page.goto(path, { waitUntil: "load" });
         await page.evaluate(() => document.fonts.ready);
+        // fullPage で撮ると撮影中のリサイズで駅名標の横スクロールが先頭に戻るので、
+        // 先にビューポートをページの高さまで伸ばしてから表示範囲を撮る
+        const width = page.viewportSize()?.width ?? 1280;
+        const height = await page.evaluate(() => document.documentElement.scrollHeight);
+        await page.setViewportSize({ width, height });
         await expect(page).toHaveScreenshot(`${name}-${colorScheme}.png`, {
-          fullPage: true,
           animations: "disabled",
           caret: "hide",
         });
