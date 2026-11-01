@@ -6,7 +6,15 @@
     "useIgnoreFile": true
   },
   "files": {
-    "includes": ["**", "!**/dist", "!**/.astro", "!**/playwright-report", "!**/test-results", "!**/*.md"]
+    "includes": [
+      "**",
+      "!**/dist",
+      "!**/.astro",
+      "!**/playwright-report",
+      "!**/test-results",
+      "!**/*.md",
+      "!pnpm-lock.yaml"
+    ]
   },
   "formatter": {
     "indentStyle": "space",
