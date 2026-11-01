@@ -8,7 +8,7 @@
         "http://localhost:4392/goi/w/hinoshita-kaisan/",
         "http://localhost:4392/goi/w/uriie-to-karayou-de-kaku-sandaime/"
       ],
-      "numberOfRuns": 1
+      "numberOfRuns": 3
     },
     "assert": {
       "assertions": {
