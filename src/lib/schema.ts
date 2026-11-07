@@ -1,7 +1,27 @@
 import { z } from "astro/zod";
+import { THEMES } from "./themes";
 
 export const sourceSchema = z.object({
   label: z.string().min(1),
+  url: z.url({ protocol: /^https$/ }),
+});
+
+// 文化庁「国語に関する世論調査」で、本来の意味と取り違えやすいと分かっている語の回答の割合
+export const surveySchema = z.object({
+  year: z.string().min(1),
+  yearEn: z.string().min(1),
+  n: z.number().int().positive().optional(),
+  options: z
+    .array(
+      z.object({
+        ja: z.string().min(1),
+        en: z.string().min(1),
+        pct: z.number().min(0).max(100),
+        correct: z.boolean(),
+      }),
+    )
+    .min(2)
+    .refine((o) => o.filter((x) => x.correct).length === 1, "本来の意味の選択肢はちょうど1つ"),
   url: z.url({ protocol: /^https$/ }),
 });
 
@@ -16,6 +36,9 @@ export const wordSchema = z
     origin: z.string(),
     example: z.string(),
     sources: z.array(sourceSchema),
+    // 語の来た世界（相撲・芝居・仏教など）。索引の絞り込みに使う
+    themes: z.array(z.enum(THEMES)).min(1).max(2).optional(),
+    survey: surveySchema.optional(),
     // 英語版の表示用。例文は日本語のまま出し、en.example はその英訳
     en: z
       .object({
@@ -31,6 +54,7 @@ export const wordSchema = z
   .refine((w) => w.pending || (w.reading && w.meaning && w.sources.length > 0), {
     message: "確定した語には読み・意味・出典が必要",
   })
-  .refine((w) => w.pending || w.en, { message: "確定した語には英語版の文言 (en) が必要" });
+  .refine((w) => w.pending || w.en, { message: "確定した語には英語版の文言 (en) が必要" })
+  .refine((w) => w.pending || w.themes, { message: "確定した語には themes が必要" });
 
 export type Word = z.infer<typeof wordSchema>;

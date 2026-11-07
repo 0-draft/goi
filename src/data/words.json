@@ -17,6 +17,7 @@
         "url": "https://bunkashisan.ne.jp/bunkashisan/24_mie/7294.html"
       }
     ],
+    "themes": ["everyday"],
     "en": {
       "gloss": "the most one can manage",
       "meaning": "The utmost one can do; the limit that no amount of effort will get past.",
@@ -42,6 +43,7 @@
         "url": "https://ja.wikipedia.org/wiki/%E6%A8%AA%E7%B6%B1"
       }
     ],
+    "themes": ["sumo", "buddhism"],
     "en": {
       "gloss": "peerless champion",
       "meaning": "So strong in martial arts or sumo that no one in the land is a match; also, such a person. Usually used as another name for a yokozuna.",
@@ -63,6 +65,7 @@
         "url": "https://kotobank.jp/word/%E7%97%98%E7%97%95%E3%82%82%E9%9D%A8-426343"
       }
     ],
+    "themes": ["body"],
     "en": {
       "gloss": "love is blind",
       "meaning": "When you are in love with someone, even their faults look like good points. A figure for how partiality makes any flaw look attractive.",
@@ -88,6 +91,7 @@
         "url": "https://www.kanjipedia.jp/kotoba/0003541200"
       }
     ],
+    "themes": ["everyday"],
     "en": {
       "gloss": "a sham; a crafty one",
       "meaning": "Something that looks good but has nothing behind it. Said of a person, it is written 食わせ者 and refers to someone who seems unassuming but is in fact not to be trusted.",
@@ -113,6 +117,7 @@
         "url": "https://jpnculture.net/haretoke/"
       }
     ],
+    "themes": ["everyday"],
     "en": {
       "gloss": "the festive and the everyday",
       "meaning": "Hare (晴) is the out-of-the-ordinary: festivals, annual observances, and ceremonial occasions such as weddings and funerals. Ke (褻) is ordinary everyday life.",
@@ -138,6 +143,7 @@
         "url": "https://kotobank.jp/word/%E3%81%BC%E3%82%89-1416871"
       }
     ],
+    "themes": ["animals", "trade"],
     "en": {
       "gloss": "dashing and stylish",
       "meaning": "Spirited, straightforward, and stylish; also, a young person with that kind of temperament.",
@@ -159,6 +165,7 @@
         "url": "https://kotobank.jp/word/%E3%81%91%E3%82%93%E3%82%82%E3%81%BB%E3%82%8D%E3%82%8D-493205"
       }
     ],
+    "themes": ["animals"],
     "en": {
       "gloss": "curtly, flatly",
       "meaning": "Turning down a request or proposal so bluntly that there is nothing left to hold on to.",
@@ -184,6 +191,7 @@
         "url": "https://kotobank.jp/word/%E3%81%94%E3%81%8B%E3%81%97-498664"
       }
     ],
+    "themes": ["everyday"],
     "en": {
       "gloss": "self-interest dressed as kindness",
       "meaning": "Pretending to act for someone else's sake while actually serving one's own interest.",
@@ -209,6 +217,7 @@
         "url": "https://kotobank.jp/word/%E5%9F%92-656203"
       }
     ],
+    "themes": ["animals"],
     "en": {
       "gloss": "outside the bounds",
       "meaning": "Outside the scope of a matter; outside what one cares about or is considering.",
@@ -230,6 +239,7 @@
         "url": "https://kotobank.jp/word/%E8%83%A1%E4%B9%B1-442342"
       }
     ],
+    "themes": ["buddhism"],
     "en": {
       "gloss": "dubious, suspicious",
       "meaning": "Of uncertain identity and suspicious; also, of doubtful truth.",
@@ -251,6 +261,7 @@
         "url": "https://kotobank.jp/word/%E3%81%A8%E3%81%A9%E3%81%AE%E3%81%A4%E3%81%BE%E3%82%8A-584181"
       }
     ],
+    "themes": ["animals"],
     "en": {
       "gloss": "in the end, when all is said and done",
       "meaning": "Ultimately, after everything that has happened. Usually said of an unwelcome outcome.",
@@ -272,6 +283,7 @@
         "url": "https://kotobank.jp/word/%E5%AF%A1%E8%81%9E-465964"
       }
     ],
+    "themes": ["everyday"],
     "en": {
       "gloss": "to my limited knowledge",
       "meaning": "A humble preface used when saying one does not know something, putting it down to one's own narrow learning.",
@@ -293,6 +305,7 @@
         "url": "https://kotobank.jp/word/%E4%B8%8D%E8%AA%BF%E6%B3%95-618972"
       }
     ],
+    "themes": ["stage"],
     "en": {
       "gloss": "having no head for drink or the arts",
       "meaning": "A humble way of saying one has no taste or skill for drinking or the performing arts. It can also mean clumsiness, or a blunder or misconduct.",
@@ -318,6 +331,7 @@
         "url": "https://kotobank.jp/word/%E5%A4%A7%E6%A7%98-451054"
       }
     ],
+    "themes": ["animals"],
     "en": {
       "gloss": "easygoing, magnanimous",
       "meaning": "Relaxed and generous, not fussing over small things.",
@@ -339,6 +353,7 @@
         "url": "https://kotobank.jp/word/%E7%89%87%E8%85%B9%E7%97%9B%E3%81%84-463633"
       }
     ],
+    "themes": ["body"],
     "en": {
       "gloss": "laughable presumption",
       "meaning": "Ridiculous and galling to watch, said of words or actions by someone who does not know their place.",
@@ -364,6 +379,27 @@
         "url": "https://www.bunka.go.jp/tokei_hakusho_shuppan/tokeichosa/kokugo_yoronchosa/pdf/94274201_02.pdf"
       }
     ],
+    "themes": ["everyday"],
+    "survey": {
+      "year": "令和6年度",
+      "yearEn": "FY2024",
+      "n": 3498,
+      "options": [
+        {
+          "ja": "本人の力量に対して役目が軽すぎること",
+          "en": "the role is too light for the person's ability",
+          "pct": 45.1,
+          "correct": true
+        },
+        {
+          "ja": "本人の力量に対して役目が重すぎること",
+          "en": "the role is too heavy for the person's ability",
+          "pct": 48.9,
+          "correct": false
+        }
+      ],
+      "url": "https://www.bunka.go.jp/tokei_hakusho_shuppan/tokeichosa/kokugo_yoronchosa/pdf/94274201_02.pdf"
+    },
     "en": {
       "gloss": "a role beneath one's ability",
       "meaning": "Of an assigned role, too minor for the person's ability.",
@@ -385,6 +421,27 @@
         "url": "https://kotobank.jp/word/%E6%B0%97%E3%81%8C%E7%BD%AE%E3%81%91%E3%81%AA%E3%81%84-471844"
       }
     ],
+    "themes": ["body"],
+    "survey": {
+      "year": "令和7年度",
+      "yearEn": "FY2025",
+      "n": 3777,
+      "options": [
+        {
+          "ja": "相手に対して気配りや遠慮をしなくてよい",
+          "en": "no need to be careful or hold back with the person",
+          "pct": 47.4,
+          "correct": true
+        },
+        {
+          "ja": "相手に対して気配りや遠慮をしなくてはならない",
+          "en": "one has to be careful and hold back with the person",
+          "pct": 44.3,
+          "correct": false
+        }
+      ],
+      "url": "https://www.bunka.go.jp/koho_hodo_oshirase/hodohappyo/pdf/94441001_01.pdf"
+    },
     "en": {
       "gloss": "easy to be around",
       "meaning": "Needing no reserve or carefulness; someone you can be completely at ease with.",
@@ -406,6 +463,27 @@
         "url": "https://kotobank.jp/word/%E5%A7%91%E6%81%AF-501976"
       }
     ],
+    "themes": ["history"],
+    "survey": {
+      "year": "令和3年度",
+      "yearEn": "FY2021",
+      "n": 3579,
+      "options": [
+        {
+          "ja": "「一時しのぎ」という意味",
+          "en": "a stopgap (temporary measure)",
+          "pct": 17.4,
+          "correct": true
+        },
+        {
+          "ja": "「ひきょうな」という意味",
+          "en": "underhanded, cowardly",
+          "pct": 73.9,
+          "correct": false
+        }
+      ],
+      "url": "https://www.bunka.go.jp/tokei_hakusho_shuppan/tokeichosa/kokugo_yoronchosa/pdf/93767401_01.pdf"
+    },
     "en": {
       "gloss": "a stopgap, makeshift",
       "meaning": "Making do for the moment; an approach that puts off a real solution.",
@@ -431,6 +509,27 @@
         "url": "https://kotobank.jp/word/%E3%81%9E%E3%81%A4%E3%81%A8-3213436"
       }
     ],
+    "themes": ["body"],
+    "survey": {
+      "year": "平成28年度",
+      "yearEn": "FY2016",
+      "n": 2015,
+      "options": [
+        {
+          "ja": "面白くない",
+          "en": "not interesting",
+          "pct": 22.8,
+          "correct": true
+        },
+        {
+          "ja": "恐ろしくない",
+          "en": "not frightening",
+          "pct": 56.1,
+          "correct": false
+        }
+      ],
+      "url": "https://www.bunka.go.jp/tokei_hakusho_shuppan/tokeichosa/kokugo_yoronchosa/pdf/h28_chosa_kekka.pdf"
+    },
     "en": {
       "gloss": "not much to get excited about",
       "meaning": "Not interesting; not very impressive.",
@@ -452,6 +551,27 @@
         "url": "https://kotobank.jp/word/%E5%90%9D%E3%81%8B-648978"
       }
     ],
+    "themes": ["body"],
+    "survey": {
+      "year": "平成25年度",
+      "yearEn": "FY2013",
+      "n": 2028,
+      "options": [
+        {
+          "ja": "喜んでする",
+          "en": "do it gladly",
+          "pct": 33.8,
+          "correct": true
+        },
+        {
+          "ja": "仕方なくする",
+          "en": "do it reluctantly",
+          "pct": 43.7,
+          "correct": false
+        }
+      ],
+      "url": "https://www.bunka.go.jp/tokei_hakusho_shuppan/tokeichosa/kokugo_yoronchosa/pdf/h25_chosa_kekka.pdf"
+    },
     "en": {
       "gloss": "quite willing to",
       "meaning": "Glad to do something; ready to help.",
@@ -473,6 +593,27 @@
         "url": "https://kotobank.jp/word/%E3%81%BE%E3%82%93%E3%81%98%E3%82%8A-636660"
       }
     ],
+    "themes": ["body"],
+    "survey": {
+      "year": "平成25年度",
+      "yearEn": "FY2013",
+      "n": 2028,
+      "options": [
+        {
+          "ja": "眠らないで",
+          "en": "without sleeping",
+          "pct": 28.7,
+          "correct": true
+        },
+        {
+          "ja": "じっと動かないで",
+          "en": "without moving, keeping still",
+          "pct": 51.5,
+          "correct": false
+        }
+      ],
+      "url": "https://www.bunka.go.jp/tokei_hakusho_shuppan/tokeichosa/kokugo_yoronchosa/pdf/h25_chosa_kekka.pdf"
+    },
     "en": {
       "gloss": "without sleeping a wink",
       "meaning": "Without sleeping at all; staying awake through the night.",
@@ -494,6 +635,7 @@
         "url": "https://kotobank.jp/word/%E6%B5%B7%E5%8D%83%E5%B1%B1%E5%8D%83-441502"
       }
     ],
+    "themes": ["animals"],
     "en": {
       "gloss": "a wily old hand",
       "meaning": "The cunning of someone who has seen a great deal of the world and knows all its ins and outs; also, such a hardened person.",
@@ -519,6 +661,7 @@
         "url": "https://kotobank.jp/word/%E5%82%8D%E7%9B%AE%E5%85%AB%E7%9B%AE-451367"
       }
     ],
+    "themes": ["everyday"],
     "en": {
       "gloss": "onlookers see more of the game",
       "meaning": "People watching from the side can see the truth of a matter, and what is to be gained or lost, better than those involved. Also written 傍目八目.",
@@ -540,6 +683,7 @@
         "url": "https://kotobank.jp/word/%E6%9C%89%E8%B1%A1%E7%84%A1%E8%B1%A1-440039"
       }
     ],
+    "themes": ["buddhism"],
     "en": {
       "gloss": "riffraff, the rabble",
       "meaning": "People or things that are many in number but of no account. Used contemptuously of a crowd of worthless people.",
@@ -561,6 +705,7 @@
         "url": "https://kotobank.jp/word/%E6%89%8B%E7%B7%B4%E6%89%8B%E7%AE%A1-577343"
       }
     ],
+    "themes": ["everyday"],
     "en": {
       "gloss": "wiles and tricks",
       "meaning": "The ploys and maneuvering used to deceive people or manipulate them at will.",
@@ -582,6 +727,7 @@
         "url": "https://kotobank.jp/word/%E4%BA%8C%E6%9D%9F%E4%B8%89%E6%96%87-591958"
       }
     ],
+    "themes": ["trade"],
     "en": {
       "gloss": "dirt cheap",
       "meaning": "Extremely cheap even in quantity; a price as low as a clearance sale.",
@@ -607,6 +753,7 @@
         "url": "https://gogen-yurai.jp/ittyoura/"
       }
     ],
+    "themes": ["everyday"],
     "en": {
       "gloss": "one's best outfit",
       "meaning": "The finest piece of clothing one owns, kept for special occasions. Originally it also meant the only garment one had, with nothing to change into.",
@@ -632,6 +779,7 @@
         "url": "https://gogen-yurai.jp/bokunenjin/"
       }
     ],
+    "themes": ["everyday"],
     "en": {
       "gloss": "a wooden, unsociable person",
       "meaning": "A taciturn, unfriendly person. Also used as an insult for someone tactless who does not understand how things work.",
@@ -657,6 +805,7 @@
         "url": "https://gogen-yurai.jp/touhenboku/"
       }
     ],
+    "themes": ["animals"],
     "en": {
       "gloss": "a blockhead",
       "meaning": "An insult for someone tactless, or someone unreasonable who will not listen.",
@@ -686,6 +835,7 @@
         "url": "https://ja.wikipedia.org/wiki/%E5%B9%87%E9%96%93"
       }
     ],
+    "themes": ["stage", "history"],
     "en": {
       "gloss": "a flatterer, yes-man",
       "meaning": "Someone who fawns on others to stay in their good graces. Originally a male entertainer (hōkan) who livened up guests' fun at banquets.",
@@ -707,6 +857,7 @@
         "url": "https://kotobank.jp/word/%E5%88%A4%E5%AE%98%E8%B4%94%E5%B1%93-606178"
       }
     ],
+    "themes": ["history"],
     "en": {
       "gloss": "rooting for the underdog",
       "meaning": "Sympathizing with and taking the side of the weak or the unfortunate. Also read hangan-biiki.",
@@ -728,6 +879,7 @@
         "url": "https://kotobank.jp/word/%E5%A4%A9%E3%81%AE%E9%82%AA%E9%AC%BC-427129"
       }
     ],
+    "themes": ["buddhism"],
     "en": {
       "gloss": "a contrarian",
       "meaning": "A contrary person who deliberately goes against what others say. Originally a wicked demon in folktales that reads people's minds and gets in their way.",
@@ -749,6 +901,7 @@
         "url": "https://kotobank.jp/word/%E9%87%8E%E6%9A%AE-649025"
       }
     ],
+    "themes": ["everyday"],
     "en": {
       "gloss": "unrefined, tactless",
       "meaning": "Insensitive to the finer points of human feeling, and lacking tact. Also said of words, actions, or taste that lack polish.",
@@ -770,6 +923,7 @@
         "url": "https://kotobank.jp/word/%E6%89%8B%E5%89%8D%E5%91%B3%E5%99%8C-576802"
       }
     ],
+    "themes": ["everyday"],
     "en": {
       "gloss": "blowing one's own horn",
       "meaning": "Praising oneself; bragging.",
@@ -791,6 +945,7 @@
         "url": "https://kotobank.jp/word/%E5%A4%A7%E7%A6%8D%E6%99%82-450859"
       }
     ],
+    "themes": ["everyday"],
     "en": {
       "gloss": "dusk, the hour of meeting demons",
       "meaning": "The dim part of the evening after the sun has set; twilight. It was thought to be the hour when one was most likely to meet evil spirits.",
@@ -812,6 +967,7 @@
         "url": "https://kotobank.jp/word/%E4%B8%99%E5%8D%88-120546"
       }
     ],
+    "themes": ["history"],
     "en": {
       "gloss": "year of the fire horse",
       "meaning": "The 43rd year of the sexagenary cycle, which comes around once every 60 years. There is a groundless superstition that fires are frequent in this year and that women born in it are fierce-tempered and will devour their husbands.",
@@ -841,6 +997,7 @@
         "url": "https://kotobank.jp/word/%E9%A8%93-491271"
       }
     ],
+    "themes": ["everyday"],
     "en": {
       "gloss": "doing things for luck",
       "meaning": "Judging things as good or bad by omens, choosing good signs and avoiding bad ones.",
@@ -862,6 +1019,7 @@
         "url": "https://kotobank.jp/word/%E8%A8%80%E9%9C%8A-503099"
       }
     ],
+    "themes": ["everyday"],
     "en": {
       "gloss": "the spirit that dwells in words",
       "meaning": "A mysterious power believed to reside in words. What was said aloud was thought to come true exactly as spoken.",
@@ -891,6 +1049,7 @@
         "url": "https://tarikihongwan.net/category2/bukkyou/1216.html/"
       }
     ],
+    "themes": ["buddhism"],
     "en": {
       "gloss": "too much of a bother",
       "meaning": "Finding something a hassle and not feeling like doing it. It describes reluctance to get moving on something that looks like it will take effort.",
@@ -916,6 +1075,7 @@
         "url": "https://www.hongwanji.or.jp/mioshie/words/000253.html"
       }
     ],
+    "themes": ["buddhism"],
     "en": {
       "gloss": "endurance, putting up with it",
       "meaning": "Holding back pain or desires. Today it is mostly used approvingly.",
@@ -941,6 +1101,7 @@
         "url": "https://gogen-yurai.jp/aisatsu/"
       }
     ],
+    "themes": ["buddhism"],
     "en": {
       "gloss": "greetings and courtesies",
       "meaning": "Words or bows exchanged when meeting or parting. Also used for a speech at a ceremony.",
@@ -966,6 +1127,7 @@
         "url": "https://gogen-yurai.jp/hiniku/"
       }
     ],
+    "themes": ["buddhism", "body"],
     "en": {
       "gloss": "sarcasm, irony",
       "meaning": "Criticizing someone indirectly and spitefully. It also refers to an outcome that is the opposite of what was expected, as in hiniku na kekka (an ironic result).",
@@ -991,6 +1153,7 @@
         "url": "https://www.nichiren.or.jp/glossary/id109/"
       }
     ],
+    "themes": ["buddhism"],
     "en": {
       "gloss": "never, ever",
       "meaning": "A word followed by a negative to declare strongly that something will absolutely never happen.",
@@ -1016,6 +1179,7 @@
         "url": "https://www.tendai.or.jp/houwashuu/kiji.php?nid=100"
       }
     ],
+    "themes": ["buddhism"],
     "en": {
       "gloss": "on cloud nine",
       "meaning": "So elated that one gets carried away and loses sight of everything around.",
@@ -1037,6 +1201,7 @@
         "url": "https://kotobank.jp/word/%E8%82%A9%E9%80%8F%E3%81%8B%E3%81%97-176848"
       }
     ],
+    "themes": ["sumo", "body"],
     "en": {
       "gloss": "a letdown, an anticlimax",
       "meaning": "Charging in eagerly only to be sidestepped, or being let down when something falls short of expectations. Often used in the form katasukashi wo kuu (to be let down).",
@@ -1058,6 +1223,7 @@
         "url": "https://kotobank.jp/word/%E5%8B%87%E3%81%BF%E8%B6%B3-176832"
       }
     ],
+    "themes": ["sumo"],
     "en": {
       "gloss": "jumping the gun",
       "meaning": "Getting carried away and rushing ahead, overdoing things or making a mistake.",
@@ -1079,6 +1245,7 @@
         "url": "https://kotobank.jp/word/%E4%BB%95%E5%88%87%E3%82%8A%E7%9B%B4%E3%81%97-518096"
       }
     ],
+    "themes": ["sumo"],
     "en": {
       "gloss": "starting over",
       "meaning": "Halting a talk or contest that is not going well and starting again from the beginning.",
@@ -1108,6 +1275,7 @@
         "url": "https://gogen-yurai.jp/ohako/"
       }
     ],
+    "themes": ["stage"],
     "en": {
       "gloss": "one's specialty, a signature piece",
       "meaning": "The art or routine a person does best. It can also refer to a habitual phrase or a characteristic gesture.",
@@ -1129,6 +1297,7 @@
         "url": "https://kotobank.jp/word/%E4%BA%8C%E3%81%AE%E8%88%9E-592553"
       }
     ],
+    "themes": ["stage"],
     "en": {
       "gloss": "repeating someone else's mistake",
       "meaning": "Making the same mistake as someone before. Used in the forms ninomai wo enjiru and ninomai wo fumu.",
@@ -1150,6 +1319,7 @@
         "url": "https://kotobank.jp/word/%E9%BB%92%E5%B9%95-487352"
       }
     ],
+    "themes": ["stage"],
     "en": {
       "gloss": "the mastermind behind the scenes",
       "meaning": "A person who stays out of sight and manipulates people or events from behind the scenes.",
@@ -1175,6 +1345,7 @@
         "url": "https://kotobank.jp/word/%E5%A4%A7%E5%90%91%E3%81%93%E3%81%86%E3%82%92%E5%94%B8%E3%82%89%E3%81%9B%E3%82%8B-450944"
       }
     ],
+    "themes": ["stage"],
     "en": {
       "gloss": "the gallery, the general public",
       "meaning": "Ordinary audiences, or people at large. Ōmukō wo unaraseru means to impress a great many people with outstanding skill.",
@@ -1196,6 +1367,7 @@
         "url": "https://kotobank.jp/word/%E5%A4%A9%E7%8E%8B%E5%B1%B1-102677"
       }
     ],
+    "themes": ["history"],
     "en": {
       "gloss": "the decisive battle",
       "meaning": "The crucial turning point that decides victory or defeat, or one's fate. Often used of a big match in sports.",
@@ -1217,6 +1389,7 @@
         "url": "https://kotobank.jp/word/%E5%B0%8F%E7%94%B0%E5%8E%9F%E8%A9%95%E5%AE%9A-452884"
       }
     ],
+    "themes": ["history"],
     "en": {
       "gloss": "endless, inconclusive deliberation",
       "meaning": "A meeting where people keep talking and never reach a conclusion.",
@@ -1238,6 +1411,7 @@
         "url": "https://kotobank.jp/word/%E4%B8%89%E6%97%A5%E5%A4%A9%E4%B8%8B-638611"
       }
     ],
+    "themes": ["history"],
     "en": {
       "gloss": "a short-lived reign",
       "meaning": "Gaining power or a position only to lose it after a very short time.",
@@ -1263,6 +1437,7 @@
         "url": "https://kotobank.jp/word/%E5%8D%8A%E7%95%B3-606574"
       }
     ],
+    "themes": ["stage"],
     "en": {
       "gloss": "to heckle",
       "meaning": "To call out jeers or mocking remarks from the side at what someone is saying or doing.",
@@ -1284,6 +1459,7 @@
         "url": "https://kotobank.jp/word/%E5%A4%A7%E8%A6%8B%E5%BE%97%E3%82%92%E5%88%87%E3%82%8B-450890"
       }
     ],
+    "themes": ["stage"],
     "en": {
       "gloss": "to make a grand boast",
       "meaning": "To declare something with an exaggerated show of confidence. Also used when someone claims they can do what they cannot.",
@@ -1305,6 +1481,7 @@
         "url": "https://kotobank.jp/word/%E6%9D%BF%E3%81%AB%E4%BB%98%E3%81%8F-432847"
       }
     ],
+    "themes": ["stage"],
     "en": {
       "gloss": "to grow into the role",
       "meaning": "With experience, one's work and manner come to fit one's position naturally. Also said when clothes or bearing start to suit someone.",
@@ -1330,6 +1507,7 @@
         "url": "https://kotobank.jp/word/%E5%85%83%E3%81%AE%E6%9C%A8%E9%98%BF%E5%BD%8C-2087983"
       }
     ],
+    "themes": ["history"],
     "en": {
       "gloss": "back to square one",
       "meaning": "Something that had once improved slips back into its old, unremarkable state. Used when earlier effort has gone to waste.",
@@ -1355,6 +1533,7 @@
         "url": "https://kotobank.jp/word/%E5%94%90%E6%A7%98-47294"
       }
     ],
+    "themes": ["trade"],
     "en": {
       "gloss": "the third generation sells the house",
       "meaning": "A wry saying that a house the founder built through hard work is ruined by the third generation, who lives for pleasure. Used to mock an heir who is hopeless at business but first-rate at hobbies.",
@@ -1376,6 +1555,7 @@
         "url": "https://kotobank.jp/word/%E6%B1%9F%E6%88%B8%E3%81%AE%E6%95%B5%E3%82%92%E9%95%B7%E5%B4%8E%E3%81%A7%E8%A8%8E%E3%81%A4-445541"
       }
     ],
+    "themes": ["stage"],
     "en": {
       "gloss": "getting even in an unexpected place",
       "meaning": "Settling an old grudge in an unexpected place, or over an unrelated matter.",
@@ -1397,6 +1577,7 @@
         "url": "https://kotobank.jp/word/%E9%AF%96%E3%82%92%E8%AA%AD%E3%82%80-511586"
       }
     ],
+    "themes": ["animals", "trade"],
     "en": {
       "gloss": "to fudge the numbers",
       "meaning": "To give a number as higher or lower than it really is, to suit oneself. Often used about age.",
@@ -1426,6 +1607,7 @@
         "url": "https://kotobank.jp/word/%E5%9F%92%E3%81%8C%E7%84%A1%E3%81%84-2092159"
       }
     ],
+    "themes": ["animals"],
     "en": {
       "gloss": "to get nowhere",
       "meaning": "A matter drags on without being settled, and the discussion makes no progress.",
@@ -1447,6 +1629,7 @@
         "url": "https://kotobank.jp/word/%E5%A4%9C%E7%9B%AE%E9%81%A0%E7%9B%AE%E7%AC%A0%E3%81%AE%E5%86%85-655007"
       }
     ],
+    "themes": ["everyday"],
     "en": {
       "gloss": "looking better by night, from afar, or under a hat",
       "meaning": "Seen at night, from far away, or with the face partly hidden under a hat, a person looks more beautiful than they really are because the details cannot be made out. Said mainly of women.",
@@ -1472,6 +1655,7 @@
         "url": "https://kotobank.jp/word/%E9%AB%98%E6%A5%8A%E6%9E%9D-559523"
       }
     ],
+    "themes": ["everyday"],
     "en": {
       "gloss": "a samurai picks his teeth unfed",
       "meaning": "Keeping one's pride and not behaving shamefully even when poor. Today it is also often used teasingly for putting on a brave face while struggling.",
@@ -1497,6 +1681,7 @@
         "url": "https://kotobank.jp/word/%E9%AC%BC%E3%82%82%E5%8D%81%E5%85%AB-2017223"
       }
     ],
+    "themes": ["everyday"],
     "en": {
       "gloss": "even a demon is pretty at eighteen",
       "meaning": "Even someone not especially good-looking gains a certain charm on reaching young adulthood.",
@@ -1518,6 +1703,7 @@
         "url": "https://kotobank.jp/word/%E5%B9%B4%E8%B2%A2%E3%81%AE%E7%B4%8D%E3%82%81%E6%99%82-595870"
       }
     ],
+    "themes": ["trade"],
     "en": {
       "gloss": "time to face the music",
       "meaning": "The moment when someone who has long been doing wrong is finally caught and pays for it. By extension, the time to give something up and resign oneself to what must be done.",
@@ -1543,6 +1729,7 @@
         "url": "https://kotobank.jp/word/%E5%B7%A6%E6%89%87-610568"
       }
     ],
+    "themes": ["body"],
     "en": {
       "gloss": "to live in ease",
       "meaning": "To live comfortably without having to work hard.",
@@ -1564,6 +1751,7 @@
         "url": "https://kotobank.jp/word/%E5%9C%9F%E5%A3%87%E5%A0%B4-583749"
       }
     ],
+    "themes": ["everyday"],
     "en": {
       "gloss": "the last minute, the eleventh hour",
       "meaning": "A point with no way back, where a final decision must be made. Describes a situation where one is completely cornered.",
@@ -1580,6 +1768,7 @@
     "origin": "",
     "example": "",
     "sources": [],
+    "themes": ["everyday"],
     "pending": "どの言葉を指しているか特定できていない。「痛い言葉」なのか、別の言葉の聞き違いなのか確認中。"
   }
 ]
