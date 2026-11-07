@@ -91,7 +91,7 @@ export const dict = {
     "index.title": "Index",
     "index.filter": "Filter by origin",
     "index.all": "All",
-    "index.misread": "Often misread",
+    "index.misread": "Often misunderstood",
     "index.back": "Index",
     "search.label": "Search",
     "search.placeholder": "Word, reading, romaji or English",

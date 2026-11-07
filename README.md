@@ -10,7 +10,7 @@ Site: <https://0-draft.github.io/goi/> (English) and <https://0-draft.github.io/
 
 - Idioms, proverbs and words such as 関の山, 日下開山 and 痘痕も靨, which most people know but rarely say themselves
 - One page per word at `/goi/w/<id>/`, with the Japanese version at `/goi/ja/w/<id>/`
-- The top page has a word of the day and a ruled index that can be filtered by origin (sumo, the stage, Buddhism and so on) or by "often misread"
+- The top page has a word of the day and a ruled index that can be filtered by origin (sumo, the stage, Buddhism and so on) or by "often misunderstood"
 - A word page asks you to pick the right meaning before showing it. For words asked about in the Agency for Cultural Affairs survey, it then shows how people across Japan answered
 - Meanings and origins checked against dictionaries, local governments, newspapers and other sources. Every word lists its source URLs. When an origin has competing theories, all of them are given as theories
 - English pages keep the Japanese headword, reading and example sentence, and add an English gloss, meaning, origin and a translation of the example
