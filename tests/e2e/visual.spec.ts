@@ -15,6 +15,8 @@ test.beforeEach(async ({ page }) => {
   // Web フォントは Google Fonts からネットワーク越しに届き、版も届く時刻も一定しない。
   // 遮断してフォールバック書体 (イメージに入っている書体) で描かせる
   await page.route(/^https:\/\/fonts\.(googleapis|gstatic)\.com\//, (route) => route.abort());
+  // 「今日の一語」と日付は見た日で変わるので、時刻を固定する
+  await page.clock.setFixedTime(new Date("2026-11-07T12:00:00+09:00"));
 });
 
 for (const colorScheme of ["light", "dark"] as const) {
