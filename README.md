@@ -2,7 +2,7 @@
 
 **English** | [日本語](README.ja.md)
 
-A route map of Japanese words worth using. Each word is a station on a line for its type (proverb, idiom, four-character compound, word), and each station has its own sign with the meaning, origin, an example and sources.
+A glossary of Japanese words most people know but rarely say themselves. Idioms, proverbs, four-character compounds and words sit in one index in kana order, and each has a page with its meaning, origin, an example and sources.
 
 Site: <https://0-draft.github.io/goi/> (English) and <https://0-draft.github.io/goi/ja/> (Japanese)
 
@@ -10,6 +10,8 @@ Site: <https://0-draft.github.io/goi/> (English) and <https://0-draft.github.io/
 
 - Idioms, proverbs and words such as 関の山, 日下開山 and 痘痕も靨, which most people know but rarely say themselves
 - One page per word at `/goi/w/<id>/`, with the Japanese version at `/goi/ja/w/<id>/`
+- The top page has a word of the day and a ruled index that can be filtered by origin (sumo, the stage, Buddhism and so on) or by "often misread"
+- A word page asks you to pick the right meaning before showing it. For words asked about in the Agency for Cultural Affairs survey, it then shows how people across Japan answered
 - Meanings and origins checked against dictionaries, local governments, newspapers and other sources. Every word lists its source URLs. When an origin has competing theories, all of them are given as theories
 - English pages keep the Japanese headword, reading and example sentence, and add an English gloss, meaning, origin and a translation of the example
 - A per-word OGP image in each language, a sitemap with hreflang links, and a 404 page that points old URLs to their new location
@@ -40,7 +42,9 @@ All words live in [`src/data/words.json`](src/data/words.json):
 The schema is in [`src/lib/schema.ts`](src/lib/schema.ts):
 
 - `id` is lowercase romaji with hyphens, and `reading` is hiragana only
-- `kind` is one of `ことわざ`, `慣用句`, `四字熟語` or `ことば`. The field an expression comes from (Buddhism, sumo, kabuki and so on) goes in `origin`
+- `kind` is one of `ことわざ`, `慣用句`, `四字熟語` or `ことば`
+- `themes` holds one or two of `sumo`, `stage`, `buddhism`, `history`, `trade`, `body`, `animals` and `everyday`: the world the expression came from, decided by what its `origin` says
+- `survey` is only for words asked about in the Agency for Cultural Affairs public opinion survey on Japanese: the latest year's options and percentages, which option is the original meaning, and the URL of the primary source
 - A confirmed word needs a reading, a meaning and at least one source
 - A word that can't be identified yet keeps its reason in `pending` and gets no page
 
