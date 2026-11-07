@@ -1,8 +1,9 @@
 ---
 import Alternates from "../components/Alternates.astro";
+import LangSwitch from "../components/LangSwitch.astro";
 import WebFonts from "../components/WebFonts.astro";
-import type { Lang } from "../i18n/ui";
-import "../styles/c.css";
+import { type Lang, localePath, t } from "../i18n/ui";
+import "../styles/site.css";
 
 interface Props {
   lang: Lang;
@@ -10,8 +11,12 @@ interface Props {
   description: string;
   /** OGP 画像のパス（base を含む）。語ページは /og/<id>.png、一覧は /og/index.png */
   ogImage?: string;
+  /** 語の総数。ヘッダーに出す */
+  count: number;
+  /** 語ページでは見出しの左に索引への戻りを出す */
+  back?: boolean;
 }
-const { lang, title, description, ogImage } = Astro.props;
+const { lang, title, description, ogImage, count, back = false } = Astro.props;
 const canonical = new URL(Astro.url.pathname, Astro.site);
 const ogImageUrl = ogImage && new URL(ogImage, Astro.site);
 ---
@@ -22,11 +27,12 @@ const ogImageUrl = ogImage && new URL(ogImage, Astro.site);
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="color-scheme" content="light dark" />
-    <meta name="theme-color" content="#D6D7D3" media="(prefers-color-scheme: light)" />
-    <meta name="theme-color" content="#222423" media="(prefers-color-scheme: dark)" />
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#111111" media="(prefers-color-scheme: dark)" />
     <title>{title}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
+    <link rel="icon" href={localePath("en", "favicon.svg")} type="image/svg+xml" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
@@ -46,30 +52,29 @@ const ogImageUrl = ogImage && new URL(ogImage, Astro.site);
         </>
       )
     }
-    <WebFonts hrefs={["https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&display=swap"]} />
+    <WebFonts
+      hrefs={[
+        "https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+JP:wght@400;500;700&display=swap",
+      ]}
+    />
     <script is:inline>
-      // 隣の駅から来たときだけ、進んだ向きをビュー遷移の種類として渡す
       document.documentElement.classList.add("js");
-      addEventListener("pagereveal", (e) => {
-        if (!e.viewTransition) return;
-        try {
-          if (sessionStorage.getItem("c-swiped")) {
-            sessionStorage.removeItem("c-swiped");
-            return;
-          }
-        } catch {}
-        const from = window.navigation?.activation?.from?.url;
-        if (!from) return;
-        const path = new URL(from).pathname;
-        const prev = document.querySelector('link[rel="prev"]');
-        const next = document.querySelector('link[rel="next"]');
-        if (next && new URL(next.href).pathname === path) e.viewTransition.types.add("backward");
-        else if (prev && new URL(prev.href).pathname === path) e.viewTransition.types.add("forward");
-      });
     </script>
     <slot name="head" />
   </head>
   <body>
-    <slot />
+    <div class="shell">
+      <header class="bar">
+        <a class="bar__mark" href={localePath(lang)}>goi</a>
+        {back && <a class="bar__back" href={localePath(lang)}>{t(lang, "index.back")}</a>}
+        <span class="bar__count mono">{lang === "ja" ? `全${count}語` : `${count} words`}</span>
+        <LangSwitch lang={lang} class="bar__lang" />
+      </header>
+      <slot />
+      <footer class="foot">
+        <p>{t(lang, "footer.note")}</p>
+        <p class="mono"><a href="https://github.com/0-draft/goi">github.com/0-draft/goi</a></p>
+      </footer>
+    </div>
   </body>
 </html>

@@ -1,82 +1,289 @@
 ---
-import type { Station } from "../components/c/route";
-import Sign from "../components/c/Sign.astro";
-import LangSwitch from "../components/LangSwitch.astro";
-import { type Lang, localePath, t, wordText } from "../i18n/ui";
-import C from "../layouts/C.astro";
+import Specimen from "../components/Specimen.astro";
+import { KIND_LABEL, type Lang, localePath, THEME_LABEL, t, wordText } from "../i18n/ui";
+import Page from "../layouts/Page.astro";
+import type { Entry } from "../lib/entries";
+import { jsonForScript } from "../lib/json";
+import { quizOptions } from "../lib/quiz";
 
 interface Props {
   lang: Lang;
-  station: Station;
-  prev?: Station;
-  next?: Station;
+  entry: Entry;
+  prev?: Entry;
+  next?: Entry;
+  entries: Entry[];
 }
-const { lang, station, prev, next } = Astro.props;
-const { word } = station;
+const { lang, entry, prev, next, entries } = Astro.props;
+const { word } = entry;
 const text = wordText(word, lang);
+const options = quizOptions(entry, entries, lang);
+const survey = word.survey;
 
-// 用例の中の見出し語（または読み）を太字にする
+// 用例の中の見出し語（または読み）を強調する
 const needle = [word.word, word.reading].find((n) => n && word.example.includes(n));
 const example = needle ? word.example.split(needle) : [word.example];
 const title =
-  lang === "ja" ? `${word.word}（${word.reading}）｜goi` : `${word.word} (${station.romaji}): ${text.gloss} | goi`;
+  lang === "ja" ? `${word.word}（${word.reading}）｜goi` : `${word.word} (${entry.romaji}): ${text.gloss} | goi`;
+const hrefs = entries.filter((e) => e.id !== entry.id).map((e) => localePath(lang, `w/${e.id}/`));
+const random = hrefs[Math.floor(Math.random() * hrefs.length)];
+const sections = [
+  { id: "meaning", label: t(lang, "word.meaning") },
+  { id: "origin", label: t(lang, "word.origin") },
+  { id: "example", label: t(lang, "word.example") },
+  { id: "sources", label: t(lang, "word.sources") },
+].filter((s) => s.id !== "origin" || text.origin);
+const no = (id: string) => String(sections.findIndex((s) => s.id === id) + 1).padStart(2, "0");
 ---
 
-<C lang={lang} title={title} description={text.meaning} ogImage={localePath(lang, `og/${station.id}.png`)}>
+<Page lang={lang} title={title} description={text.meaning} ogImage={localePath(lang, `og/${entry.id}.png`)} count={entries.length} back>
   <Fragment slot="head">
     {prev && <link rel="prev" href={localePath(lang, `w/${prev.id}/`)} />}
     {next && <link rel="next" href={localePath(lang, `w/${next.id}/`)} />}
   </Fragment>
-  <header class="c-top">
-    <a class="c-top__home" href={localePath(lang)}><span class="c-top__mark">goi</span> {t(lang, "map.back")}</a>
-    <LangSwitch lang={lang} class="c-lang" />
-  </header>
-  <main class="c-word" style={`--line: ${station.line.color}`}>
-    <Sign station={station} prev={prev} next={next} lang={lang} />
-    <p class="c-hint">{t(lang, "word.hint")}</p>
-    <div class="c-notes">
-      <section class="c-note c-note--meaning" aria-labelledby="c-meaning">
-        <h2 id="c-meaning">{t(lang, "word.meaning")}</h2>
-        {text.gloss && <p class="c-gloss">{text.gloss}</p>}
-        <p>{text.meaning}</p>
+  <main class="word" data-id={entry.id}>
+    <section class="hero">
+      <p class="hero__meta mono">
+        <span>{t(lang, "word.no")}{entry.number}</span>
+        <span>{KIND_LABEL[lang][word.kind]}</span>
+        {
+          (word.themes ?? []).map((th) => (
+            <a href={`${localePath(lang)}?t=${th}#index-h`}>{THEME_LABEL[lang][th]}</a>
+          ))
+        }
+      </p>
+      <Specimen word={word.word} as="h1" size="xl" class="hero__word" />
+      <p class="hero__reading">
+        <span lang="ja">{word.reading}</span>
+        <span class="mono" lang="ja-Latn">{entry.romaji}</span>
+      </p>
+    </section>
+
+    <section class="quiz" aria-labelledby="quiz-h" data-quiz>
+      <h2 id="quiz-h" class="label">{t(lang, "quiz.title")}</h2>
+      <div class="quiz__options">
+        {
+          options.map((o, i) => (
+            <button type="button" class="quiz__opt" data-opt={i} data-correct={o.correct ? "" : undefined}>
+              <span class="quiz__key mono">{String.fromCharCode(65 + i)}</span>
+              <span class="quiz__text">{o.text}</span>
+            </button>
+          ))
+        }
+      </div>
+      <p class="quiz__result" role="status" data-result></p>
+      {
+        survey && (
+          <figure class="poll" data-poll hidden>
+            <figcaption class="poll__cap">
+              <a href={survey.url}>{t(lang, "quiz.survey")(lang === "ja" ? survey.year : survey.yearEn)}</a>
+              {survey.n && <span class="mono"> n={survey.n.toLocaleString("en")}</span>}
+            </figcaption>
+            <ul class="poll__bars">
+              {options.map((o, i) => (
+                <li class="poll__row" data-opt={i} data-correct={o.correct ? "" : undefined}>
+                  <span class="poll__label">
+                    {o.text}
+                    {o.correct && <span class="poll__tag mono">{t(lang, "quiz.original")}</span>}
+                    <span class="poll__you mono" hidden>
+                      ← {t(lang, "quiz.you")}
+                    </span>
+                  </span>
+                  <span class="poll__track">
+                    <span class="poll__fill" style={`--pct: ${o.pct}`} />
+                  </span>
+                  <span class="poll__pct mono">{o.pct?.toFixed(1)}%</span>
+                </li>
+              ))}
+            </ul>
+          </figure>
+        )
+      }
+      <button type="button" class="textbtn quiz__skip" data-skip>{t(lang, "quiz.skip")} ↓</button>
+    </section>
+
+    <div class="notes" data-notes>
+      <section class="note note--meaning" aria-labelledby="meaning-h">
+        <h2 id="meaning-h" class="note__label"><span class="mono">{no("meaning")}</span>{t(lang, "word.meaning")}</h2>
+        <div class="note__body">
+          {text.gloss && <p class="note__gloss">{text.gloss}</p>}
+          <p class="note__lead">{text.meaning}</p>
+        </div>
       </section>
       {
-        word.example && (
-          <section class="c-note c-note--example" aria-labelledby="c-example">
-            <h2 id="c-example">{t(lang, "word.example")}</h2>
-            <p class="c-example" lang="ja">
-              {example.map((part, i) => (
+        text.origin && (
+          <section class="note note--origin" aria-labelledby="origin-h">
+            <h2 id="origin-h" class="note__label">
+              <span class="mono">{no("origin")}</span>
+              {t(lang, "word.origin")}
+            </h2>
+            <div class="note__body">
+              <p>{text.origin}</p>
+            </div>
+          </section>
+        )
+      }
+      <section class="note note--example" aria-labelledby="example-h">
+        <h2 id="example-h" class="note__label"><span class="mono">{no("example")}</span>{t(lang, "word.example")}</h2>
+        <div class="note__body">
+          <p class="example" lang="ja">
+            {
+              example.map((part, i) => (
                 <>
                   {i > 0 && <b>{needle}</b>}
                   {part}
                 </>
-              ))}
-            </p>
-            {text.exampleNote && <p class="c-example__en">{text.exampleNote}</p>}
-          </section>
-        )
-      }
-      {
-        text.origin && (
-          <section class="c-note c-note--origin" aria-labelledby="c-origin">
-            <h2 id="c-origin">{t(lang, "word.origin")}</h2>
-            <p>{text.origin}</p>
-          </section>
-        )
-      }
-      <section class="c-note c-note--sources" aria-labelledby="c-sources">
-        <h2 id="c-sources">{t(lang, "word.sources")}</h2>
-        <ul class="c-sources">
-          {
-            word.sources.map((s) => (
-              <li>
-                <a href={s.url} lang="ja">{s.label}</a>
-                <span class="c-sources__host">{new URL(s.url).hostname}</span>
-              </li>
-            ))
-          }
-        </ul>
+              ))
+            }
+          </p>
+          {text.exampleNote && <p class="example__en">{text.exampleNote}</p>}
+        </div>
+      </section>
+      <section class="note note--sources" aria-labelledby="sources-h">
+        <h2 id="sources-h" class="note__label"><span class="mono">{no("sources")}</span>{t(lang, "word.sources")}</h2>
+        <div class="note__body">
+          <ol class="sources">
+            {
+              word.sources.map((s) => (
+                <li>
+                  <a href={s.url} lang="ja">
+                    {s.label}
+                  </a>
+                  <span class="sources__host mono">{new URL(s.url).hostname}</span>
+                </li>
+              ))
+            }
+          </ol>
+        </div>
       </section>
     </div>
+
+    <nav class="step" aria-label={t(lang, "word.adjacent")}>
+      {
+        prev ? (
+          <a class="step__link step__link--prev" href={localePath(lang, `w/${prev.id}/`)} rel="prev" data-dir="prev">
+            <span class="step__dir mono">← {t(lang, "word.prev")}</span>
+            <span class="step__word" lang="ja">
+              {prev.word.word}
+            </span>
+          </a>
+        ) : (
+          <span class="step__link step__link--none" />
+        )
+      }
+      <a class="step__link step__link--random" href={random} data-random>
+        <span class="step__dir mono">{t(lang, "word.random")}</span>
+        <span class="step__word mono" aria-hidden="true">?</span>
+      </a>
+      {
+        next ? (
+          <a class="step__link step__link--next" href={localePath(lang, `w/${next.id}/`)} rel="next" data-dir="next">
+            <span class="step__dir mono">{t(lang, "word.next")} →</span>
+            <span class="step__word" lang="ja">
+              {next.word.word}
+            </span>
+          </a>
+        ) : (
+          <span class="step__link step__link--none" />
+        )
+      }
+    </nav>
   </main>
-</C>
+  <script type="application/json" id="hrefs" set:html={jsonForScript(hrefs)} />
+</Page>
+
+<script>
+  const id = document.querySelector<HTMLElement>(".word")?.dataset.id ?? "";
+  const quiz = document.querySelector<HTMLElement>("[data-quiz]");
+  const notes = document.querySelector<HTMLElement>("[data-notes]");
+  const result = document.querySelector<HTMLElement>("[data-result]");
+  const lang = document.documentElement.lang;
+  const KEY = "goi:answers";
+
+  const load = (): Record<string, number> => {
+    try {
+      return JSON.parse(localStorage.getItem(KEY) ?? "{}");
+    } catch {
+      return {};
+    }
+  };
+  const save = (choice: number) => {
+    try {
+      localStorage.setItem(KEY, JSON.stringify({ ...load(), [id]: choice }));
+    } catch {}
+  };
+
+  if (quiz && notes && result) {
+    const opts = [...quiz.querySelectorAll<HTMLButtonElement>(".quiz__opt")];
+    const poll = quiz.querySelector<HTMLElement>("[data-poll]");
+    const skip = quiz.querySelector<HTMLButtonElement>("[data-skip]");
+
+    // 答えるまで意味から下を伏せる（CSS の html.js で最初から伏せてある）。JS がなければ二択は出さず全部見せる
+    const reveal = (choice: number | null, scroll: boolean) => {
+      for (const o of opts) {
+        o.disabled = true;
+        o.classList.toggle("is-correct", o.hasAttribute("data-correct"));
+        o.classList.toggle("is-chosen", Number(o.dataset.opt) === choice);
+      }
+      if (choice !== null) {
+        const right = opts[choice]?.hasAttribute("data-correct");
+        result.textContent = right
+          ? lang === "ja"
+            ? "正解。"
+            : "Right."
+          : lang === "ja"
+            ? "残念。"
+            : "Not quite.";
+        result.dataset.right = String(right);
+      }
+      if (poll) {
+        poll.hidden = false;
+        for (const row of poll.querySelectorAll<HTMLElement>(".poll__row")) {
+          const you = row.querySelector<HTMLElement>(".poll__you");
+          if (you) you.hidden = Number(row.dataset.opt) !== choice;
+        }
+      }
+      if (skip) skip.hidden = true;
+      notes.dataset.open = "";
+      if (scroll) (poll ?? notes).scrollIntoView({ behavior: "smooth", block: "nearest" });
+    };
+
+    const prior = load()[id];
+    if (typeof prior === "number" && opts[prior]) {
+      reveal(prior, false);
+    } else {
+      for (const o of opts) {
+        o.addEventListener("click", () => {
+          const choice = Number(o.dataset.opt);
+          save(choice);
+          reveal(choice, true);
+        });
+      }
+      skip?.addEventListener("click", () => {
+        reveal(null, false);
+        notes.scrollIntoView({ behavior: "smooth", block: "start" });
+      });
+    }
+  }
+
+  // でたらめに一語。ビルド時に選んだ語ではなく、開くたびに選び直す
+  const hrefs = JSON.parse(document.querySelector("#hrefs")?.textContent ?? "[]") as string[];
+  const random = document.querySelector<HTMLAnchorElement>("[data-random]");
+  if (random && hrefs.length) {
+    random.addEventListener("click", (e) => {
+      e.preventDefault();
+      location.href = hrefs[Math.floor(Math.random() * hrefs.length)];
+    });
+  }
+
+  // 左右の矢印キーで前後の語へ
+  addEventListener("keydown", (e) => {
+    if (e.altKey || e.ctrlKey || e.metaKey || e.shiftKey || e.defaultPrevented) return;
+    const target = e.target as HTMLElement;
+    if (target.closest("input, textarea, select, [contenteditable]")) return;
+    const dir = e.key === "ArrowLeft" ? "prev" : e.key === "ArrowRight" ? "next" : null;
+    const link = dir && document.querySelector<HTMLAnchorElement>(`.step a[data-dir="${dir}"]`);
+    if (!link) return;
+    e.preventDefault();
+    link.click();
+  });
+</script>

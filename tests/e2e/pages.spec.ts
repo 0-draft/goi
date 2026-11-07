@@ -7,18 +7,18 @@ const L404 = [
     prefix: "",
     h1: "Page not found",
     moved: "This page has moved",
-    home: "Back to the route map",
+    home: "Back to the index",
     wordLink: "the page for 日下開山",
-    mapLink: "the route map",
+    mapLink: "the index",
   },
   {
     lang: "ja",
     prefix: "ja/",
     h1: "ページが見つかりません",
     moved: "ページは移動しました",
-    home: "トップの路線図に戻る",
+    home: "トップの索引に戻る",
     wordLink: "「日下開山」のページ",
-    mapLink: "トップの路線図",
+    mapLink: "トップの索引",
   },
 ] as const;
 

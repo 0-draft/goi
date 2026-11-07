@@ -1,0 +1,14 @@
+---
+// 見出し語を一字ずつ字面の枠（em-box）に入れて組む。書体見本帳の組み方
+interface Props {
+  word: string;
+  /** h1 にするか、ただの段落にするか */
+  as?: "h1" | "p" | "span";
+  size?: "xl" | "l" | "m";
+  class?: string;
+}
+const { word, as: Tag = "p", size = "xl", class: cls } = Astro.props;
+const chars = [...word];
+---
+
+<Tag class:list={["specimen", `specimen--${size}`, cls]} lang="ja" style={`--n: ${chars.length}`} data-specimen>{chars.map((c) => <span class="specimen__c">{c}</span>)}</Tag>

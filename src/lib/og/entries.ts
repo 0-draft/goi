@@ -1,13 +1,13 @@
 import { getCollection } from "astro:content";
-import { buildRoute } from "../../components/c/route";
 import { KIND_LABEL, LANGS, type Lang, wordText } from "../../i18n/ui";
+import { buildEntries } from "../entries";
 import { type OgWord, ogGlyphs } from "./render";
 
 /** 言語ごとの画像の中身（pending を除く）と、全画像で共通のフォント用の字 */
 export async function ogEntries() {
-  const { stations } = buildRoute(await getCollection("words"));
+  const entries = buildEntries(await getCollection("words"));
   const cards = (lang: Lang) =>
-    stations.map((s): { id: string; card: OgWord } => {
+    entries.map((s): { id: string; card: OgWord } => {
       const text = wordText(s.word, lang);
       return {
         id: s.id,

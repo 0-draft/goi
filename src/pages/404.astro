@@ -29,7 +29,7 @@ const words = Object.fromEntries(
         <h2 id="moved-en">This page has moved</h2>
         <p>You can read it at <a data-moved-link href={base}>the new page</a>.</p>
       </section>
-      <p><a href={base} data-home>Back to the route map</a></p>
+      <p><a href={base} data-home>Back to the index</a></p>
     </main>
     <main data-lang="ja" lang="ja" hidden>
       <p class="code">404</p>
@@ -39,7 +39,7 @@ const words = Object.fromEntries(
         <h2 id="moved-ja">ページは移動しました</h2>
         <p><a data-moved-link href={`${base}ja/`}>新しいページ</a>で読めます。</p>
       </section>
-      <p><a href={`${base}ja/`} data-home>トップの路線図に戻る</a></p>
+      <p><a href={`${base}ja/`} data-home>トップの索引に戻る</a></p>
     </main>
     <script is:inline type="application/json" id="goi-words" set:html={JSON.stringify(words).replace(/</g, "\\u003c")} />
     <script is:inline define:vars={{ base }}>
@@ -63,7 +63,7 @@ const words = Object.fromEntries(
           link.href = `${prefix}w/${m[1]}/`;
           link.textContent = ja ? `「${words[m[1]]}」のページ` : `the page for ${words[m[1]]}`;
         } else {
-          link.textContent = ja ? "トップの路線図" : "the route map";
+          link.textContent = ja ? "トップの索引" : "the index";
         }
         box.hidden = false;
       }

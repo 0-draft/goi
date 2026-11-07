@@ -1,0 +1,964 @@
+/* goi — 白地と墨、罫線、差し色の青ひとつ。見出し語は字面の枠に入れて大きく組む */
+
+:root {
+  color-scheme: light dark;
+  --paper: #ffffff;
+  --ink: #111111;
+  --muted: #5c5c5c;
+  --rule: #111111;
+  --hair: #d9d9d6;
+  --tint: #f3f3f1;
+  --accent: #1b2bff;
+  --accent-ink: #ffffff;
+  --guide: rgb(27 43 255 / 0.35);
+
+  --sans:
+    "IBM Plex Sans JP", "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Noto Sans JP", "Yu Gothic", sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+  --gutter: clamp(1rem, 4vw, 3rem);
+  --measure: 38rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper: #111111;
+    --ink: #ededea;
+    --muted: #a3a3a0;
+    --rule: #ededea;
+    --hair: #343434;
+    --tint: #1b1b1b;
+    --accent: #8f97ff;
+    --accent-ink: #111111;
+    --guide: rgb(143 151 255 / 0.4);
+  }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+[hidden] {
+  /* biome-ignore lint/complexity/noImportantStyles: hidden 属性を各要素の display 指定より優先させる */
+  display: none !important;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 1rem;
+  line-height: 1.75;
+  letter-spacing: 0.02em;
+  text-autospace: normal;
+  text-spacing-trim: trim-start;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: inherit;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.25em;
+}
+
+a:hover {
+  text-decoration-color: var(--accent);
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  letter-spacing: inherit;
+}
+
+h1,
+h2,
+p,
+ol,
+ul,
+figure {
+  margin: 0;
+}
+
+ol,
+ul {
+  padding: 0;
+  list-style: none;
+}
+
+rt {
+  font-size: 0.5em;
+  letter-spacing: 0.08em;
+  font-weight: 400;
+}
+
+.sr-only {
+  position: absolute;
+  inline-size: 1px;
+  block-size: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.mono {
+  font-family: var(--mono);
+  letter-spacing: 0;
+}
+
+.label {
+  font-family: var(--mono);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.textbtn {
+  padding: 0;
+  border: 0;
+  background: none;
+  font-family: var(--mono);
+  font-size: 0.875rem;
+  letter-spacing: 0;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.3em;
+  cursor: pointer;
+}
+
+.textbtn:hover {
+  text-decoration-color: var(--accent);
+}
+
+.shell {
+  max-inline-size: 90rem;
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+/* ヘッダー: 太い罫線の下に、ロゴ・戻り・語数・言語の一列 */
+.bar {
+  display: flex;
+  align-items: baseline;
+  gap: 1.25rem;
+  border-block-start: 6px solid var(--rule);
+  border-block-end: 1px solid var(--rule);
+  padding-block: 0.75rem;
+}
+
+.bar__mark {
+  font-weight: 700;
+  font-size: 1.25rem;
+  letter-spacing: -0.02em;
+  text-decoration: none;
+}
+
+.bar__back {
+  font-size: 0.875rem;
+}
+
+.bar__back::before {
+  content: "← ";
+}
+
+.bar__count {
+  margin-inline-start: auto;
+  font-size: 0.8125rem;
+  color: var(--muted);
+}
+
+.bar__lang {
+  font-size: 0.875rem;
+}
+
+/* 見出し語の見本。字ごとに正方形の枠を置き、中心に点線のガイドを引く */
+.specimen {
+  --size: 6rem;
+  display: flex;
+  flex-wrap: wrap;
+  font-size: var(--size);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0;
+  font-feature-settings: normal;
+}
+
+.specimen__c {
+  display: grid;
+  place-items: center;
+  inline-size: 1.08em;
+  block-size: 1.08em;
+  margin-inline-end: -1px;
+  margin-block-end: -1px;
+  border: 1px solid var(--hair);
+  background:
+    linear-gradient(var(--guide), var(--guide)) center / 100% 1px no-repeat,
+    linear-gradient(var(--guide), var(--guide)) center / 1px 100% no-repeat;
+}
+
+/* 字数が多いほど小さく。7字を超えたら折り返す */
+.specimen--xl {
+  --size: clamp(
+    2.75rem,
+    calc((min(100vw, 90rem) - 2 * var(--gutter)) * 0.82 / min(var(--n), 7) / 1.08),
+    11rem
+  );
+}
+
+.specimen--l {
+  --size: clamp(2.5rem, calc(26rem / min(var(--n), 6) / 1.08), 7rem);
+}
+
+/* トップ */
+.intro {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1.5rem;
+  align-items: end;
+  padding-block: clamp(2.5rem, 7vw, 6rem) clamp(2rem, 4vw, 3rem);
+  border-block-end: 1px solid var(--rule);
+}
+
+.intro__title {
+  font-size: clamp(6rem, 22vw, 17rem);
+  font-weight: 700;
+  line-height: 0.8;
+  letter-spacing: -0.06em;
+  margin-inline-start: -0.04em;
+}
+
+.intro__lead {
+  max-inline-size: 30rem;
+  font-size: clamp(1rem, 1.4vw, 1.1875rem);
+  line-height: 1.8;
+}
+
+@media (min-width: 52rem) {
+  .intro {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 26rem);
+  }
+}
+
+.today {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1rem;
+  padding-block: 1.5rem 2.5rem;
+  border-block-end: 1px solid var(--rule);
+}
+
+.today__meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.5rem 1rem;
+}
+
+.today__date {
+  font-size: 0.8125rem;
+  color: var(--muted);
+}
+
+.today__meta .textbtn {
+  margin-inline-start: auto;
+}
+
+.today__card {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1rem;
+  text-decoration: none;
+}
+
+.today__no {
+  font-size: 0.8125rem;
+  color: var(--accent);
+}
+
+.today__reading {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 1rem;
+  font-size: 1.125rem;
+}
+
+.today__reading .mono {
+  color: var(--muted);
+  font-size: 0.9375rem;
+  align-self: center;
+}
+
+.today__short {
+  max-inline-size: var(--measure);
+  font-size: clamp(1.25rem, 2.2vw, 1.625rem);
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+.today__go {
+  font-size: 0.875rem;
+  text-decoration: underline;
+  text-underline-offset: 0.3em;
+}
+
+.today__card:hover .today__go {
+  text-decoration-color: var(--accent);
+}
+
+.today__card:hover .specimen__c {
+  border-color: var(--accent);
+}
+
+@media (min-width: 64rem) {
+  .today {
+    grid-template-columns: 12rem minmax(0, 1fr);
+    gap: 2rem;
+  }
+
+  .today__meta {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .today__meta .textbtn {
+    margin-inline-start: 0;
+  }
+}
+
+/* 索引 */
+.index {
+  padding-block: 1.5rem 4rem;
+}
+
+.index__head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: end;
+  justify-content: space-between;
+  gap: 1rem 2rem;
+}
+
+.search {
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+  flex: 1 1 18rem;
+  max-inline-size: 30rem;
+}
+
+.search__label {
+  font-size: 0.875rem;
+  white-space: nowrap;
+}
+
+.search input {
+  flex: 1;
+  min-inline-size: 0;
+  padding: 0.375rem 0;
+  border: 0;
+  border-block-end: 1px solid var(--rule);
+  border-radius: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  font-size: 1rem;
+}
+
+.search input:focus-visible {
+  outline: none;
+  border-block-end: 2px solid var(--accent);
+}
+
+.search input::placeholder {
+  color: var(--muted);
+}
+
+.filters {
+  min-inline-size: 0;
+  padding: 0;
+  border: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0;
+  margin-block: 1.25rem 0.5rem;
+  border-block-start: 1px solid var(--hair);
+}
+
+@media (max-width: 51.99rem) {
+  .filters {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scrollbar-width: none;
+    margin-inline: calc(-1 * var(--gutter));
+    padding-inline: var(--gutter);
+  }
+
+  .filters::-webkit-scrollbar {
+    display: none;
+  }
+
+  .filter {
+    flex: none;
+  }
+}
+
+.filter {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.375rem;
+  padding: 0.625rem 1rem 0.625rem 0;
+  margin-inline-end: 1rem;
+  border: 0;
+  border-block-start: 3px solid transparent;
+  margin-block-start: -2px;
+  background: none;
+  font-size: 0.9375rem;
+  cursor: pointer;
+}
+
+.filter__n {
+  font-size: 0.75rem;
+  color: var(--muted);
+}
+
+.filter:hover {
+  border-block-start-color: var(--hair);
+}
+
+.filter[aria-pressed="true"] {
+  border-block-start-color: var(--accent);
+  font-weight: 700;
+}
+
+.status {
+  min-block-size: 1.5rem;
+  font-family: var(--mono);
+  font-size: 0.8125rem;
+  color: var(--muted);
+  letter-spacing: 0;
+}
+
+.index__body {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 2.5rem;
+  align-items: start;
+}
+
+.rows {
+  border-block-start: 1px solid var(--rule);
+}
+
+.row {
+  border-block-end: 1px solid var(--hair);
+}
+
+.row__link {
+  display: grid;
+  grid-template-columns: 2.25rem minmax(0, 1fr);
+  grid-template-areas:
+    "no word"
+    "no short";
+  column-gap: 0.75rem;
+  padding-block: 0.875rem;
+  padding-inline: 0.25rem;
+  text-decoration: none;
+}
+
+.row__no {
+  grid-area: no;
+  font-size: 0.8125rem;
+  color: var(--muted);
+  padding-block-start: 0.5em;
+}
+
+.row__word {
+  grid-area: word;
+  font-size: 1.375rem;
+  font-weight: 700;
+  line-height: 1.6;
+}
+
+.row__romaji,
+.row__themes {
+  display: none;
+}
+
+.row__short {
+  grid-area: short;
+  color: var(--muted);
+  font-size: 0.9375rem;
+  line-height: 1.6;
+}
+
+/* 行の上ではベタで反転させる */
+.row__link:hover,
+.row__link:focus-visible {
+  background: var(--ink);
+  color: var(--paper);
+  outline: none;
+}
+
+.row__link:hover .row__no,
+.row__link:hover .row__short,
+.row__link:hover .row__romaji,
+.row__link:hover .row__themes,
+.row__link:focus-visible .row__no,
+.row__link:focus-visible .row__short,
+.row__link:focus-visible .row__romaji,
+.row__link:focus-visible .row__themes {
+  color: var(--paper);
+}
+
+@media (min-width: 52rem) {
+  .row__link {
+    grid-template-columns: 3rem minmax(10rem, 1.1fr) minmax(0, 1.3fr);
+    grid-template-areas: "no word short";
+    align-items: baseline;
+    column-gap: 1.25rem;
+    padding-inline: 0.5rem;
+  }
+
+  .row__no {
+    padding-block-start: 0;
+  }
+}
+
+@media (min-width: 72rem) {
+  .row__link {
+    grid-template-columns: 3rem minmax(11rem, 1fr) minmax(9rem, 0.75fr) minmax(0, 1.25fr) 8rem;
+    grid-template-areas: "no word romaji short themes";
+  }
+
+  .row__romaji {
+    display: block;
+    grid-area: romaji;
+    font-size: 0.8125rem;
+    color: var(--muted);
+  }
+
+  .row__themes {
+    display: block;
+    grid-area: themes;
+    font-size: 0.8125rem;
+    color: var(--muted);
+    text-align: end;
+  }
+}
+
+/* 右の見本。広い画面だけ */
+.preview {
+  display: none;
+}
+
+@media (min-width: 90rem) {
+  .index__body {
+    grid-template-columns: minmax(0, 1fr) 28rem;
+  }
+
+  .row__link {
+    grid-template-columns: 3rem minmax(11rem, 1fr) minmax(9rem, 0.8fr) minmax(0, 1.2fr);
+    grid-template-areas: "no word romaji short";
+  }
+
+  .row__themes {
+    display: none;
+  }
+
+  .preview {
+    position: sticky;
+    inset-block-start: 1.5rem;
+    display: grid;
+    gap: 1rem;
+    padding: 1.5rem;
+    background: var(--tint);
+    border-block-start: 1px solid var(--rule);
+  }
+
+  .preview__no {
+    font-size: 3rem;
+    line-height: 1;
+    color: var(--accent);
+  }
+
+  .preview__reading {
+    font-size: 1.125rem;
+  }
+
+  .preview__short {
+    font-size: 1.125rem;
+    font-weight: 500;
+    line-height: 1.6;
+  }
+}
+
+.empty {
+  padding-block: 2rem;
+  color: var(--muted);
+}
+
+/* 語のページ */
+.hero {
+  display: grid;
+  gap: 1.25rem;
+  padding-block: clamp(2rem, 5vw, 4rem) 2rem;
+}
+
+.hero__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 1.25rem;
+  font-size: 0.8125rem;
+  color: var(--muted);
+}
+
+.hero__meta span:first-child {
+  color: var(--accent);
+}
+
+.hero__reading {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.25rem 1.25rem;
+  font-size: clamp(1.125rem, 2vw, 1.5rem);
+  letter-spacing: 0.08em;
+}
+
+.hero__reading .mono {
+  font-size: 0.75em;
+  color: var(--muted);
+}
+
+.note__gloss {
+  margin-block-end: 0.5rem;
+  font-size: clamp(1.5rem, 3vw, 2.25rem);
+  font-weight: 500;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  color: var(--accent);
+}
+
+/* 先に当てさせる二択 */
+.quiz {
+  display: grid;
+  gap: 1rem;
+  padding-block: 1.5rem 2rem;
+  border-block-start: 1px solid var(--rule);
+}
+
+.quiz__options {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  border-block-start: 1px solid var(--rule);
+  border-inline-start: 1px solid var(--rule);
+}
+
+@media (min-width: 52rem) {
+  .quiz__options {
+    grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+  }
+}
+
+.quiz__opt {
+  display: grid;
+  grid-template-columns: 2rem minmax(0, 1fr);
+  gap: 0.75rem;
+  align-items: baseline;
+  padding: 1.125rem 1.25rem;
+  border: 0;
+  border-inline-end: 1px solid var(--rule);
+  border-block-end: 1px solid var(--rule);
+  background: var(--paper);
+  text-align: start;
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  cursor: pointer;
+}
+
+.quiz__opt:not(:disabled):hover {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.quiz__opt:disabled {
+  cursor: default;
+  color: var(--muted);
+}
+
+.quiz__opt.is-correct {
+  background: var(--accent);
+  color: var(--accent-ink);
+}
+
+.quiz__opt.is-chosen:not(.is-correct) .quiz__text {
+  text-decoration: line-through;
+  text-decoration-thickness: 1px;
+}
+
+.quiz__key {
+  font-size: 0.8125rem;
+}
+
+.quiz__result {
+  min-block-size: 1.75rem;
+  font-weight: 700;
+  font-size: 1.125rem;
+}
+
+.quiz__skip {
+  justify-self: start;
+}
+
+.poll {
+  display: grid;
+  gap: 0.75rem;
+  max-inline-size: 48rem;
+}
+
+.poll__cap {
+  font-size: 0.875rem;
+  color: var(--muted);
+}
+
+.poll__bars {
+  display: grid;
+  gap: 0.875rem;
+}
+
+.poll__row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 4.5rem;
+  grid-template-areas:
+    "label pct"
+    "track track";
+  gap: 0.25rem 1rem;
+  align-items: baseline;
+}
+
+.poll__label {
+  grid-area: label;
+  font-size: 0.9375rem;
+}
+
+.poll__tag,
+.poll__you {
+  margin-inline-start: 0.75rem;
+  font-size: 0.75rem;
+  color: var(--accent);
+}
+
+.poll__you {
+  color: var(--ink);
+  font-weight: 500;
+}
+
+.poll__track {
+  grid-area: track;
+  block-size: 0.75rem;
+  background: var(--tint);
+}
+
+.poll__fill {
+  display: block;
+  block-size: 100%;
+  inline-size: calc(var(--pct) * 1%);
+  background: var(--ink);
+}
+
+.poll__row[data-correct] .poll__fill {
+  background: var(--accent);
+}
+
+.poll__pct {
+  grid-area: pct;
+  text-align: end;
+  font-size: 1.125rem;
+  font-weight: 500;
+}
+
+/* 意味・由来・用例・出典。左に番号つきの見出し、右に本文 */
+.notes {
+  border-block-start: 1px solid var(--rule);
+}
+
+.note {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 0.75rem;
+  padding-block: 1.5rem 2rem;
+  border-block-end: 1px solid var(--hair);
+}
+
+.note__label {
+  display: flex;
+  gap: 0.75rem;
+  align-items: baseline;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.note__label .mono {
+  color: var(--accent);
+  font-size: 0.8125rem;
+}
+
+.note__body {
+  max-inline-size: var(--measure);
+  font-size: 1.0625rem;
+  line-height: 1.9;
+}
+
+.note__lead {
+  font-size: clamp(1.25rem, 2.2vw, 1.625rem);
+  font-weight: 700;
+  line-height: 1.6;
+}
+
+.example {
+  font-size: clamp(1.125rem, 2vw, 1.375rem);
+  line-height: 1.8;
+}
+
+.example b {
+  font-weight: 700;
+  box-shadow: inset 0 -0.18em 0 var(--accent);
+}
+
+.example__en {
+  margin-block-start: 0.5rem;
+  color: var(--muted);
+}
+
+.sources {
+  display: grid;
+  gap: 0.75rem;
+  counter-reset: src;
+}
+
+.sources li {
+  display: grid;
+  counter-increment: src;
+}
+
+.sources li::before {
+  content: "[" counter(src) "]";
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  color: var(--muted);
+}
+
+.sources__host {
+  font-size: 0.8125rem;
+  color: var(--muted);
+}
+
+@media (min-width: 52rem) {
+  .note {
+    grid-template-columns: 12rem minmax(0, 1fr);
+    gap: 2rem;
+  }
+
+  .note__label {
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .sources li {
+    grid-template-columns: 2.5rem minmax(0, 1fr);
+    column-gap: 0;
+  }
+
+  .sources li::before {
+    grid-row: span 2;
+    padding-block-start: 0.35em;
+  }
+}
+
+/* 前後の語 */
+.step {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  margin-block: 3rem 4rem;
+  border-block: 1px solid var(--rule);
+}
+
+.step__link {
+  display: grid;
+  gap: 0.25rem;
+  padding: 1rem 0.75rem;
+  text-decoration: none;
+}
+
+.step__link--next {
+  text-align: end;
+}
+
+.step__link--random {
+  text-align: center;
+  border-inline: 1px solid var(--hair);
+  padding-inline: clamp(1rem, 4vw, 3rem);
+}
+
+.step__dir {
+  font-size: 0.75rem;
+  color: var(--muted);
+}
+
+.step__word {
+  font-size: clamp(1.125rem, 2.5vw, 1.5rem);
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+a.step__link:hover {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+a.step__link:hover .step__dir {
+  color: var(--paper);
+}
+
+.foot {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.5rem 2rem;
+  padding-block: 1.25rem 2.5rem;
+  border-block-start: 6px solid var(--rule);
+  font-size: 0.8125rem;
+  color: var(--muted);
+}
+
+@view-transition {
+  navigation: auto;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  @view-transition {
+    navigation: none;
+  }
+}
+
+/* JS がなければ二択・検索・絞り込みは出さず、意味から下を最初から見せる */
+html:not(.js) .quiz,
+html:not(.js) .search,
+html:not(.js) .filters,
+html:not(.js) [data-today-next],
+.js .notes:not([data-open]) {
+  display: none;
+}

@@ -1,121 +1,259 @@
 ---
 import { getCollection } from "astro:content";
-import Badge from "../components/c/Badge.astro";
-import { buildRoute } from "../components/c/route";
-import LangSwitch from "../components/LangSwitch.astro";
-import { type Lang, localePath, t, wordText } from "../i18n/ui";
-import C from "../layouts/C.astro";
+import Specimen from "../components/Specimen.astro";
+import { type Lang, localePath, THEME_LABEL, t, wordText } from "../i18n/ui";
+import Page from "../layouts/Page.astro";
+import { buildEntries, dailyIndex } from "../lib/entries";
 import { jsonForScript } from "../lib/json";
+import { shortMeaning } from "../lib/quiz";
+import { THEMES } from "../lib/themes";
 
 interface Props {
   lang: Lang;
 }
 const { lang } = Astro.props;
-const route = buildRoute(await getCollection("words"));
-// 英語版では英語の意味と短い訳語でも引けるようにする
-const docs = route.stations.map((s) => {
-  const text = wordText(s.word, lang);
-  return {
-    id: s.id,
-    word: s.word.word,
-    reading: s.word.reading,
-    meaning: [text.gloss, text.meaning, s.romaji].filter(Boolean).join(" "),
-  };
-});
+const entries = buildEntries(await getCollection("words"));
+const count = entries.length;
+
+const short = (e: (typeof entries)[number]) => shortMeaning(e, lang);
+const themesOf = (e: (typeof entries)[number]) => [
+  ...(e.word.themes ?? []),
+  ...(e.word.survey ? ["misread"] : []),
+];
+const docs = entries.map((e) => ({
+  id: e.id,
+  no: e.number,
+  word: e.word.word,
+  reading: e.word.reading,
+  romaji: e.romaji,
+  short: short(e),
+  href: localePath(lang, `w/${e.id}/`),
+  // 検索用。英語版では英語の意味と、分かち書きしないローマ字でも引ける
+  meaning: [wordText(e.word, lang).gloss, wordText(e.word, lang).meaning, e.romaji, e.id.replaceAll("-", "")]
+    .filter(Boolean)
+    .join(" "),
+}));
+
+// JS がないときとビルド直後の表示。JS があれば見ている日の語に差し替える
+const today = entries[dailyIndex(new Date(), count)];
+const filters = [
+  ...THEMES.map((th) => ({ id: th, label: THEME_LABEL[lang][th] })),
+  { id: "misread", label: t(lang, "index.misread") },
+]
+  .map((f) => ({ ...f, n: entries.filter((e) => themesOf(e).includes(f.id)).length }))
+  .filter((f) => f.n > 0);
 ---
 
-<C lang={lang} title={t(lang, "site.title")} description={t(lang, "site.desc")} ogImage={localePath(lang, "og/index.png")}>
-  <header class="c-masthead">
-    <div class="c-masthead__row">
-      <h1 class="c-masthead__title">goi</h1>
-      <LangSwitch lang={lang} class="c-lang" />
-    </div>
-    <p class="c-masthead__lead">{t(lang, "map.lead")}</p>
-  </header>
-  <main class="c-map-page">
-    <search class="c-search" data-search hidden>
-      <label for="c-q">{t(lang, "search.label")}</label>
-      <input id="c-q" type="search" placeholder={t(lang, "search.placeholder")} autocomplete="off" />
-      <p class="c-search__status" role="status" data-status></p>
-    </search>
-    <section class="c-board" aria-labelledby="c-board-title">
-      <h2 id="c-board-title" class="c-board__title">{t(lang, "map.title")}</h2>
-      {
-        route.lines.map(({ line, stations }) => (
-          <section class="c-line" style={`--line: ${line.color}`} aria-labelledby={`c-line-${line.code}`}>
-            <h3 class="c-line__name" id={`c-line-${line.code}`}>
-              <span class="c-line__chip" aria-hidden="true">
-                {line.code}
-              </span>
-              {t(lang, "map.line")(line.kind)}
-            </h3>
-            <ol class="c-line__stations">
-              {stations.map((s) => (
-                <li class="c-station" data-id={s.id}>
-                  <a class="c-station__link" href={localePath(lang, `w/${s.id}/`)}>
-                    <span class="c-station__dot" aria-hidden="true" />
-                    <span class="c-station__label">
-                      <span class="c-station__word" lang="ja">
-                        <ruby>
-                          {s.word.word}
-                          <rp>（</rp>
-                          <rt>{s.word.reading}</rt>
-                          <rp>）</rp>
-                        </ruby>
-                      </span>
-                      <span class="c-station__romaji" lang="ja-Latn">
-                        {s.romaji}
-                      </span>
-                    </span>
-                    <Badge station={s} size="s" />
-                  </a>
-                </li>
-              ))}
-            </ol>
-          </section>
-        ))
-      }
-      <p class="c-board__empty" data-empty hidden>
-        {t(lang, "search.none")}
-      </p>
+<Page lang={lang} title={t(lang, "site.title")} description={t(lang, "site.desc")} ogImage={localePath(lang, "og/index.png")} count={count}>
+  <main>
+    <section class="intro">
+      <h1 class="intro__title">goi</h1>
+      <p class="intro__lead">{t(lang, "home.lead")(count)}</p>
+    </section>
+
+    <section class="today" aria-labelledby="today-h" data-today>
+      <div class="today__meta">
+        <h2 id="today-h" class="label">{t(lang, "today.title")}</h2>
+        <p class="mono today__date" data-today-date></p>
+        <button type="button" class="textbtn" data-today-next>{t(lang, "today.another")} →</button>
+      </div>
+      <a class="today__card" href={localePath(lang, `w/${today.id}/`)} data-today-link>
+        <span class="today__no mono" data-today-no>No.{today.number}</span>
+        <Specimen word={today.word.word} size="xl" as="span" class="today__word" />
+        <span class="today__reading">
+          <span lang="ja" data-today-reading>{today.word.reading}</span>
+          <span class="mono" lang="ja-Latn" data-today-romaji>{today.romaji}</span>
+        </span>
+        <span class="today__short" data-today-short>{short(today)}</span>
+        <span class="today__go mono">{t(lang, "today.read")} →</span>
+      </a>
+    </section>
+
+    <section class="index" aria-labelledby="index-h">
+      <div class="index__head">
+        <h2 id="index-h" class="label">{t(lang, "index.title")}</h2>
+        <search class="search" data-search>
+          <label for="q" class="search__label">{t(lang, "search.label")}</label>
+          <input id="q" type="search" placeholder={t(lang, "search.placeholder")} autocomplete="off" />
+        </search>
+      </div>
+      <fieldset class="filters" data-filters>
+        <legend class="sr-only">{t(lang, "index.filter")}</legend>
+        <button type="button" class="filter" aria-pressed="true" data-filter="">
+          {t(lang, "index.all")}<span class="filter__n mono">{count}</span>
+        </button>
+        {
+          filters.map((f) => (
+            <button type="button" class="filter" aria-pressed="false" data-filter={f.id}>
+              {f.label}
+              <span class="filter__n mono">{f.n}</span>
+            </button>
+          ))
+        }
+      </fieldset>
+      <p class="status" role="status" data-status></p>
+
+      <div class="index__body">
+        <ol class="rows">
+          {
+            entries.map((e) => (
+              <li class="row" data-id={e.id} data-themes={themesOf(e).join(" ")}>
+                <a class="row__link" href={localePath(lang, `w/${e.id}/`)}>
+                  <span class="row__no mono">{e.number}</span>
+                  <span class="row__word" lang="ja">
+                    <ruby>
+                      {e.word.word}
+                      <rp>（</rp>
+                      <rt>{e.word.reading}</rt>
+                      <rp>）</rp>
+                    </ruby>
+                  </span>
+                  <span class="row__romaji mono" lang="ja-Latn">
+                    {e.romaji}
+                  </span>
+                  <span class="row__short">{short(e)}</span>
+                  <span class="row__themes">
+                    {(e.word.themes ?? []).map((th) => THEME_LABEL[lang][th]).join(" / ")}
+                  </span>
+                </a>
+              </li>
+            ))
+          }
+        </ol>
+        <aside class="preview" aria-hidden="true" data-preview>
+          <span class="preview__no mono" data-preview-no>{entries[0].number}</span>
+          <Specimen word={entries[0].word.word} size="l" as="span" />
+          <span class="preview__reading" data-preview-reading>{entries[0].word.reading}</span>
+          <span class="preview__short" data-preview-short>{short(entries[0])}</span>
+        </aside>
+      </div>
+      <p class="empty" data-empty hidden>{t(lang, "search.none")}</p>
     </section>
   </main>
-  <script type="application/json" id="c-docs" set:html={jsonForScript(docs)} />
-</C>
+  <script type="application/json" id="docs" set:html={jsonForScript(docs)} />
+</Page>
 
 <script>
+  import { dailyIndex } from "../lib/entries";
   import { buildIndex, type SearchDoc, search } from "../lib/search";
 
-  const form = document.querySelector<HTMLElement>("[data-search]");
-  const input = document.querySelector<HTMLInputElement>("#c-q");
+  interface Doc extends SearchDoc {
+    no: string;
+    romaji: string;
+    short: string;
+    href: string;
+  }
+
+  const docs = JSON.parse(document.querySelector("#docs")?.textContent ?? "[]") as Doc[];
+  const byId = new Map(docs.map((d) => [d.id, d]));
+  const lang = document.documentElement.lang;
+
+  // 見本の字を差し替える。字ごとに枠を作り直す
+  const setSpecimen = (el: Element | null, word: string) => {
+    if (!el) return;
+    const chars = [...word];
+    (el as HTMLElement).style.setProperty("--n", String(chars.length));
+    el.replaceChildren(
+      ...chars.map((c) => {
+        const s = document.createElement("span");
+        s.className = "specimen__c";
+        s.textContent = c;
+        return s;
+      }),
+    );
+  };
+  const text = (sel: string, value: string, root: ParentNode = document) => {
+    const el = root.querySelector(sel);
+    if (el) el.textContent = value;
+  };
+
+  // 今日の一語。日本時間の日付で決め、「ほかの語」で順に送る
+  const today = document.querySelector("[data-today]");
+  if (today && docs.length) {
+    let i = dailyIndex(new Date(), docs.length);
+    const show = (d: Doc) => {
+      today.querySelector<HTMLAnchorElement>("[data-today-link]")?.setAttribute("href", d.href);
+      text("[data-today-no]", `No.${d.no}`, today);
+      text("[data-today-reading]", d.reading, today);
+      text("[data-today-romaji]", d.romaji, today);
+      text("[data-today-short]", d.short, today);
+      setSpecimen(today.querySelector("[data-specimen]"), d.word);
+    };
+    const date = new Intl.DateTimeFormat(lang === "ja" ? "ja-JP" : "en-GB", {
+      dateStyle: "long",
+      timeZone: "Asia/Tokyo",
+    }).format(new Date());
+    text("[data-today-date]", date, today);
+    show(docs[i]);
+    const next = today.querySelector<HTMLButtonElement>("[data-today-next]");
+    if (next) {
+      next.addEventListener("click", () => {
+        i = (i + 1 + Math.floor(Math.random() * (docs.length - 1))) % docs.length;
+        show(docs[i]);
+      });
+    }
+  }
+
+  // 一覧の行にカーソルやフォーカスが来たら、右の見本に大きく出す
+  const preview = document.querySelector("[data-preview]");
+  const rows = [...document.querySelectorAll<HTMLElement>(".row")];
+  if (preview) {
+    const showPreview = (id: string | undefined) => {
+      const d = id && byId.get(id);
+      if (!d) return;
+      text("[data-preview-no]", d.no, preview);
+      text("[data-preview-reading]", d.reading, preview);
+      text("[data-preview-short]", d.short, preview);
+      setSpecimen(preview.querySelector("[data-specimen]"), d.word);
+    };
+    for (const row of rows) {
+      const show = () => showPreview(row.dataset.id);
+      row.addEventListener("pointerenter", show);
+      row.addEventListener("focusin", show);
+    }
+  }
+
+  // 検索と由来での絞り込み。両方の条件に合う行だけ残す
+  const searchBox = document.querySelector<HTMLElement>("[data-search]");
+  const input = document.querySelector<HTMLInputElement>("#q");
+  const filterBox = document.querySelector<HTMLElement>("[data-filters]");
   const status = document.querySelector<HTMLElement>("[data-status]");
   const empty = document.querySelector<HTMLElement>("[data-empty]");
-  const data = document.querySelector("#c-docs")?.textContent;
-  const lang = document.documentElement.lang;
-  const found = (n: number) =>
-    lang === "ja" ? `${n}駅が見つかりました` : `${n} ${n === 1 ? "station" : "stations"} found`;
-
-  if (form && input && status && empty && data) {
-    const index = buildIndex(JSON.parse(data) as SearchDoc[]);
-    const stations = [...document.querySelectorAll<HTMLElement>(".c-station")];
-    const lines = [...document.querySelectorAll<HTMLElement>(".c-line")];
+  if (searchBox && input && filterBox && status && empty) {
+    const index = buildIndex(docs);
+    const buttons = [...filterBox.querySelectorAll<HTMLButtonElement>("[data-filter]")];
+    const params = new URLSearchParams(location.search);
+    let theme = buttons.some((b) => b.dataset.filter === params.get("t")) ? (params.get("t") ?? "") : "";
     let timer: ReturnType<typeof setTimeout> | undefined;
-    form.hidden = false;
 
+    const found = (n: number) => (lang === "ja" ? `${n}語が見つかりました` : `${n} ${n === 1 ? "word" : "words"} found`);
     const apply = () => {
       const q = input.value;
       const hits = q.trim() ? new Set(search(index, q).map((d) => d.id)) : null;
-      for (const s of stations) s.hidden = hits ? !hits.has(s.dataset.id ?? "") : false;
-      const count = hits ? hits.size : stations.length;
-      // 駅がひとつも残らない路線は見出しごと隠す
-      for (const line of lines) line.hidden = !line.querySelector(".c-station:not([hidden])");
+      let count = 0;
+      for (const row of rows) {
+        const okQ = !hits || hits.has(row.dataset.id ?? "");
+        const okT = !theme || (row.dataset.themes ?? "").split(" ").includes(theme);
+        row.hidden = !(okQ && okT);
+        if (!row.hidden) count++;
+      }
+      for (const b of buttons) b.setAttribute("aria-pressed", String((b.dataset.filter ?? "") === theme));
       empty.hidden = count > 0;
-      // 打鍵ごとに読み上げが積み重ならないよう少し待って更新する
       clearTimeout(timer);
       timer = setTimeout(() => {
-        status.textContent = hits ? found(count) : "";
+        status.textContent = hits || theme ? found(count) : "";
       }, 300);
     };
+    for (const b of buttons) {
+      b.addEventListener("click", () => {
+        theme = b.dataset.filter ?? "";
+        const url = new URL(location.href);
+        if (theme) url.searchParams.set("t", theme);
+        else url.searchParams.delete("t");
+        history.replaceState(null, "", url);
+        apply();
+      });
+    }
     input.addEventListener("input", apply);
     apply();
   }

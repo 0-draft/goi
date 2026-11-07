@@ -1,4 +1,5 @@
 import type { Word } from "../lib/schema";
+import type { Theme } from "../lib/themes";
 
 export const LANGS = ["en", "ja"] as const;
 export type Lang = (typeof LANGS)[number];
@@ -51,32 +52,52 @@ export const KIND_LABEL: Record<Lang, Record<Word["kind"], string>> = {
   ja: { ことわざ: "ことわざ", 慣用句: "慣用句", 四字熟語: "四字熟語", ことば: "ことば" },
 };
 
-// 路線名は左の欄に収まるよう短くする
-const LINE_LABEL_EN: Record<Word["kind"], string> = {
-  ことわざ: "Proverb",
-  慣用句: "Idiom",
-  四字熟語: "Four-Character",
-  ことば: "Word",
+export const THEME_LABEL: Record<Lang, Record<Theme, string>> = {
+  en: {
+    sumo: "Sumo",
+    stage: "The stage",
+    buddhism: "Buddhism",
+    history: "History",
+    trade: "Trade & money",
+    body: "Body & mind",
+    animals: "Animals",
+    everyday: "Everyday life",
+  },
+  ja: {
+    sumo: "相撲",
+    stage: "芝居・舞台",
+    buddhism: "仏教",
+    history: "歴史",
+    trade: "商い・お金",
+    body: "体と心",
+    animals: "生き物",
+    everyday: "暮らし",
+  },
 };
 
 export const dict = {
   en: {
     "site.name": "goi",
-    "site.title": "goi | A route map of Japanese words",
+    "site.title": "goi | Japanese words people know but rarely use",
     "site.desc":
-      "Japanese words worth using, laid out as a route map. Each one comes with its meaning, origin, an example and sources.",
+      "A glossary of Japanese idioms, proverbs and words that most people know but rarely say themselves, each with its meaning, origin, an example and sources.",
     "lang.switch": "日本語",
     "lang.switchLabel": "Read this page in Japanese",
-    "map.lead":
-      "Japanese words worth using, laid out as lines by type. Pick a station to open its sign: meaning, origin, an example and sources.",
-    "map.title": "Route map",
-    "map.line": (kind: Word["kind"]) => `${LINE_LABEL_EN[kind]} Line`,
-    "map.back": "Back to the route map",
+    "home.lead": (n: number) =>
+      `Japanese words most people know but rarely say themselves. Each of the ${n} comes with its meaning, where it came from, an example and sources.`,
+    "today.title": "Today",
+    "today.read": "Read",
+    "today.another": "Another word",
+    "index.title": "Index",
+    "index.filter": "Filter by origin",
+    "index.all": "All",
+    "index.misread": "Often misread",
+    "index.back": "Index",
     "search.label": "Search",
-    "search.placeholder": "Word, reading or English meaning",
-    "search.found": (n: number) => `${n} ${n === 1 ? "station" : "stations"} found`,
-    "search.none": "No station matches. Try the reading in hiragana or romaji, or part of the meaning.",
-    "word.hint": "Use the left and right arrow keys, or swipe the sign, to move to the next word.",
+    "search.placeholder": "Word, reading, romaji or English",
+    "search.found": (n: number) => `${n} ${n === 1 ? "word" : "words"} found`,
+    "search.none": "Nothing matches. Try the reading in hiragana or romaji, or part of the meaning.",
+    "word.no": "No.",
     "word.meaning": "Meaning",
     "word.example": "Example",
     "word.origin": "Origin",
@@ -84,24 +105,38 @@ export const dict = {
     "word.adjacent": "Neighboring words",
     "word.prev": "Previous word",
     "word.next": "Next word",
-    "word.first": "First stop",
-    "word.last": "Last stop",
+    "word.random": "Random word",
+    "quiz.title": "Which meaning is right?",
+    "quiz.skip": "Just show me",
+    "quiz.right": "Right.",
+    "quiz.wrong": "Not quite.",
+    "quiz.survey": (year: string) => `How people in Japan answered (Agency for Cultural Affairs, ${year})`,
+    "quiz.you": "your answer",
+    "quiz.original": "original meaning",
+    "footer.note": "Every meaning and origin links to the sources it was checked against.",
   },
   ja: {
     "site.name": "goi",
-    "site.title": "goi｜語の路線図",
-    "site.desc": "使いたくなる日本語を集めた語彙帳。種類ごとの路線図から語をたどれます。",
+    "site.title": "goi｜知っているのに使わない日本語",
+    "site.desc":
+      "知っているのに自分では使わない慣用句・ことわざ・四字熟語を集めた語彙帳。意味・由来・用例と出典つき。",
     "lang.switch": "English",
     "lang.switchLabel": "このページを英語で読む",
-    "map.lead": "使いたくなる日本語を種類ごとの路線にまとめました。駅を選ぶと、その語の駅名標が開きます。",
-    "map.title": "路線図",
-    "map.line": (kind: Word["kind"]) => `${KIND_LABEL.ja[kind]}線`,
-    "map.back": "路線図に戻る",
+    "home.lead": (n: number) =>
+      `知っているのに、自分ではあまり使わない日本語の語彙帳です。${n}語それぞれに意味・由来・用例と、確かめた出典をつけています。`,
+    "today.title": "今日の一語",
+    "today.read": "読む",
+    "today.another": "ほかの語",
+    "index.title": "索引",
+    "index.filter": "由来で絞る",
+    "index.all": "すべて",
+    "index.misread": "取り違えやすい",
+    "index.back": "索引",
     "search.label": "語を探す",
     "search.placeholder": "見出し・読み・意味の一部",
-    "search.found": (n: number) => `${n}駅が見つかりました`,
-    "search.none": "この言葉に合う駅はありません。読みをひらがなで入れるか、意味の一部で探してみてください。",
-    "word.hint": "左右の矢印キーか、駅名標を横にスワイプしても隣の語に移れます。",
+    "search.found": (n: number) => `${n}語が見つかりました`,
+    "search.none": "合う語がありません。読みをひらがなで入れるか、意味の一部で探してみてください。",
+    "word.no": "No.",
     "word.meaning": "意味",
     "word.example": "用例",
     "word.origin": "由来",
@@ -109,8 +144,15 @@ export const dict = {
     "word.adjacent": "となりの語",
     "word.prev": "前の語",
     "word.next": "次の語",
-    "word.first": "始発",
-    "word.last": "終点",
+    "word.random": "でたらめに一語",
+    "quiz.title": "どちらの意味？",
+    "quiz.skip": "答えを見る",
+    "quiz.right": "正解。",
+    "quiz.wrong": "残念。",
+    "quiz.survey": (year: string) => `文化庁「国語に関する世論調査」${year}の回答`,
+    "quiz.you": "あなたの答え",
+    "quiz.original": "本来の意味",
+    "footer.note": "意味と由来は、ページごとに挙げた出典で確かめています。",
   },
 } as const;
 
