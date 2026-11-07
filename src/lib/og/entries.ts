@@ -1,7 +1,17 @@
 import { getCollection } from "astro:content";
 import { KIND_LABEL, LANGS, type Lang, wordText } from "../../i18n/ui";
 import { buildEntries } from "../entries";
+import type { Word } from "../schema";
 import { type OgWord, ogGlyphs } from "./render";
+
+/** 世論調査のある語は「本来の意味を選んだ人の割合」を画像の主役にする */
+function surveyHook(w: Word, lang: Lang): string | undefined {
+  const right = w.survey?.options.find((o) => o.correct);
+  if (!w.survey || !right) return undefined;
+  return lang === "ja"
+    ? `本来の意味で答えた人は${right.pct}%（文化庁・${w.survey.year}）`
+    : `Only ${right.pct}% in Japan chose the original meaning (${w.survey.yearEn})`;
+}
 
 /** 言語ごとの画像の中身（pending を除く）と、全画像で共通のフォント用の字 */
 export async function ogEntries() {
@@ -16,6 +26,7 @@ export async function ogEntries() {
           reading: lang === "ja" ? s.word.reading : s.romaji,
           kind: KIND_LABEL[lang][s.word.kind],
           meaning: lang === "ja" ? text.meaning : text.gloss || text.meaning,
+          hook: surveyHook(s.word, lang),
         },
       };
     });

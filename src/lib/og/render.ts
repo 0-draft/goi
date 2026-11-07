@@ -13,9 +13,10 @@ const MEANING_SIZE = 32;
 // 意味の行に入る全角の字数。1字ぶん余白を残す
 const MEANING_CHARS = Math.floor(INNER / MEANING_SIZE) - 1;
 
-const INK = "#161616";
-const MUTED = "#6a6a66";
-const PAPER = "#f4f4f1";
+const INK = "#111111";
+const MUTED = "#5c5c5c";
+const PAPER = "#ffffff";
+const ACCENT = "#1b2bff";
 
 export const SITE_NAME = "goi";
 export const SITE_TAGLINE = {
@@ -30,6 +31,8 @@ export interface OgWord {
   reading: string;
   kind: string;
   meaning: string;
+  /** 世論調査のある語だけ。意味の代わりに出す一行 */
+  hook?: string;
 }
 
 /** 画像に描く字すべて。フォントの取得をこの字だけに絞る */
@@ -38,7 +41,7 @@ export function ogGlyphs(words: OgWord[]): string {
     SITE_NAME,
     ...Object.values(SITE_TAGLINE),
     "0123456789語words …",
-    ...words.flatMap((w) => [w.word, w.reading, w.kind, oneLine(w.meaning, MEANING_CHARS)]),
+    ...words.flatMap((w) => [w.word, w.reading, w.kind, oneLine(w.meaning, MEANING_CHARS), w.hook ?? ""]),
   );
 }
 
@@ -56,8 +59,9 @@ function frame(top: Node[], middle: Node[], bottom: Node[]): Node {
       height: OG_HEIGHT,
       flexDirection: "column",
       justifyContent: "space-between",
-      padding: `64px ${PAD_X}px 72px`,
+      padding: `56px ${PAD_X}px 72px`,
       background: PAPER,
+      borderTop: `14px solid ${INK}`,
       color: INK,
       fontFamily: FAMILY,
     },
@@ -84,8 +88,10 @@ function wordCard(w: OgWord): Node {
       el({ fontSize: size, fontWeight: 700, lineHeight: 1.15, letterSpacing: "0.02em" }, w.word),
     ],
     [
-      el({ width: 56, height: 4, background: INK, marginBottom: 28 }),
-      el({ fontSize: MEANING_SIZE, lineHeight: 1.4 }, oneLine(w.meaning, MEANING_CHARS)),
+      el({ width: 56, height: 4, background: ACCENT, marginBottom: 28 }),
+      w.hook
+        ? el({ fontSize: MEANING_SIZE, lineHeight: 1.4, fontWeight: 700, color: ACCENT }, w.hook)
+        : el({ fontSize: MEANING_SIZE, lineHeight: 1.4 }, oneLine(w.meaning, MEANING_CHARS)),
     ],
   );
 }
