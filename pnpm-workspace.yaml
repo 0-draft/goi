@@ -10,3 +10,10 @@ minimumReleaseAgeExclude:
   - "@biomejs/cli-linux-x64@2.6.3"
   - "@biomejs/cli-win32-arm64@2.6.3"
   - "@biomejs/cli-win32-x64@2.6.3"
+
+# markdownlint-cli2 0.24.0 (latest) pins markdownlint 0.42.0, which brings
+# re2js 2.8.6 and katex ^0.16; neither range reaches the patched releases.
+# Drop these once markdownlint-cli2 ships on markdownlint 0.42.1 or later.
+overrides:
+  katex: ^0.18.2
+  re2js: ^2.9.1
