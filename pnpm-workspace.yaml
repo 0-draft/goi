@@ -15,6 +15,9 @@ minimumReleaseAgeExclude:
 # re2js 2.8.6 and katex ^0.16; neither range reaches the patched releases.
 # Drop these once markdownlint-cli2 ships on markdownlint 0.42.1 or later.
 overrides:
+  # get-uri (via @lhci/cli > proxy-agent) still asks for basic-ftp ^5.3.1,
+  # and every 5.x is affected by GHSA alerts patched in 6.2.4.
+  basic-ftp: ^6.2.4
   katex: ^0.18.2
   re2js: ^2.9.1
   # @napi-rs/wasm-runtime accepts @emnapi/* "^1.7.1 || ^2.0.0-alpha.4" as peers,
