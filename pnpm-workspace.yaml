@@ -17,3 +17,8 @@ minimumReleaseAgeExclude:
 overrides:
   katex: ^0.18.2
   re2js: ^2.9.1
+  # @napi-rs/wasm-runtime accepts @emnapi/* "^1.7.1 || ^2.0.0-alpha.4" as peers,
+  # so a lockfile refresh can resolve the 2.0.0 prereleases, which crash when
+  # @astrojs/check loads and make `astro check` fail. Keep them on 1.x.
+  "@emnapi/core": ^1.11.3
+  "@emnapi/runtime": ^1.11.3
