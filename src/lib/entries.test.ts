@@ -13,7 +13,7 @@ describe("romajiFromId", () => {
   });
 
   it("助詞の を は o、は は wa と書く", () => {
-    expect(romaji("saba-wo-yomu")).toBe("Saba o yomu");
+    expect(romaji("hanjou-wo-ireru")).toBe("Hanjō o ireru");
     expect(romaji("bushi-wa-kuwanedo-takayouji")).toBe("Bushi wa kuwanedo takayōji");
   });
 
@@ -25,13 +25,13 @@ describe("romajiFromId", () => {
   it("語の中の長音・促音", () => {
     expect(romaji("oomie-wo-kiru")).toBe("Ōmie o kiru");
     expect(romaji("oomukou")).toBe("Ōmukō");
-    expect(romaji("okkuu")).toBe("Okkū");
+    expect(romaji("tennouzan")).toBe("Tennōzan");
     expect(romaji("icchoura")).toBe("Itchōra");
   });
 
   it("四字熟語は前後半をハイフンでつなぐ", () => {
     expect(romajiFromId("umisen-yamasen", "四字熟語")).toBe("Umisen-yamasen");
-    expect(romaji("uzou-muzou")).toBe("Uzō-muzō");
+    expect(romaji("karo-tousen")).toBe("Karo-tōsen");
   });
 });
 

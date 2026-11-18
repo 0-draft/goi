@@ -670,28 +670,6 @@
     }
   },
   {
-    "id": "uzou-muzou",
-    "word": "有象無象",
-    "reading": "うぞうむぞう",
-    "kind": "四字熟語",
-    "meaning": "数ばかり多くて取るに足りない人や物。集まったつまらない連中を見下して言う。",
-    "origin": "仏教語の「有相無相」から出た言葉で、もとは形のあるものもないものも含めたすべての存在を指した。そこから雑多なものの意に広がり、さらにくだらない連中を卑しめる言い方になった。後者の意味では1763年の『川柳評万句合』に用例がある。",
-    "example": "炎上すると有象無象が集まってきて、本題が見えなくなる。",
-    "sources": [
-      {
-        "label": "コトバンク",
-        "url": "https://kotobank.jp/word/%E6%9C%89%E8%B1%A1%E7%84%A1%E8%B1%A1-440039"
-      }
-    ],
-    "themes": ["buddhism"],
-    "en": {
-      "gloss": "riffraff, the rabble",
-      "meaning": "People or things that are many in number but of no account. Used contemptuously of a crowd of worthless people.",
-      "origin": "It comes from the Buddhist term 有相無相, which originally referred to all that exists, things with form and things without. From there it broadened to mean a miscellaneous jumble, and then became a disparaging term for worthless people. In the latter sense an example appears in the Senryū-hyō Mankuawase of 1763.",
-      "example": "Once something blows up online, all sorts of riffraff pile on and the real issue gets lost."
-    }
-  },
-  {
     "id": "teren-tekuda",
     "word": "手練手管",
     "reading": "てれんてくだ",
@@ -814,36 +792,6 @@
     }
   },
   {
-    "id": "taikomochi",
-    "word": "太鼓持ち",
-    "reading": "たいこもち",
-    "kind": "ことば",
-    "meaning": "人にへつらって機嫌を取る者。もとは宴席で客の遊びを盛り上げる男芸者、幇間のこと。",
-    "origin": "職業としての太鼓持ちは、豪遊が流行した元禄期に現れたと考えられている（宝暦ごろとする事典もある）。名の由来ははっきりせず、鳴り物の太鼓から来たとする説がある。豊臣秀吉の御伽衆・曽呂利新左衛門が「太閤、いかがで」と持ち上げたことから「太閤持ち」と呼ばれたという話も知られるが、曽呂利の実在も含めて伝承の域を出ない。",
-    "example": "課長の前では太鼓持ちになり、笑うところまで合わせている。",
-    "sources": [
-      {
-        "label": "コトバンク",
-        "url": "https://kotobank.jp/word/%E5%A4%AA%E9%BC%93%E6%8C%81%E3%81%A1-1557617"
-      },
-      {
-        "label": "コトバンク（幇間）",
-        "url": "https://kotobank.jp/word/%E5%B9%87%E9%96%93-168200"
-      },
-      {
-        "label": "Wikipedia（幇間）",
-        "url": "https://ja.wikipedia.org/wiki/%E5%B9%87%E9%96%93"
-      }
-    ],
-    "themes": ["stage", "history"],
-    "en": {
-      "gloss": "a flatterer, yes-man",
-      "meaning": "Someone who fawns on others to stay in their good graces. Originally a male entertainer (hōkan) who livened up guests' fun at banquets.",
-      "origin": "Taikomochi as an occupation is thought to have appeared in the Genroku period, when lavish pleasure-seeking was in fashion (some encyclopedias place it around the Hōreki era). The source of the name is unclear; one theory derives it from the taiko drum used in musical accompaniment. There is also a well-known story that Sorori Shinzaemon, a member of Toyotomi Hideyoshi's otogishū (companions), was called taikō-mochi for flattering Hideyoshi with the words \"Taikō, ikaga de\" (How is it, my lord Taikō?). But this remains a legend, including whether Sorori existed at all.",
-      "example": "In front of the section chief they turn into a flatterer, even laughing on cue."
-    }
-  },
-  {
     "id": "hougan-biiki",
     "word": "判官贔屓",
     "reading": "ほうがんびいき",
@@ -885,28 +833,6 @@
       "meaning": "A contrary person who deliberately goes against what others say. Originally a wicked demon in folktales that reads people's minds and gets in their way.",
       "origin": "There are several theories about its origin. One traces it to Ama no Sagume (天探女), a goddess with a wicked heart in the myths of the Kojiki and Nihon Shoki, though some dictionaries regard this as a folk etymology. In Buddhism, the demon face on the belly of Bishamonten's armor was called amanojaku (海若), and the name is said to have later been applied to the small demon trampled under his feet as well. In the folktale Urikohime it appears as the villain who disguises itself as the princess.",
       "example": "I'm a contrarian by nature: tell me not to do something and I want to do it."
-    }
-  },
-  {
-    "id": "yabo",
-    "word": "野暮",
-    "reading": "やぼ",
-    "kind": "ことば",
-    "meaning": "人情の機微に疎く、気がきかないこと。言動や趣味があか抜けないことも言う。",
-    "origin": "語源は未詳で、「野暮」は当て字。「野夫（やぶ）」が変化したとする説や、藪医者の「藪」とする説がある。江戸時代には「粋」「通」が理想とされ、その反対が野暮だった。ただし野暮は修行しだいで通になれるともされた。",
-    "example": "いい雰囲気のところで終電の時間を聞くのは野暮というものだ。",
-    "sources": [
-      {
-        "label": "コトバンク",
-        "url": "https://kotobank.jp/word/%E9%87%8E%E6%9A%AE-649025"
-      }
-    ],
-    "themes": ["everyday"],
-    "en": {
-      "gloss": "unrefined, tactless",
-      "meaning": "Insensitive to the finer points of human feeling, and lacking tact. Also said of words, actions, or taste that lack polish.",
-      "origin": "The origin is unknown, and 野暮 is ateji. One theory says it changed from yabu (野夫), another links it to the yabu of yabu-isha (quack doctor). In the Edo period iki (粋) and tsū (通) were held up as ideals, and yabo was their opposite. It was also held, however, that a yabo person could become tsū through practice.",
-      "example": "Asking when the last train leaves just as the mood is getting good is tactless."
     }
   },
   {
@@ -1006,188 +932,6 @@
     }
   },
   {
-    "id": "kotodama",
-    "word": "言霊",
-    "reading": "ことだま",
-    "kind": "ことば",
-    "meaning": "言葉に宿ると信じられた不思議な力。口にしたことがそのとおりに実現するとされた。",
-    "origin": "古代日本の信仰で、『万葉集』には日本を「言霊の幸はふ国」、つまり言葉の霊力が幸いをもたらす国と詠んだ歌がある。この信仰から、祝詞のように言葉の力を積極的に使う習わしと、縁起の悪い言葉を避ける忌み詞の風習が生まれた。",
-    "example": "言霊を気にして、受験生の前では「落ちる」という言葉を使わない。",
-    "sources": [
-      {
-        "label": "コトバンク",
-        "url": "https://kotobank.jp/word/%E8%A8%80%E9%9C%8A-503099"
-      }
-    ],
-    "themes": ["everyday"],
-    "en": {
-      "gloss": "the spirit that dwells in words",
-      "meaning": "A mysterious power believed to reside in words. What was said aloud was thought to come true exactly as spoken.",
-      "origin": "A belief of ancient Japan. The Man'yōshū contains a poem calling Japan \"the land where kotodama bring blessings,\" that is, a country where the spiritual power of words brings good fortune. From this belief came both the practice of actively using the power of words, as in norito (Shinto prayers), and the custom of imikotoba, avoiding ill-omened words.",
-      "example": "Mindful of kotodama, we avoid the word \"fall\" around students taking entrance exams."
-    }
-  },
-  {
-    "id": "okkuu",
-    "word": "億劫",
-    "reading": "おっくう",
-    "kind": "ことば",
-    "meaning": "面倒で気が進まないこと。手間がかかりそうで腰が重い気持ちを表す。",
-    "origin": "「劫」はサンスクリット語 kalpa の音写で、きわめて長い時間の単位。億劫はその一億倍で、もとは「おっこう」「おくこう」と読み、途方もなく長い時間を指す仏教語だった。やり遂げるのに長い時間がかかることから「たやすくできない」、さらに「面倒で気が進まない」の意味に移り、読みも「おっくう」に変わった。",
-    "example": "雨の日は外に出るのが億劫だ。",
-    "sources": [
-      {
-        "label": "コトバンク",
-        "url": "https://kotobank.jp/word/%E5%84%84%E5%8A%AB-451702"
-      },
-      {
-        "label": "語源由来辞典",
-        "url": "https://gogen-yurai.jp/okkuu/"
-      },
-      {
-        "label": "くらしの仏教語豆事典",
-        "url": "https://tarikihongwan.net/category2/bukkyou/1216.html/"
-      }
-    ],
-    "themes": ["buddhism"],
-    "en": {
-      "gloss": "too much of a bother",
-      "meaning": "Finding something a hassle and not feeling like doing it. It describes reluctance to get moving on something that looks like it will take effort.",
-      "origin": "Kō (劫) is a transliteration of the Sanskrit kalpa, a unit of extremely long time. 億劫 is a hundred million times that. It was originally read okkō or okukō and was a Buddhist term for an unimaginably long period. Since something that takes a long time to accomplish cannot be done easily, the meaning shifted to \"not easily done\" and then to \"bothersome, not inclined to do,\" and the reading also changed to okkū.",
-      "example": "On rainy days, going outside feels like too much trouble."
-    }
-  },
-  {
-    "id": "gaman",
-    "word": "我慢",
-    "reading": "がまん",
-    "kind": "ことば",
-    "meaning": "つらさや欲求をこらえること。今はほめる意味で使われることが多い。",
-    "origin": "仏教では七種の慢心「七慢」の一つで、自我があると思い込んで自分を高く見て他人を見下す心を指す悪い意味の語だった。のちに自分に固執することから「我を張る・強情」の意味が生まれ、その意地の強さが「耐え忍ぶ」という良い意味に転じた。",
-    "example": "言い返したいのを我慢して、会議が終わるまで黙っていた。",
-    "sources": [
-      {
-        "label": "コトバンク",
-        "url": "https://kotobank.jp/word/%E6%88%91%E6%85%A2-46595"
-      },
-      {
-        "label": "浄土真宗本願寺派",
-        "url": "https://www.hongwanji.or.jp/mioshie/words/000253.html"
-      }
-    ],
-    "themes": ["buddhism"],
-    "en": {
-      "gloss": "endurance, putting up with it",
-      "meaning": "Holding back pain or desires. Today it is mostly used approvingly.",
-      "origin": "In Buddhism it was one of the seven kinds of pride (shichiman) and had a negative meaning: the mind that, convinced it has a self, rates itself highly and looks down on others. Later, from the idea of clinging to oneself, it came to mean being self-willed or stubborn, and that strength of will turned into the positive sense of enduring patiently.",
-      "example": "I resisted the urge to answer back and kept quiet until the meeting ended."
-    }
-  },
-  {
-    "id": "aisatsu",
-    "word": "挨拶",
-    "reading": "あいさつ",
-    "kind": "ことば",
-    "meaning": "人と会ったときや別れるときに交わす言葉や礼。式でのスピーチの意味でも使う。",
-    "origin": "「挨」も「拶」も押す・迫るという意味の字。禅宗では「一挨一拶」といい、僧どうしが問答を重ねて相手の悟りの深さを試すことを指した。中世の禅僧が使っていたこの語がしだいに一般化し、ふだんの受け答えや礼儀の言葉を指すようになった。",
-    "example": "異動の初日に、部署の全員へ挨拶して回った。",
-    "sources": [
-      {
-        "label": "コトバンク",
-        "url": "https://kotobank.jp/word/%E6%8C%A8%E6%8B%B6-23677"
-      },
-      {
-        "label": "語源由来辞典",
-        "url": "https://gogen-yurai.jp/aisatsu/"
-      }
-    ],
-    "themes": ["buddhism"],
-    "en": {
-      "gloss": "greetings and courtesies",
-      "meaning": "Words or bows exchanged when meeting or parting. Also used for a speech at a ceremony.",
-      "origin": "Both 挨 and 拶 are characters meaning to push or press. In Zen this was called ichiai issatsu (一挨一拶), referring to monks exchanging questions and answers to test the depth of each other's enlightenment. The word, used by Zen monks in the medieval period, gradually spread into general use and came to mean everyday exchanges and words of courtesy.",
-      "example": "On my first day after the transfer, I went around greeting everyone in the department."
-    }
-  },
-  {
-    "id": "hiniku",
-    "word": "皮肉",
-    "reading": "ひにく",
-    "kind": "ことば",
-    "meaning": "遠回しに意地悪く相手を責めること。「皮肉な結果」のように、期待と逆になることも指す。",
-    "origin": "もとは文字どおり「皮と肉」で、そこから「うわべ」の意味でも使われた。語源由来辞典などは、禅宗の祖・達磨の言葉とされる「皮肉骨髄」に由来すると説明する。骨髄が本質をつかんだ理解を表すのに対し、皮肉は表面だけの理解を表し、そこから相手をあてこする意味になったという説である。国語辞典は道元の清規にある「仏祖之皮肉骨髄」を古い用例に挙げるが、語源には触れていない。",
-    "example": "遅れて着いた私に、彼は「ずいぶんお早いご到着で」と皮肉を言った。",
-    "sources": [
-      {
-        "label": "コトバンク",
-        "url": "https://kotobank.jp/word/%E7%9A%AE%E8%82%89-611936"
-      },
-      {
-        "label": "語源由来辞典",
-        "url": "https://gogen-yurai.jp/hiniku/"
-      }
-    ],
-    "themes": ["buddhism", "body"],
-    "en": {
-      "gloss": "sarcasm, irony",
-      "meaning": "Criticizing someone indirectly and spitefully. It also refers to an outcome that is the opposite of what was expected, as in hiniku na kekka (an ironic result).",
-      "origin": "It originally meant literally \"skin and flesh,\" and from there was also used to mean \"the surface.\" Sources such as Gogen Yurai Jiten explain that it comes from hiniku kotsuzui (skin, flesh, bone and marrow), words attributed to Bodhidharma (Daruma), the founder of Zen. In this theory, bone and marrow stand for an understanding that grasps the essence, while skin and flesh stand for a surface-level understanding, and from this the word came to mean making digs at someone. Japanese dictionaries cite busso no hiniku kotsuzui (仏祖之皮肉骨髄) from Dōgen's monastic rules (shingi) as an early example but do not address the etymology.",
-      "example": "When I arrived late, he said sarcastically, \"What an early arrival.\""
-    }
-  },
-  {
-    "id": "konrinzai",
-    "word": "金輪際",
-    "reading": "こんりんざい",
-    "kind": "ことば",
-    "meaning": "後ろに打ち消しをつけて「絶対に〜ない」と強く言い切る語。",
-    "origin": "仏教の宇宙観では、大地は風輪・水輪・金輪の三層の上に乗っているとされる。そのうち金輪と水輪の境目が金輪際で、大地のいちばん底にあたる。そこから「とことん」「どこまでも」の意味が生まれた。江戸時代には打ち消しなしでも使われたが、今は「金輪際〜しない」の形がほとんどだ。",
-    "example": "あの店には金輪際行かない。",
-    "sources": [
-      {
-        "label": "コトバンク",
-        "url": "https://kotobank.jp/word/%E9%87%91%E8%BC%AA%E9%9A%9B-67654"
-      },
-      {
-        "label": "日蓮宗",
-        "url": "https://www.nichiren.or.jp/glossary/id109/"
-      }
-    ],
-    "themes": ["buddhism"],
-    "en": {
-      "gloss": "never, ever",
-      "meaning": "A word followed by a negative to declare strongly that something will absolutely never happen.",
-      "origin": "In Buddhist cosmology, the earth is said to rest on three layers: the wind wheel, the water wheel and the metal wheel (konrin). The boundary between the metal wheel and the water wheel is konrinzai, the very bottom of the earth. From this came the senses \"thoroughly\" and \"to the very end.\" In the Edo period it was also used without a negative, but today it almost always appears in the form konrinzai ... shinai (will never ...).",
-      "example": "I am never going to that restaurant again."
-    }
-  },
-  {
-    "id": "uchouten",
-    "word": "有頂天",
-    "reading": "うちょうてん",
-    "kind": "ことば",
-    "meaning": "うれしさのあまり舞い上がり、周りが見えなくなっている状態。",
-    "origin": "仏教で、迷いの世界である三界（有）のいちばん上にある天を指す。どの天かは、無色界の最上の非想非非想天とする説と、色界の最上の色究竟天とする説がある。その頂にのぼりつめる意から、得意の絶頂や、夢中で我を忘れる様子を言うようになった。",
-    "example": "企画が初めて通って有頂天になっていた。",
-    "sources": [
-      {
-        "label": "コトバンク",
-        "url": "https://kotobank.jp/word/%E6%9C%89%E9%A0%82%E5%A4%A9-34863"
-      },
-      {
-        "label": "天台宗",
-        "url": "https://www.tendai.or.jp/houwashuu/kiji.php?nid=100"
-      }
-    ],
-    "themes": ["buddhism"],
-    "en": {
-      "gloss": "on cloud nine",
-      "meaning": "So elated that one gets carried away and loses sight of everything around.",
-      "origin": "In Buddhism it refers to the highest heaven of the three realms of existence (u), the world of delusion. Views differ on which heaven this is: one theory says Hisō-hihisō-ten (非想非非想天), the top of the formless realm, and another says Shikikukyō-ten (色究竟天), the top of the form realm. From the idea of climbing all the way to that summit, it came to describe the height of triumph or being so absorbed that one forgets oneself.",
-      "example": "My proposal had been approved for the first time, and I was on cloud nine."
-    }
-  },
-  {
     "id": "katasukashi",
     "word": "肩透かし",
     "reading": "かたすかし",
@@ -1232,58 +976,6 @@
     }
   },
   {
-    "id": "shikirinaoshi",
-    "word": "仕切り直し",
-    "reading": "しきりなおし",
-    "kind": "ことば",
-    "meaning": "うまくいかなかった話し合いや勝負を、いったん止めて最初からやり直すこと。",
-    "origin": "相撲で、立ち合いの呼吸が合わず、仕切りをもう一度やり直すこと。そこから試合や勝負のやり直し、さらに交渉を初めからやり直す意味でも使われるようになった。",
-    "example": "議論が行き詰まったので、来週に仕切り直すことにした。",
-    "sources": [
-      {
-        "label": "コトバンク",
-        "url": "https://kotobank.jp/word/%E4%BB%95%E5%88%87%E3%82%8A%E7%9B%B4%E3%81%97-518096"
-      }
-    ],
-    "themes": ["sumo"],
-    "en": {
-      "gloss": "starting over",
-      "meaning": "Halting a talk or contest that is not going well and starting again from the beginning.",
-      "origin": "In sumo, redoing the shikiri (the crouching ritual before the charge) when the two wrestlers' timing at the initial charge does not match. From there it came to mean restarting a match or contest, and also starting negotiations over from the beginning.",
-      "example": "The discussion had reached a dead end, so we decided to start over next week."
-    }
-  },
-  {
-    "id": "ohako",
-    "word": "十八番",
-    "reading": "おはこ",
-    "kind": "ことば",
-    "meaning": "その人がいちばん得意な芸や持ちネタ。よく出る口癖や決まった動作を指すこともある。",
-    "origin": "七代目市川團十郎が天保3年（1832）、市川家の得意演目を「歌舞伎十八番」として示し、これが得意芸を指す語として広まった。「おはこ」は大切な物を箱にしまう「箱入り」の略とされ、十八番の台本を箱に入れて保存したからという説もある。ただし、歌舞伎役者の秘蔵の当たり芸を以前から「十八番」と呼んでいたことによる当て字とみる辞典もあり、定説はない。",
-    "example": "部長はカラオケで必ず十八番の演歌を歌う。",
-    "sources": [
-      {
-        "label": "コトバンク（十八番）",
-        "url": "https://kotobank.jp/word/%E5%8D%81%E5%85%AB%E7%95%AA-527533"
-      },
-      {
-        "label": "コトバンク（おはこ）",
-        "url": "https://kotobank.jp/word/%E3%81%8A%E3%81%AF%E3%81%93-1284136"
-      },
-      {
-        "label": "語源由来辞典",
-        "url": "https://gogen-yurai.jp/ohako/"
-      }
-    ],
-    "themes": ["stage"],
-    "en": {
-      "gloss": "one's specialty, a signature piece",
-      "meaning": "The art or routine a person does best. It can also refer to a habitual phrase or a characteristic gesture.",
-      "origin": "In Tenpō 3 (1832), Ichikawa Danjūrō VII presented the Ichikawa family's signature plays as the Kabuki Jūhachiban (Eighteen Kabuki Plays), and the term spread as a word for one's specialty. Ohako is said to be short for hakoiri (kept in a box), meaning something precious put away in a box, and one theory holds that this is because the scripts of the eighteen plays were stored in boxes. However, some dictionaries regard the spelling as ateji based on the earlier practice of calling a kabuki actor's treasured hit pieces jūhachiban, and there is no settled view.",
-      "example": "At karaoke, our department head always sings their signature enka song."
-    }
-  },
-  {
     "id": "ninomai",
     "word": "二の舞",
     "reading": "にのまい",
@@ -1303,28 +995,6 @@
       "meaning": "Making the same mistake as someone before. Used in the forms ninomai wo enjiru and ninomai wo fumu.",
       "origin": "It comes from Ni no Mai, a bugaku court dance. Right after the dance Ama, an old man in a laughing mask and an old woman in a swollen-faced mask appear and dance comically in imitation of Ama. From this dance, an imitation that does not quite work, the word came to mean copying others and making the same mistake.",
       "example": "We built slack into the schedule so as not to repeat what happened on the last project."
-    }
-  },
-  {
-    "id": "kuromaku",
-    "word": "黒幕",
-    "reading": "くろまく",
-    "kind": "ことば",
-    "meaning": "表に出ず、裏で人や物事を操っている人物。",
-    "origin": "もとは歌舞伎で使う黒い幕。場面転換で舞台を隠したり、夜や闇を表す背景にしたりする。死んだ役を小さな黒い幕で隠して引っ込ませる使い方もある。歌舞伎では黒は見えないものの約束なので、そこから陰で糸を引く人を指すようになった。",
-    "example": "今回の人事には、裏で糸を引く黒幕がいるらしい。",
-    "sources": [
-      {
-        "label": "コトバンク",
-        "url": "https://kotobank.jp/word/%E9%BB%92%E5%B9%95-487352"
-      }
-    ],
-    "themes": ["stage"],
-    "en": {
-      "gloss": "the mastermind behind the scenes",
-      "meaning": "A person who stays out of sight and manipulates people or events from behind the scenes.",
-      "origin": "Originally the black curtain used in kabuki. It hides the stage during scene changes or serves as a backdrop representing night or darkness. A small black curtain is also used to screen a character who has died so the actor can leave the stage. Since in kabuki black by convention stands for what cannot be seen, the word came to mean someone pulling strings in the shadows.",
-      "example": "Word is that someone is pulling the strings behind this round of personnel changes."
     }
   },
   {
@@ -1564,58 +1234,6 @@
     }
   },
   {
-    "id": "saba-wo-yomu",
-    "word": "鯖を読む",
-    "reading": "さばをよむ",
-    "kind": "慣用句",
-    "meaning": "自分に都合がいいように、数を実際より多く、あるいは少なくごまかして言うこと。年齢についてよく使う。",
-    "origin": "語源には諸説ある。魚市場で小魚を早口で数える「いさば読み（魚市読み）」が縮まったという説、大量の鯖を数えるときに使用人がごまかしたからという説、傷みやすい鯖は急いで売るので数え方が雑だったからという説、刺鯖を二枚重ねで一連と数えたことから来たという説などだ。用例は1753年の談義本にすでに見える。",
-    "example": "プロフィールの年齢を三つ鯖を読んでいた。",
-    "sources": [
-      {
-        "label": "コトバンク",
-        "url": "https://kotobank.jp/word/%E9%AF%96%E3%82%92%E8%AA%AD%E3%82%80-511586"
-      }
-    ],
-    "themes": ["animals", "trade"],
-    "en": {
-      "gloss": "to fudge the numbers",
-      "meaning": "To give a number as higher or lower than it really is, to suit oneself. Often used about age.",
-      "origin": "There are several theories. One says it is a contraction of isaba-yomi (魚市読み), the rapid counting of small fish at fish markets. Others say it comes from workers cheating when counting large numbers of mackerel, from mackerel spoiling quickly and being sold in a hurry so the counting was sloppy, or from the practice of counting two sashisaba (salted split mackerel) laid one on top of the other as a single unit. An example already appears in a dangibon (comic sermon book) from 1753.",
-      "example": "They had fudged the age on their profile by three years."
-    }
-  },
-  {
-    "id": "rachi-ga-akanai",
-    "word": "埒が明かない",
-    "reading": "らちがあかない",
-    "kind": "慣用句",
-    "meaning": "物事がいつまでも片づかず、話が前に進まないこと。",
-    "origin": "「埒」はもともと馬場の周りに巡らした柵のこと。上賀茂神社の神事として行われる競馬（くらべうま）から出た語だとする辞典もある。「物事の区切り」という比喩の使い方は中世後期ごろからとみられ、『日葡辞書』に「埒が明く」の用例がある。今は主に打ち消しの形で使う。",
-    "example": "メールでは埒が明かないので、直接電話して確かめた。",
-    "sources": [
-      {
-        "label": "コトバンク",
-        "url": "https://kotobank.jp/word/%E5%9F%92%E3%81%8C%E6%98%8E%E3%81%8F-656204"
-      },
-      {
-        "label": "コトバンク",
-        "url": "https://kotobank.jp/word/%E5%9F%92-656203"
-      },
-      {
-        "label": "コトバンク",
-        "url": "https://kotobank.jp/word/%E5%9F%92%E3%81%8C%E7%84%A1%E3%81%84-2092159"
-      }
-    ],
-    "themes": ["animals"],
-    "en": {
-      "gloss": "to get nowhere",
-      "meaning": "A matter drags on without being settled, and the discussion makes no progress.",
-      "origin": "Rachi (埒) originally meant the fence around a riding ground. Some dictionaries say the expression comes from kurabeuma, the horse races held as a Shinto ritual at Kamigamo Shrine. The figurative use meaning \"a settled point\" or \"a conclusion\" is thought to date from around the late medieval period, and the Nippo Jisho has an example of rachi ga aku. Today it is mainly used in the negative.",
-      "example": "Email was getting us nowhere, so I called them directly to confirm."
-    }
-  },
-  {
     "id": "yome-toome-kasa-no-uchi",
     "word": "夜目遠目笠の内",
     "reading": "よめとおめかさのうち",
@@ -1735,28 +1353,6 @@
       "meaning": "To live comfortably without having to work hard.",
       "origin": "From the image of someone leisurely fanning themselves with a round fan (uchiwa) held in the left, non-dominant hand. From this it came to mean living a relaxed, easy life. Hidari ōgi, with a folding fan, means the same. Hidari uchiwa appears in a sharebon from 1784.",
       "example": "I envy people who can live in comfort on rental income alone."
-    }
-  },
-  {
-    "id": "dotanba",
-    "word": "土壇場",
-    "reading": "どたんば",
-    "kind": "ことば",
-    "meaning": "もう後がない、最後の決断を迫られる場面。進退きわまった状況をいう。",
-    "origin": "もとは近世に首切りの刑を行うために築いた土の壇、またはその刑場のこと。そこから、追い詰められて逃げ場のない最後の局面を指すようになった。刑場の意味では1772年の咄本に、比喩の意味では1908年の小説に用例がある。",
-    "example": "土壇場で予約を取り消すことになり、店に平謝りした。",
-    "sources": [
-      {
-        "label": "コトバンク",
-        "url": "https://kotobank.jp/word/%E5%9C%9F%E5%A3%87%E5%A0%B4-583749"
-      }
-    ],
-    "themes": ["everyday"],
-    "en": {
-      "gloss": "the last minute, the eleventh hour",
-      "meaning": "A point with no way back, where a final decision must be made. Describes a situation where one is completely cornered.",
-      "origin": "Originally an earthen platform built in the early modern period for carrying out beheadings, or the execution ground itself. From this it came to mean the final stage where one is cornered with no escape. The execution-ground sense appears in a hanashibon (book of humorous tales) from 1772, and the figurative sense in a novel from 1908.",
-      "example": "We had to cancel the reservation at the last minute and apologized profusely to the restaurant."
     }
   },
   {
@@ -1907,32 +1503,6 @@
       "meaning": "Something useless because it comes at the wrong time, like a stove in summer or a fan in winter.",
       "origin": "From the chapter Fengyu of the Lunheng (Ronkō in Japanese), by the Later Han thinker Wang Chong. It compares offering useless talents and unhelpful advice to presenting a stove in summer and a fan in winter. In the text, though, this is quoted as the popular view, and Wang Chong goes on to argue that a summer stove can still dry damp things and a winter fan can still fan a fire. In Japan it is best known from Matsuo Bashō, who wrote in his prose piece Saimon no Ji (1693) that his poetry was like a summer brazier or a winter fan, going against the crowd and of no practical use. It is also written in reverse order as tōsen karo.",
       "example": "Pitching electric fans in the dead of winter is about as useful as a brazier in summer."
-    }
-  },
-  {
-    "id": "nou-aru-taka-wa-tsume-wo-kakusu",
-    "word": "能ある鷹は爪を隠す",
-    "reading": "のうあるたかはつめをかくす",
-    "kind": "ことわざ",
-    "meaning": "本当に力のある者は、その実力をむやみにひけらかさないというたとえ。",
-    "origin": "有能な鷹は獲物に気づかれないよう、ふだんは鋭い爪を隠しておくことから。古い用例として、ことわざ集『北条氏直時代諺留』（1599年頃）に見える。「脳ある鷹」と書くのは誤り。",
-    "example": "普段は口数の少ない彼が会議で鮮やかな提案をして、能ある鷹は爪を隠すとはこのことだと思った。",
-    "sources": [
-      {
-        "label": "コトバンク",
-        "url": "https://kotobank.jp/word/%E8%83%BD%E3%81%82%E3%82%8B%E9%B7%B9%E3%81%AF%E7%88%AA%E3%82%92%E9%9A%A0%E3%81%99"
-      },
-      {
-        "label": "故事ことわざ辞典",
-        "url": "https://kotowaza-dictionary.jp/k0073/"
-      }
-    ],
-    "themes": ["animals"],
-    "en": {
-      "gloss": "the able hawk hides its talons",
-      "meaning": "People of real ability do not show off their talents.",
-      "origin": "A capable hawk keeps its sharp talons out of sight so its prey will not notice them. An early attestation appears in Hōjō Ujinao Jidai Kotowazadome, a proverb collection from around 1599. Writing 能 (ability) as the homophone 脳 (brain) is a mistake.",
-      "example": "When he, usually so quiet, made a brilliant proposal at the meeting, I thought: the able hawk really does hide its talons."
     }
   },
   {

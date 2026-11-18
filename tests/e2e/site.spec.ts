@@ -131,10 +131,10 @@ for (const L of LANGS) {
       const rows = page.locator(".row:visible");
       await page.locator('[data-filter="sumo"]').click();
       await expect(page).toHaveURL(/\?t=sumo$/);
-      await expect(rows).toHaveCount(4);
+      await expect(rows).toHaveCount(3);
       await expect(page.locator(".row:visible").filter({ hasText: "勇み足" })).toHaveCount(1);
       await page.reload();
-      await expect(rows).toHaveCount(4);
+      await expect(rows).toHaveCount(3);
       await page.locator('[data-filter=""]').click();
       await expect(rows).toHaveCount(READY);
     });
