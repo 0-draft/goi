@@ -1760,6 +1760,246 @@
     }
   },
   {
+    "id": "hiru-andon",
+    "word": "昼行灯",
+    "reading": "ひるあんどん",
+    "kind": "ことば",
+    "meaning": "ぼんやりしている人や、いても役に立たない人をあざけっていう語。",
+    "origin": "昼間にともした行灯は、油皿に芯を浸しただけの小さな火なので、点いているのかどうかも分からず何の役にも立たないことから。「ひるあんどう」とも読み、浮世草子『人倫糸屑』（1688年）に「うちに思案もなにもない事、ひる行燈のごとし」とある。忠臣蔵の大石内蔵助（良雄）が赤穂藩の家老だった平時にこう呼ばれた、という話は講談などで広く知られるが、本当にそういう人物だったかは定かではない。この話から、ふだんは冴えないが実は切れ者、という含みで使われることもあるが、本来はただの悪口。",
+    "example": "あの部長は昼行灯と陰口をたたかれている。",
+    "sources": [
+      {
+        "label": "コトバンク",
+        "url": "https://kotobank.jp/word/%E6%98%BC%E8%A1%8C%E7%81%AF-614133"
+      },
+      {
+        "label": "漢字ペディア",
+        "url": "https://www.kanjipedia.jp/kotoba/0004744600"
+      },
+      {
+        "label": "コトバンク（行灯）",
+        "url": "https://kotobank.jp/word/%E8%A1%8C%E7%81%AF-429567"
+      },
+      {
+        "label": "ダイヤモンド・オンライン",
+        "url": "https://diamond.jp/articles/-/385567?page=3"
+      }
+    ],
+    "themes": ["everyday", "history"],
+    "en": {
+      "gloss": "a dim, useless person",
+      "meaning": "A word of ridicule for someone who is always in a daze, or who is around but of no use.",
+      "origin": "An andon is a paper-shaded lamp whose light comes from a small wick in a dish of oil, so one lit in the daytime is barely visible and serves no purpose at all. It is also read hiru andō, and the ukiyo-zōshi Jinrin Itokuzu (1688) has the line \"having no thought in one's head is like a daytime andon.\" The story that Ōishi Kuranosuke (Yoshio) of the Chūshingura tale was called this in peacetime, while he was a chief retainer of the Akō domain, is widely known from kōdan storytelling, but whether he was really like that is uncertain. Because of this story the word is sometimes used to hint at someone who seems dull but is actually sharp, but in itself it is simply an insult.",
+      "example": "People call that department head a useless lamp in broad daylight behind his back."
+    }
+  },
+  {
+    "id": "deku-no-bou",
+    "word": "木偶の坊",
+    "reading": "でくのぼう",
+    "kind": "ことば",
+    "meaning": "役に立たない人や気のきかない人、人の言いなりになっている人をののしっていう語。もとは木彫りの人形、あやつり人形のこと。",
+    "origin": "「木偶（でく）」は木彫りの人形やあやつり人形のこと。室町時代末期には、人形で猿楽能や夷舞を演じる芸人の人形が「デクノボウ」「でくる坊」などと呼ばれ、江戸時代には人形遣いが「でこまわし（木偶回し）」と俗称された。「でこのぼう」の形は『徳永種久紀行』（1617年）に「木にて作りしでこのぼう、いとであやつる」と見え、役立たずをののしる意の用例は俳諧『骨書』（1787年）に見える。",
+    "example": "言われたことしかしないで突っ立っていると、木偶の坊と呼ばれるぞ。",
+    "sources": [
+      {
+        "label": "コトバンク（木偶の坊）",
+        "url": "https://kotobank.jp/word/%E6%9C%A8%E5%81%B6%E3%81%AE%E5%9D%8A-575583"
+      },
+      {
+        "label": "コトバンク（木偶坊）",
+        "url": "https://kotobank.jp/word/%E6%9C%A8%E5%81%B6%E5%9D%8A-2064998"
+      },
+      {
+        "label": "コトバンク（でくのぼう・世界大百科事典）",
+        "url": "https://kotobank.jp/word/%E3%81%A7%E3%81%8F%E3%81%AE%E3%81%BC%E3%81%86-1372322"
+      }
+    ],
+    "themes": ["stage"],
+    "en": {
+      "gloss": "a wooden puppet; a useless lump",
+      "meaning": "An insult for someone who is useless, slow on the uptake, or simply does as they are told. Originally the word meant a carved wooden doll or a marionette.",
+      "origin": "Deku means a carved wooden figure or puppet. In the late Muromachi period, the puppets used by performers of puppet sarugaku and Ebisu dances were called dekunobō or dekurubō, and in the Edo period puppeteers were nicknamed dekomawashi. The form dekonobō appears in the travel diary Tokunaga Tanehisa Kikō (1617), describing a wooden puppet worked by strings, and the insulting sense of a useless person is attested in the haikai collection Honegaki (1787).",
+      "example": "If you just stand around doing only what you're told, people will call you a useless lump."
+    }
+  },
+  {
+    "id": "udo-no-taiboku",
+    "word": "独活の大木",
+    "reading": "うどのたいぼく",
+    "kind": "ことわざ",
+    "meaning": "体ばかり大きくて役に立たない人のたとえ。",
+    "origin": "ウドは草で、茎は木のように太く2メートルほどにもなるが、柔らかいので材木にも薪にもならない。若芽は食用になるが、育ちすぎた茎は食べられない。ほかに、「うど」は空洞の意で、中が空洞の木はいくら大きくても柱にならないからとする説もある。早い用例は仮名草子『浮世物語』（1665年頃）。樋口一葉『わかれ道』（1896年）では「独活の大木は役にたたない、山椒は小粒で珍重される」と、反対の意の「山椒は小粒でもぴりりと辛い」と並べて使われている。人について言う言葉で、物に使ったり褒め言葉として使ったりするのは誤り。",
+    "example": "あいつは体ばかり大きくて独活の大木だ。",
+    "sources": [
+      {
+        "label": "コトバンク",
+        "url": "https://kotobank.jp/word/%E7%8B%AC%E6%B4%BB%E3%81%AE%E5%A4%A7%E6%9C%A8-438018"
+      },
+      {
+        "label": "故事ことわざ辞典",
+        "url": "https://kotowaza-dictionary.jp/k0191/"
+      }
+    ],
+    "themes": ["everyday"],
+    "en": {
+      "gloss": "a big useless hulk",
+      "meaning": "A person who is big in body but of no use.",
+      "origin": "Udo is a plant whose stalk grows thick and as tall as two meters, like a tree. It is soft, though, so it is no good for timber or firewood, and the young shoots can be eaten but the grown stalk cannot. Another theory takes udo to mean a hollow, since a hollow tree cannot serve as a pillar however large it grows. An early use is in the kanazōshi Ukiyo Monogatari (c. 1665). In Higuchi Ichiyō's Wakaremichi (1896) it is set against the opposite saying, that the sanshō peppercorn is small but prized. The phrase is said of people. Using it for objects, or as praise, is a mistake.",
+      "example": "He's all size and no use, a real big useless hulk."
+    }
+  },
+  {
+    "id": "hariko-no-tora",
+    "word": "張り子の虎",
+    "reading": "はりこのとら",
+    "kind": "ことわざ",
+    "meaning": "自分の考えがなく、何にでもただうなずく人。また、実力がないのに虚勢を張る見かけ倒しの人。",
+    "origin": "張り子の虎は、別に作った頭を糸で胴につなぎ、少し揺れると首が動くおもちゃ（首振り虎）。首を振るところから人の言うことにただうなずく人を、虎の姿をしていても中身は空洞の紙であるところから虚勢を張る人を指すようになった。おもちゃは江戸時代に流行し、井原西鶴『男色大鑑』（1687年）に道頓堀で売られていたことが見える。比喩の早い例は『川柳評万句合』（1762年）の「仕立やは張子の虎のくせがあり」。「張子の虎」とも書く。",
+    "example": "威勢のいいことを言っていても、彼は張り子の虎にすぎない。",
+    "sources": [
+      {
+        "label": "コトバンク（張り子の虎）",
+        "url": "https://kotobank.jp/word/%E5%BC%B5%E3%82%8A%E5%AD%90%E3%81%AE%E8%99%8E-1578472"
+      },
+      {
+        "label": "コトバンク（張子の虎）",
+        "url": "https://kotobank.jp/word/%E5%BC%B5%E5%AD%90%E3%81%AE%E8%99%8E-605280"
+      },
+      {
+        "label": "故事ことわざ辞典",
+        "url": "https://kotowaza-dictionary.jp/k1154/"
+      }
+    ],
+    "themes": ["animals", "everyday"],
+    "en": {
+      "gloss": "a papier-mâché tiger; a yes-man or an empty bluffer",
+      "meaning": "Someone with no will of their own who just nods along to everything, or someone who puts on a show of strength without any real ability.",
+      "origin": "The source is a papier-mâché toy tiger whose separately made head hangs on a string, so it bobs at the slightest touch. The nodding head gave the sense of a person who agrees with everything, and the fact that it looks like a tiger but is hollow paper gave the sense of an empty bluffer. The toy was popular in the Edo period, and Ihara Saikaku's Nanshoku Ōkagami (1687) mentions it on sale in Dōtonbori. A senryū collection from 1762 already uses it as a figure of speech.",
+      "example": "For all his tough talk, he is nothing but a papier-mâché tiger."
+    }
+  },
+  {
+    "id": "karo-tousen",
+    "word": "夏炉冬扇",
+    "reading": "かろとうせん",
+    "kind": "四字熟語",
+    "meaning": "夏のいろりと冬の扇のように、時期外れで役に立たない物事のたとえ。",
+    "origin": "後漢の王充『論衡』逢遇篇の「無益の能を作し、補ふこと無き説を納るるは、猶ほ夏を以て炉を進め、冬を以て扇を奏むるが如し」から。ただし『論衡』ではこれは世間の見方として引かれたもので、王充自身は続けて、夏の炉でも湿ったものを乾かせ、冬の扇でも火をあおげる、と使い道はあると反論している。日本では松尾芭蕉が俳文「柴門の辞」（1693年）で「予が風雅は夏炉冬扇の如し。衆に逆ひて用ふる所なし」と自分の俳諧をたとえたことで知られる。「冬扇夏炉」ともいう。",
+    "example": "真冬に扇風機の売り込みに来るとは、夏炉冬扇もいいところだ。",
+    "sources": [
+      {
+        "label": "コトバンク",
+        "url": "https://kotobank.jp/word/%E5%A4%8F%E7%82%89%E5%86%AC%E6%89%87-468485"
+      },
+      {
+        "label": "漢文委員会 kanbun.info",
+        "url": "https://kanbun.info/koji/karoto.html"
+      },
+      {
+        "label": "教育部《成語典》夏鑪冬扇",
+        "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=17897&webMd=2&la=0"
+      }
+    ],
+    "themes": ["history", "everyday"],
+    "en": {
+      "gloss": "a brazier in summer, a fan in winter",
+      "meaning": "Something useless because it comes at the wrong time, like a stove in summer or a fan in winter.",
+      "origin": "From the chapter Fengyu of the Lunheng (Ronkō in Japanese), by the Later Han thinker Wang Chong. It compares offering useless talents and unhelpful advice to presenting a stove in summer and a fan in winter. In the text, though, this is quoted as the popular view, and Wang Chong goes on to argue that a summer stove can still dry damp things and a winter fan can still fan a fire. In Japan it is best known from Matsuo Bashō, who wrote in his prose piece Saimon no Ji (1693) that his poetry was like a summer brazier or a winter fan, going against the crowd and of no practical use. It is also written in reverse order as tōsen karo.",
+      "example": "Pitching electric fans in the dead of winter is about as useful as a brazier in summer."
+    }
+  },
+  {
+    "id": "nou-aru-taka-wa-tsume-wo-kakusu",
+    "word": "能ある鷹は爪を隠す",
+    "reading": "のうあるたかはつめをかくす",
+    "kind": "ことわざ",
+    "meaning": "本当に力のある者は、その実力をむやみにひけらかさないというたとえ。",
+    "origin": "有能な鷹は獲物に気づかれないよう、ふだんは鋭い爪を隠しておくことから。古い用例として、ことわざ集『北条氏直時代諺留』（1599年頃）に見える。「脳ある鷹」と書くのは誤り。",
+    "example": "普段は口数の少ない彼が会議で鮮やかな提案をして、能ある鷹は爪を隠すとはこのことだと思った。",
+    "sources": [
+      {
+        "label": "コトバンク",
+        "url": "https://kotobank.jp/word/%E8%83%BD%E3%81%82%E3%82%8B%E9%B7%B9%E3%81%AF%E7%88%AA%E3%82%92%E9%9A%A0%E3%81%99"
+      },
+      {
+        "label": "故事ことわざ辞典",
+        "url": "https://kotowaza-dictionary.jp/k0073/"
+      }
+    ],
+    "themes": ["animals"],
+    "en": {
+      "gloss": "the able hawk hides its talons",
+      "meaning": "People of real ability do not show off their talents.",
+      "origin": "A capable hawk keeps its sharp talons out of sight so its prey will not notice them. An early attestation appears in Hōjō Ujinao Jidai Kotowazadome, a proverb collection from around 1599. Writing 能 (ability) as the homophone 脳 (brain) is a mistake.",
+      "example": "When he, usually so quiet, made a brilliant proposal at the meeting, I thought: the able hawk really does hide its talons."
+    }
+  },
+  {
+    "id": "taichi-wa-gu-no-gotoshi",
+    "word": "大智は愚の如し",
+    "reading": "たいちはぐのごとし",
+    "kind": "ことわざ",
+    "meaning": "本当に知恵のある人は知識をひけらかさないので、一見すると愚かな人のように見えるということ。",
+    "origin": "北宋の蘇軾が、官を退いた恩師・欧陽脩に宛てた祝いの書簡「賀欧陽少師致仕啓」の一節「大勇は怯なるが若く、大智は愚の如し」（大勇若怯、大智如愚）から。『老子』の「大巧は拙なるが若し」の流れをくむとされる。中国語では今は「大智若愚」の形で使う。同じ意味のことわざに「大賢は愚なるが如し」があり、辞書はこの二つを互いの言い換えとして挙げている。",
+    "example": "大智は愚の如しで、あの先生は人前では多くを語らないが、相当の学識を持っている。",
+    "sources": [
+      {
+        "label": "コトバンク",
+        "url": "https://kotobank.jp/word/%E5%A4%A7%E6%99%BA%E3%81%AF%E6%84%9A%E3%81%AE%E5%A6%82%E3%81%97"
+      },
+      {
+        "label": "コトバンク（大賢は愚なるが如し）",
+        "url": "https://kotobank.jp/word/%E5%A4%A7%E8%B3%A2%E3%81%AF%E6%84%9A%E3%81%AA%E3%82%8B%E3%81%8C%E5%A6%82%E3%81%97"
+      },
+      {
+        "label": "故事ことわざ辞典",
+        "url": "https://kotowaza-dictionary.jp/k1027/"
+      },
+      {
+        "label": "教育部《成語典》大智若愚",
+        "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=969&webMd=2&la=0"
+      }
+    ],
+    "themes": ["history"],
+    "en": {
+      "gloss": "great wisdom looks like foolishness",
+      "meaning": "Truly wise people do not show off what they know, so at first glance they can seem foolish.",
+      "origin": "From a letter by the Northern Song writer Su Shi congratulating his mentor Ouyang Xiu on his retirement from office: \"Great courage seems like timidity; great wisdom is like foolishness\" (da yong ruo qie, da zhi ru yu). The phrasing is said to follow the Laozi's \"great skill seems clumsy.\" In modern Chinese the saying takes the form da zhi ruo yu. Japanese has a proverb with the same meaning, taiken wa gu naru ga gotoshi (\"the great sage seems a fool\"), and dictionaries list each as a paraphrase of the other.",
+      "example": "Great wisdom looks like foolishness: that professor says little in public, but his learning runs deep."
+    }
+  },
+  {
+    "id": "toukai",
+    "word": "韜晦",
+    "reading": "とうかい",
+    "kind": "ことば",
+    "meaning": "自分の本心や才能・地位などを包み隠して、人に悟られないようにすること。また、身を隠して行方をくらますこと。",
+    "origin": "「韜」は弓や刀を入れる袋から転じて包み隠す意、「晦」はくらます意。漢籍の典拠として『旧唐書』宣宗紀が挙がる。唐の宣宗は即位前、宮中で愚鈍と見なされていたが、文宗・武宗の代には「いよいよ韜晦を事とし」、人中にいても口をきかなかったと記される。日本では室町期の『翰林葫蘆集』（1518年頃）に用例がある。中国語の「韜光養晦」は、1980年代以降の鄧小平の外交方針を指す語としても知られる。",
+    "example": "彼は自らの経歴を韜晦して、一介の職人として静かに暮らしていた。",
+    "sources": [
+      {
+        "label": "コトバンク",
+        "url": "https://kotobank.jp/word/%E9%9F%9C%E6%99%A6"
+      },
+      {
+        "label": "コトバンク（韜・字通）",
+        "url": "https://kotobank.jp/word/%E9%9F%9C-578009"
+      },
+      {
+        "label": "JST 中国の諺「韜晦する」",
+        "url": "https://spap.jst.go.jp/china/enjoy/kotowaza/kotowaza_019.html"
+      }
+    ],
+    "themes": ["history"],
+    "en": {
+      "gloss": "concealing one's talents",
+      "meaning": "Hiding one's true intentions, abilities, or rank so that others do not see them; also, going into hiding.",
+      "origin": "Tō, originally a case for a bow or sword, means to wrap up and hide; kai means to obscure. The Chinese source cited for the word is the annals of Emperor Xuanzong in the Old Book of Tang. Before taking the throne, Xuanzong was thought dull-witted at court, and the annals say that under Emperors Wenzong and Wuzong he devoted himself all the more to concealment and never spoke even in company. In Japan the word appears in Kanrin Koroshū (around 1518). The Chinese phrase taoguang yanghui (\"hide your light, bide your time\") is also known as Deng Xiaoping's foreign-policy maxim from the 1980s on.",
+      "example": "He concealed his past and lived quietly as an ordinary craftsman."
+    }
+  },
+  {
     "id": "itai-kotoba",
     "word": "いたい言葉",
     "reading": "",
