@@ -1580,5 +1580,269 @@
     "sources": [],
     "themes": ["everyday"],
     "pending": "どの言葉を指しているか特定できていない。「痛い言葉」なのか、別の言葉の聞き違いなのか確認中。"
+  },
+  {
+    "id": "ichiru-no-nozomi",
+    "word": "一縷の望み",
+    "reading": "いちるののぞみ",
+    "kind": "慣用句",
+    "meaning": "ほんのわずかに残っている望み。今にも切れそうな、かすかな希望。",
+    "origin": "「縷」は糸、糸すじのことで、「一縷」はもと一本の糸をいう。そこから、細くわずかなもの、今にも絶えそうなつながりのたとえになった。前漢の枚乗が呉王を諫めた上書（『文選』巻三十九所収）に「夫れ一縷の任を以て、千鈞の重きを係く」とあり、一本の糸に非常に重いものを吊るす危うさを述べている。日本では道元『正法眼蔵』袈裟功徳の巻（1231〜53年）に「龍もし一縷をうれば、三熱をまぬかる」とある。望みと結びついた形では、島崎藤村の小説『家』（1910〜11年）に「一縷の希望を夫に繋ぎながら」の例がある。",
+    "example": "家族は新しい治療法に一縷の望みを託した。",
+    "sources": [
+      {
+        "label": "コトバンク",
+        "url": "https://kotobank.jp/word/%E4%B8%80%E7%B8%B7-433864"
+      },
+      {
+        "label": "漢字ペディア",
+        "url": "https://www.kanjipedia.jp/kotoba/0000222600"
+      },
+      {
+        "label": "漢字ペディア（縷）",
+        "url": "https://www.kanjipedia.jp/kanji/0007225900"
+      },
+      {
+        "label": "維基文庫『上書諫吳王』",
+        "url": "https://zh.wikisource.org/wiki/%E4%B8%8A%E6%9B%B8%E8%AB%AB%E5%90%B3%E7%8E%8B"
+      }
+    ],
+    "themes": ["everyday", "history"],
+    "en": {
+      "gloss": "a slender thread of hope",
+      "meaning": "The tiny bit of hope that still remains; a faint hope that could snap at any moment.",
+      "origin": "The character ru means a thread or strand, so ichiru originally meant a single thread. From there it came to stand for anything thin and slight, or a connection about to break. In a memorial that the Former Han official Mei Cheng wrote to remonstrate with the King of Wu (collected in volume 39 of the anthology Wen Xuan, Monzen in Japanese) there is the line \"hanging a weight of a thousand jun on the strength of a single thread,\" describing the danger of suspending something enormously heavy from one strand. In Japan, the chapter Kesa Kudoku of Dōgen's Buddhist work Shōbōgenzō (1231-53) has \"if a dragon obtains a single thread, it escapes the three heats.\" Paired with hope, an example appears in Shimazaki Tōson's novel Ie (The Family, 1910-11): \"pinning a single thread of hope on her husband.\"",
+      "example": "The family pinned their last slender hope on a new treatment."
+    }
+  },
+  {
+    "id": "kyuuyo-no-issaku",
+    "word": "窮余の一策",
+    "reading": "きゅうよのいっさく",
+    "kind": "慣用句",
+    "meaning": "追いつめられて困り果て、苦しまぎれに思いついた手段。",
+    "origin": "「窮余」は追いつめられて困りきったあげく、苦しまぎれの意で、「一策」は一つの手段。辞書は特定の故事を挙げていない。日本国語大辞典は「窮余」の用例として桜井忠温『雑嚢』（1914年）の「窮余の策」を、「窮余の一策」の用例として芥川龍之介の小説『偸盗』（1917年）の「もうかうなっては、唯、窮余の一策しか残ってゐない」を挙げている。似た言い方に「苦肉の策」がある。",
+    "example": "資金が尽きかけ、窮余の一策として社長の自宅を担保に入れた。",
+    "sources": [
+      {
+        "label": "コトバンク",
+        "url": "https://kotobank.jp/word/%E7%AA%AE%E4%BD%99%E3%81%AE%E4%B8%80%E7%AD%96-244245"
+      },
+      {
+        "label": "コトバンク（窮余）",
+        "url": "https://kotobank.jp/word/%E7%AA%AE%E4%BD%99-477428"
+      },
+      {
+        "label": "漢字ペディア",
+        "url": "https://www.kanjipedia.jp/kotoba/0001415900"
+      }
+    ],
+    "themes": ["everyday"],
+    "en": {
+      "gloss": "a last-ditch measure",
+      "meaning": "A measure thought up in desperation after being driven into a corner with nowhere left to turn.",
+      "origin": "Kyūyo means the end one reaches after being cornered and at a loss, that is, desperation, and issaku means a single measure or plan. Dictionaries do not trace it to any particular story. The Nihon Kokugo Daijiten cites kyūyo no saku (a desperate measure) from Sakurai Tadayoshi's Zatsunō (1914), and the full phrase from Akutagawa Ryūnosuke's short novel Chūtō (The Bandits, 1917): \"now that it has come to this, there is nothing left but a last-ditch measure.\" A similar expression is kuniku no saku.",
+      "example": "With the money running out, as a last-ditch measure the president put up his own house as collateral."
+    }
+  },
+  {
+    "id": "kengamine",
+    "word": "剣が峰",
+    "reading": "けんがみね",
+    "kind": "ことば",
+    "meaning": "それ以上少しの余裕もない、ぎりぎりの状態。物事の成否が決まる瀬戸際。「剣が峰に立たされる」の形でよく使う。",
+    "origin": "もとは火山の噴火口の周り、特に富士山頂をいう語。富士山では火口壁の最高点を剣ヶ峰と呼び、ここが日本の最高地点（標高3776メートル）にあたる。相撲で土俵の円周をつくる俵のいちばん高いところを剣が峰と呼ぶのは、土俵の縁を富士山の火口壁に見立てたもので、山の意味が先、相撲の意味が後になる。相撲での用例は『相撲講話』（1919年）に「常陸は満身朱を注いで剣が峰に踏み止まり」とある。ただし山の意味がいつから使われていたかを示す用例は辞書に挙がっていない。辞書は意味を山、相撲、比喩の順に並べるが、比喩がどちらから直接出たのかまでは書いていない。「剣ヶ峰」とも書く。",
+    "example": "今期の数字しだいで、うちの部は剣が峰に立たされる。",
+    "sources": [
+      {
+        "label": "コトバンク（精選版日本国語大辞典）",
+        "url": "https://kotobank.jp/word/%E5%89%A3%E5%B3%B0-2034645"
+      },
+      {
+        "label": "コトバンク（デジタル大辞泉）",
+        "url": "https://kotobank.jp/word/%E5%89%A3%E3%81%8C%E5%B3%B0-491576"
+      },
+      {
+        "label": "コトバンク（富士山）",
+        "url": "https://kotobank.jp/word/%E5%AF%8C%E5%A3%AB%E5%B1%B1-124424"
+      }
+    ],
+    "themes": ["sumo"],
+    "en": {
+      "gloss": "on the brink",
+      "meaning": "A situation with no margin left at all; the critical moment on which success or failure turns. Most often used as \"to be made to stand on the kengamine.\"",
+      "origin": "Originally a word for the rim of a volcanic crater, especially the summit of Mt Fuji. On Fuji the highest point of the crater wall is called Kengamine, and it is the highest point in Japan (3,776 m). In sumo, the highest part of the straw bales that form the circle of the ring is called kengamine because the edge of the ring was likened to Fuji's crater wall, so the mountain sense came first and the sumo sense later. A sumo use appears in Sumō Kōwa (Lectures on Sumo, 1919): \"Hitachi, flushed red all over, held his ground on the kengamine.\" Dictionaries give no early example of the mountain sense, though, so when it came into use is unclear. They list the senses in the order mountain, sumo, figurative, but do not say which of the first two the figurative sense came from directly. It is also written 剣ヶ峰.",
+      "example": "Depending on this quarter's numbers, our department will be standing right on the brink."
+    }
+  },
+  {
+    "id": "ruiran-no-ayauki",
+    "word": "累卵の危うき",
+    "reading": "るいらんのあやうき",
+    "kind": "ことわざ",
+    "meaning": "卵を積み重ねたように、いつ崩れるか分からない、きわめて不安定で危険な状態。",
+    "origin": "『史記』范雎（はんしょ）伝（范雎蔡沢列伝）から。魏で打ちすえられて死にかけ、張禄と名を変えて逃れた范雎を、秦の使者王稽が連れ帰り、昭王に「魏の張禄先生は天下の弁士で、『秦王の国は累卵よりも危うし、臣を得ればすなわち安し』と言っている」と伝えた。原文は「秦王之国危於累卵」で、「累卵のように危うい」ではなく「累卵よりも危うい」という比べる形になっている。似たたとえは『韓非子』十過篇にもあり、晋と楚にはさまれた小国曹について「其の君の危うきこと猶ほ累卵のごときなり」という。精選版日本国語大辞典は枚乗の「上書諫呉王」も挙げる。日本では、室町時代の五山僧景徐周麟の漢詩文集『翰林葫蘆集』（1518年ごろ）に「閑看人間累卵危」とある。「危うきこと累卵の如し」ともいう。",
+    "example": "取引先が一社倒れれば連鎖で潰れる、累卵の危うきにある会社だ。",
+    "sources": [
+      {
+        "label": "コトバンク",
+        "url": "https://kotobank.jp/word/%E7%B4%AF%E5%8D%B5%E3%81%AE%E5%8D%B1%E3%81%86%E3%81%8D-660408"
+      },
+      {
+        "label": "維基文庫『史記』卷七十九 范雎蔡澤列傳",
+        "url": "https://zh.wikisource.org/wiki/%E5%8F%B2%E8%A8%98/%E5%8D%B7079"
+      },
+      {
+        "label": "維基文庫『韓非子』十過",
+        "url": "https://zh.wikisource.org/wiki/%E9%9F%93%E9%9D%9E%E5%AD%90/%E5%8D%81%E9%81%8E"
+      },
+      {
+        "label": "コトバンク（景徐周麟）",
+        "url": "https://kotobank.jp/word/%E6%99%AF%E5%BE%90%E5%91%A8%E9%BA%9F-16053"
+      }
+    ],
+    "themes": ["history"],
+    "en": {
+      "gloss": "as precarious as stacked eggs",
+      "meaning": "An extremely unstable and dangerous state, like a pile of eggs that could collapse at any moment.",
+      "origin": "From the biography of Fan Ju (Hanjo in Japanese) in the Shiji (Shiki), the Han-dynasty history of China. Fan Ju had been beaten nearly to death in Wei and escaped under the name Zhang Lu. The Qin envoy Wang Ji brought him back and told King Zhao of Qin: \"Master Zhang Lu of Wei is the finest debater in the land. He says, 'The state of the King of Qin is more precarious than stacked eggs; with me it will be safe.'\" The original reads 秦王之国危於累卵, a comparison (\"more precarious than stacked eggs\") rather than a simile. A similar image appears in the Shiguo (Ten Faults) chapter of the Han Feizi (Kanpishi), which says of the small state of Cao, squeezed between Jin and Chu, that \"the danger to its ruler is like stacked eggs.\" The Seisenban Nihon Kokugo Daijiten also cites Mei Sheng's memorial remonstrating with the King of Wu. In Japan it appears in Kanrin Koroshū (c. 1518), the collected Chinese poetry and prose of the Muromachi-period Zen monk Keijo Shūrin. It is also said as ayauki koto ruiran no gotoshi, \"as precarious as stacked eggs.\"",
+      "example": "If one client goes under, the whole chain collapses; the company is as precarious as a stack of eggs."
+    }
+  },
+  {
+    "id": "shichuu-ni-katsu-wo-motomeru",
+    "word": "死中に活を求める",
+    "reading": "しちゅうにかつをもとめる",
+    "kind": "ことわざ",
+    "meaning": "助かる見込みのほとんどない絶望的な状況で、なお生き延びる道を探すこと。転じて、窮地を打開するために、あえて危険に飛び込むこと。",
+    "origin": "『後漢書』公孫述伝にある話から。建武12年（36年）、後漢の軍に攻め込まれた公孫述が配下の将延岑に策を問うと、延岑は「男児当に死中に生を求むべし、坐して窮すべけんや」（男なら死の中に生を探すべきで、座って行き詰まるのを待っていられようか）と答えた。公孫述は財宝をはたいて決死隊を募り、延岑の奇襲で呉漢の軍を破ったが、同じ年のうちに再び戦って胸を刺され、その夜に死んだ。辞書によっては出典を『晋書』呂光載記とし、こちらでは呂光の軍に攻められた乾帰が「死中に生を求むるは、正に今日に在り」と嘆いている。どちらも原文は「活」ではなく「生」で、「死中に生を求める」ともいう。精選版日本国語大辞典が挙げる日本語の用例は中村真一郎『芥川文学の魅力』（1954〜55年）で、わりあい新しい。「死中に活を入れる」は誤り。",
+    "example": "どうせ潰れるならと、死中に活を求めて残りの資金を新事業に賭けた。",
+    "sources": [
+      {
+        "label": "コトバンク",
+        "url": "https://kotobank.jp/word/%E6%AD%BB%E4%B8%AD%E3%81%AB%E6%B4%BB%E3%82%92%E6%B1%82%E3%82%80-2046521"
+      },
+      {
+        "label": "故事ことわざ辞典",
+        "url": "https://kotowaza-dictionary.jp/k0664/"
+      },
+      {
+        "label": "維基文庫『後漢書』卷十三",
+        "url": "https://zh.wikisource.org/wiki/%E5%BE%8C%E6%BC%A2%E6%9B%B8/%E5%8D%B713"
+      },
+      {
+        "label": "維基文庫『晉書』卷一百二十二",
+        "url": "https://zh.wikisource.org/wiki/%E6%99%89%E6%9B%B8/%E5%8D%B7122"
+      }
+    ],
+    "themes": ["history"],
+    "en": {
+      "gloss": "seeking life in the jaws of death",
+      "meaning": "Looking for a way to survive in a hopeless situation where there is almost no chance of rescue; by extension, deliberately plunging into danger to break out of a tight spot.",
+      "origin": "From a story in the biography of Gongsun Shu in the Hou Hanshu (Gokanjo in Japanese), the official history of the Later Han. In the twelfth year of Jianwu (36 CE), with Later Han forces closing in, Gongsun Shu asked his general Yan Cen what to do. Yan Cen replied, \"A man should seek life in the midst of death; how can he sit and wait to be cornered?\" Gongsun Shu spent his treasure raising a band of volunteers, and Yan Cen's surprise attack beat Wu Han's army, but later that same year Gongsun Shu fought again, was stabbed through the chest, and died that night. Some dictionaries give the source as the account of Lü Guang in the Jin Shu (Shinjo), the official history of the Jin, where Qiangui, under attack by Lü Guang's army, laments that \"seeking life in the midst of death is for today.\" Both originals use the character for \"life\" (生) rather than 活 (\"living\"), and the phrase is also said as shichū ni sei wo motomeru. The Japanese example the Seisenban Nihon Kokugo Daijiten gives is relatively recent, from Nakamura Shin'ichirō's Akutagawa Bungaku no Miryoku (The Appeal of Akutagawa's Literature, 1954-55). Saying shichū ni katsu wo ireru (\"to put life into death\") is a mistake.",
+      "example": "Figuring the company would go under anyway, he sought life in the jaws of death and bet the remaining funds on a new business."
+    }
+  },
+  {
+    "id": "kenkon-itteki",
+    "word": "乾坤一擲",
+    "reading": "けんこんいってき",
+    "kind": "四字熟語",
+    "meaning": "運命をかけて、一か八かの大勝負に出ること。",
+    "origin": "「乾坤」は天地、「一擲」はさいころを一度投げること。天下をかけて、天が出るか地が出るかを一度のさいころで決める、という意味。唐の韓愈の詩「鴻溝を過ぐ」の「誰か君王に勧めて馬首を回らし、真に一擲を成して乾坤を賭せん」から。楚の項羽と漢の劉邦は前203年に天下を二分する和議を結んだが、劉邦は引き返して項羽を追い討ちした。その一手を詠んだ句で、詩では「一擲賭乾坤」の形になっている。日本では小泉三申『新版由比正雪』（1912年）の「乾坤一擲的事業」が辞書に挙がっている。",
+    "example": "資金の大半を新工場に注ぎ込むという、乾坤一擲の勝負に出た。",
+    "sources": [
+      {
+        "label": "コトバンク",
+        "url": "https://kotobank.jp/word/%E4%B9%BE%E5%9D%A4%E4%B8%80%E6%93%B2-491894"
+      },
+      {
+        "label": "漢字ペディア",
+        "url": "https://www.kanjipedia.jp/kotoba/0001059400"
+      },
+      {
+        "label": "漢文委員会 kanbun.info",
+        "url": "https://kanbun.info/koji/kenkon.html"
+      },
+      {
+        "label": "コトバンク（項羽）",
+        "url": "https://kotobank.jp/word/%E9%A0%85%E7%BE%BD-61427"
+      }
+    ],
+    "themes": ["history"],
+    "en": {
+      "gloss": "staking everything on one throw of the dice",
+      "meaning": "Risking one's fate on a single all-or-nothing gamble.",
+      "origin": "Kenkon means heaven and earth, and itteki means throwing the dice once: a single roll, with the whole realm at stake, that decides whether heaven or earth comes up. It comes from the poem Guo Honggou (\"Passing the Honggou,\" Kōkō o Sugu in Japanese) by the Tang poet Han Yu: \"Who urged the king to turn his horse around, and truly stake heaven and earth on one throw?\" In 203 BC Xiang Yu of Chu and Liu Bang of Han agreed to split the realm, but Liu Bang turned back and pursued Xiang Yu. The line is about that move, and in the poem the words run \"one throw, stake heaven and earth\" rather than in the four-character form. Dictionaries cite as a Japanese example Koizumi Sanshin's Shinpan Yui Shōsetsu (1912), a book about Yui Shōsetsu, which speaks of \"a kenkon-itteki undertaking.\"",
+      "example": "They made an all-or-nothing bet, pouring most of their capital into the new plant."
+    }
+  },
+  {
+    "id": "kendo-chourai",
+    "word": "捲土重来",
+    "reading": "けんどちょうらい",
+    "kind": "四字熟語",
+    "meaning": "一度敗れたり失敗したりした者が、勢いを盛り返して再び巻き返しを図ること。",
+    "origin": "「捲土」は土煙を巻き上げること、「重来」は再びやって来ること。晩唐の杜牧の七言絶句「烏江亭に題す」の結句「巻土重来未だ知る可からず」から。烏江は、劉邦に敗れた楚の項羽が、江を渡って逃げるよう勧められながら断り、自ら命を絶った地。詩は、故郷の江東には優れた若者が多かったのだから、恥を忍んで戻っていれば巻き返せたかもしれない、と項羽を惜しむ。原詩は「巻」の字で、「捲」と同じ意味。「ちょう」は「重」の漢音、「じゅう」は慣用音で、「けんどじゅうらい」とも読む。辞書の用例は「ちょうらい」が登張竹風の文章（1901年）、「じゅうらい」が『相撲講話』（1919年）で、どちらも戦前から使われている。",
+    "example": "初戦で敗れたチームは、来季の捲土重来を期して練習を再開した。",
+    "sources": [
+      {
+        "label": "コトバンク",
+        "url": "https://kotobank.jp/word/%E6%8D%B2%E5%9C%9F%E9%87%8D%E6%9D%A5-492845"
+      },
+      {
+        "label": "漢字ペディア",
+        "url": "https://www.kanjipedia.jp/kotoba/0001927000"
+      },
+      {
+        "label": "Web漢文大系 題烏江亭",
+        "url": "https://kanbun.info/syubu/ukotei.html"
+      },
+      {
+        "label": "漢文委員会 kanbun.info",
+        "url": "https://kanbun.info/koji/kendochorai.html"
+      }
+    ],
+    "themes": ["history"],
+    "en": {
+      "gloss": "a comeback in a cloud of dust",
+      "meaning": "Someone who has lost or failed once regaining strength and making another attempt.",
+      "origin": "Kendo means rolling up a cloud of dust, and chōrai means coming again. It comes from the last line of the Tang poet Du Mu's seven-character quatrain Ti Wujiang Ting (\"Inscribed at Wujiang Pavilion,\" Ukōtei ni Daisu in Japanese): a comeback in a cloud of dust \"cannot be ruled out.\" Wujiang is where Xiang Yu of Chu, beaten by Liu Bang, was urged to cross the river and escape but refused, and took his own life. The poem regrets that he did not swallow his shame and go home, since the young men east of the Yangtze were full of talent and he might have fought back. The original poem writes the first character as 巻, with the same meaning as 捲. Chō is the Sino-Japanese (kan-on) reading of 重 and jū the customary reading, so it is also read kendo jūrai. Dictionaries cite chōrai from a 1901 piece by Tobari Chikufū and jūrai from Sumō Kōwa (1919), a book of talks on sumo; both readings have been in use since before the war.",
+      "example": "Having lost in the first round, the team went back to training, determined to come back next season."
+    }
+  },
+  {
+    "id": "ichiyou-raifuku",
+    "word": "一陽来復",
+    "reading": "いちようらいふく",
+    "kind": "四字熟語",
+    "meaning": "冬が去り春が来ること。また、悪いことが続いたあと、ようやく物事がよい方に向かうこと。もとは冬至や陰暦十一月をいう。",
+    "origin": "『易経』の復の卦から。易では陰暦十月に陰が極まり、十一月の冬至に陽が初めて生じるとされ、復の卦は最下段に一つの陽が再び現れた形をしている。「一陽生」ともいう。日本では古く、冬至を一陽来復、一陽嘉節として祝った。春が来る意味では『太平記』（14世紀後半）に「潜龍は三冬に蟄して一陽来復の天を待つ」とあり、運が向く意味では『明徳記』（1392〜93年頃か）に用例がある。東京・新宿区の穴八幡宮は、江戸中期から冬至の福神祭で「一陽来復御守」を授けてきたとしており、今も冬至から節分まで頒布する。冬至、大晦日、節分のいずれかの夜中0時に、文字を恵方に向けて貼る。",
+    "example": "長い不況を抜けて、ようやく一陽来復の兆しが見えてきた。",
+    "sources": [
+      {
+        "label": "コトバンク",
+        "url": "https://kotobank.jp/word/%E4%B8%80%E9%99%BD%E6%9D%A5%E5%BE%A9-433829"
+      },
+      {
+        "label": "漢字ペディア",
+        "url": "https://www.kanjipedia.jp/kotoba/0000221600"
+      },
+      {
+        "label": "穴八幡宮 一陽来復御守",
+        "url": "https://www.anahachimanguu.jp/ichiyouraifuku/"
+      },
+      {
+        "label": "穴八幡宮 よくある質問",
+        "url": "https://www.anahachimanguu.jp/faq/"
+      }
+    ],
+    "themes": ["history"],
+    "en": {
+      "gloss": "the return of the sun",
+      "meaning": "Winter giving way to spring; also, things finally taking a turn for the better after a run of bad luck. Originally it meant the winter solstice or the eleventh lunar month.",
+      "origin": "From the hexagram Fu (\"Return\") in the Yijing (Ekikyō in Japanese), the Book of Changes. In this system yin peaks in the tenth lunar month and yang first appears again at the winter solstice in the eleventh, and the Fu hexagram shows a single yang line reappearing at the very bottom. It is also called ichiyō-sei (\"one yang is born\"). In Japan the solstice was once celebrated as ichiyō raifuku or ichiyō kasetsu. In the sense of spring arriving it appears in the war chronicle Taiheiki (late 14th century): \"the hidden dragon lies dormant through the three months of winter, awaiting the sky of ichiyō raifuku\"; in the sense of luck turning, it appears in the war chronicle Meitokuki (perhaps c. 1392-93). Ana Hachimangū, a shrine in Shinjuku, Tokyo, says it has given out an Ichiyō Raifuku charm at its winter-solstice festival since the mid-Edo period, and it still hands it out from the solstice to Setsubun in early February. The charm is put up at exactly midnight on the solstice, New Year's Eve, or Setsubun, with its characters facing that year's lucky direction (ehō).",
+      "example": "After the long slump, there are finally signs that the tide is turning."
+    }
   }
 ]
